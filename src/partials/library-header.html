@@ -1,18 +1,23 @@
 <header class="header">
   <div class="container">
-    <div clas="library__header__container">
-      <div class="library__header__nav">
-        <a class="logo">
-          <div class="logo__svg">
-          </div>
-          <div class="logo__text">Filmoteka</div>
-      </div>
-      <div class="library__header__nav">
-        <ul>
-          <li class="library__header__nav"><a href="#">HOME</a></li>
-          <li class="library__header__nav"><a href="./my-library.html">My library</a></li>
-      </div>
+    <div class="container__nav">
+      <a class="logo-main" href="index.html">
+        <!-- <svg class="logo-main__icon">
+          <use href="./images/symbol-defs.svg#icon-logo"></use>
+        </svg> -->
+        <span class="logo-main__name">Filmoteka</span>
+      </a>
+      <nav class="container-nav__link">
+        <ul class="menu-nav list">
+          <li class="menu-nav__item">
+            <a href="./index.html" class="menu-nav__link ">Home</a>
+          </li>
+          <li class="menu-nav__item">
+            <a href="./my-library.html" class="menu-nav__link current">My Library</a>
+          </li>
 
+        </ul>
+      </nav>
     </div>
     <div class="library__header__menu">
       <button class="library__header__btn" type="button">Watched</button>
