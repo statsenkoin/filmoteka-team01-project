@@ -15,7 +15,7 @@ async function fetchGenre() {
 async function fetchQuery(queryByWord, page) {
   try {
     const responce = fetch(
-      `${URL}${queryByWord}?api_key=${API_KEY}&page=${page}`
+      `${URL}/search/movie?api_key=${API_KEY}&page=${page}&query=${queryByWord}`
     );
     return (await responce).json();
   } catch (error) {
