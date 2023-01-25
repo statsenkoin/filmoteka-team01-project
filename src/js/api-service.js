@@ -23,3 +23,14 @@ export async function fetchSingleMovie(movieId) {
     return console.log('error :>> ', error);
   }
 }
+
+async function fetchQuery(queryByWord, page) {
+  try {
+    const responce = fetch(
+      `${URL}/search/movie?api_key=${API_KEY}&page=${page}&query=${queryByWord}`
+    );
+    return (await responce).json();
+  } catch (error) {
+    return console.log('error :>> ', error);
+  }
+}
