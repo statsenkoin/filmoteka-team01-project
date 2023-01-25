@@ -40,7 +40,7 @@ async function fetchQuery(queryByWord, page) {
 async function fetchPopular () {
   try {
     const responce = fetch(
-        `${QUERY_TRENDING}?api_key=${API_KEY}`,
+        `${URL}${QUERY_TRENDING}?api_key=${API_KEY}`,
     );
     
     return (await responce).json();
