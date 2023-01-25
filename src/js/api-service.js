@@ -34,3 +34,21 @@ async function fetchQuery(queryByWord, page) {
     return console.log('error :>> ', error);
   }
 }
+
+
+
+async function fetchPopular () {
+  try {
+    const responce = fetch(
+        `${QUERY_TRENDING}?api_key=${API_KEY}`,
+    );
+    
+    return (await responce).json();
+  } catch (error) {
+    return console.log('error :>> ', error);
+  } 
+}
+
+
+
+
