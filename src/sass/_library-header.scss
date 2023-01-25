@@ -1,0 +1,50 @@
+.header {
+  background: #222529;
+  background-image: url('/src/images/watched_desktop_background_2x.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.library__header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 216px;
+  padding: 0 100px;
+}
+
+.library__header__menu {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: 60px;
+}
+
+.library__header__btn {
+  height: 42px;
+  width: 148px;
+  margin: 0 16px;
+
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #ffffff;
+  outline: none;
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: none;
+}
+
+.library__header__btn:hover {
+  color: #ffffff;
+  border-color: #ff6b02;
+  background: #ff6b02;
+}
+
+.logo__text {
+  color: aliceblue;
+}
