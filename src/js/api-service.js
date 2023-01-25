@@ -13,14 +13,13 @@ async function fetchGenre() {
   }
 }
 
-async function fetchQuery(queryByWord, page) {
+export async function fetchSingleMovie(movieId) {
   try {
     const responce = fetch(
-      `${URL}/search/movie?api_key=${API_KEY}&page=${page}&query=${queryByWord}`
+      `${URL}${QUERY_MOVIE}/${movieId}?api_key=${API_KEY}&language=en-US`
     );
     return (await responce).json();
   } catch (error) {
-    console.log(error);
-
+    return console.log('error :>> ', error);
   }
 }
