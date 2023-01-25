@@ -11,3 +11,14 @@ async function fetchGenre() {
     return console.log('error :>> ', error);
   }
 }
+
+async function fetchQuery(queryByWord, page) {
+  try {
+    const responce = fetch(
+      `${URL}${queryByWord}?api_key=${API_KEY}&page=${page}`
+    );
+    return (await responce).json();
+  } catch (error) {
+    console.log(error);
+  }
+}
