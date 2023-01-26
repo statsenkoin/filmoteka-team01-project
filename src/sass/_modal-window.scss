@@ -1,198 +1,200 @@
 .modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 280px;
-    height: 940px;
-    background-color: white;
-    padding: 40px 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 940px;
+  background-color: white;
+  padding: 40px 20px;
+  visibility: hidden;
+  opacity: 0;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .modal-close-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: transparent;
-    border: none;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  border: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-        &:hover,
-        &:focus {
-            fill: #FF6B01;
-        }
+  &:hover,
+  &:focus {
+    fill: #ff6b01;
+  }
 }
 
 .icon-close {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
 }
 
-.poster-block{
-    margin-bottom: 20px;
+.poster-block {
+  margin-bottom: 20px;
 }
 
 .poster {
-    width: 240px;
-    height: 357px;
-    border-radius: 5px;
+  width: 240px;
+  height: 357px;
+  border-radius: 5px;
 }
 
-
 .film-information-title {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.15;
-    margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  margin-bottom: 20px;
 }
 
 .rating-table {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .rating {
-    display: inline-block;
-    background-color: #FF6B01;
-    color: #fff;
-    border-radius: 5px;
-    width: 36px;
-    height: 16px;
-    text-align: center;
-    
+  display: inline-block;
+  background-color: #ff6b01;
+  color: #fff;
+  border-radius: 5px;
+  width: 36px;
+  height: 16px;
+  text-align: center;
 }
 
-
 .table-subtitle {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    color: #8C8C8C;
-    padding-right: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8c8c8c;
+  padding-right: 40px;
 }
 
 .table-inf {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
 }
 
-
 .about {
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
 .about-film {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.66;
-    max-height: 240px;
-    overflow-y: auto;
-    margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.66;
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: 20px;
 }
 
 .buttons-add {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .btn-add {
-    width: 110px;
-    height: 44px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    text-transform: uppercase;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-        &:hover,
-        &:focus {
-           background-color: #FF6B01;
-           color: #fff;
-           border: 1px solid #FF6B01;
-        }
+  width: 110px;
+  height: 44px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    color: #fff;
+    border: 1px solid #ff6b01;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .modal {
-        width: 704px;
-        height: 552px;
-        padding: 40px 36px;
-    }
+  .modal {
+    width: 704px;
+    height: 552px;
+    padding: 40px 36px;
+  }
 
-    .modal-film-info {
-        display: flex;
-        gap: 68px;
-        align-items: flex-start;
-    }
+  .modal-film-info {
+    display: flex;
+    gap: 68px;
+    align-items: flex-start;
+  }
 
-    .poster {
-        width: 264px;
-        height: 374px;
-    }
+  .poster {
+    width: 264px;
+    height: 374px;
+  }
 
-    .film-information-title {
-        margin-top: 0;
-    }
+  .film-information-title {
+    margin-top: 0;
+  }
 
-    .btn-add {
-        width: 125px;
-    }
+  .btn-add {
+    width: 125px;
+  }
 
-    .buttons-add {
-        gap: 15px;
-    }
+  .buttons-add {
+    gap: 15px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
-    .modal {
-        width: 806px;
-        height: 558px;
-        padding: 40px 12px;
-    }
-    .modal-film-info {
-        gap: 16px;
-    }
+  .modal {
+    width: 806px;
+    height: 558px;
+    padding: 40px 12px;
+  }
+  .modal-film-info {
+    gap: 16px;
+  }
 
-    .poster {
-        width: 375px;
-        height: 478px;
-    }
+  .poster {
+    width: 375px;
+    height: 478px;
+  }
 
-    .film-information-title {
-        font-size: 30px;
-        line-height: 1.17;  
-    }
+  .film-information-title {
+    font-size: 30px;
+    line-height: 1.17;
+  }
 
-    .about-film {
-        max-height: 160px;
-    }
+  .about-film {
+    max-height: 160px;
+  }
 
-    .btn-add {
-        width: 136px;
-    }
+  .btn-add {
+    width: 136px;
+  }
 }
