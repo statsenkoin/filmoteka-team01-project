@@ -1,5 +1,10 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
 .container {
   padding-left: 20px;
   padding-right: 20px;
@@ -22,11 +27,6 @@
     padding-right: 32px;
   }
 }
-
-@media screen and (min-width: 1200px) {
-  .container {
-    width: 1200px;
-  }
 
 @media screen and (min-width: 1280px) {
     .container {
