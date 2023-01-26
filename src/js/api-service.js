@@ -4,7 +4,7 @@ const QUERY_TRENDING = '/trending/movie/week';
 const QUERY_GENRE = '/genre/movie/list';
 const QUERY_MOVIE = '/movie';
 
-async function fetchGenre() {
+export async function fetchGenre() {
   try {
     const responce = fetch(`${URL}${QUERY_GENRE}?api_key=${API_KEY}`);
     return (await responce).json();
@@ -24,7 +24,7 @@ export async function fetchSingleMovie(movieId) {
   }
 }
 
-async function fetchQuery(queryByWord, page) {
+export async function fetchQuery(queryByWord, page) {
   try {
     const responce = fetch(
       `${URL}/search/movie?api_key=${API_KEY}&page=${page}&query=${queryByWord}`
@@ -35,20 +35,14 @@ async function fetchQuery(queryByWord, page) {
   }
 }
 
-
-
-async function fetchPopular (page) {
+export async function fetchPopular(page) {
   try {
     const responce = fetch(
-        `${URL}${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`,
+      `${URL}${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`
     );
-    
+
     return (await responce).json();
   } catch (error) {
     return console.log('error :>> ', error);
-  } 
+  }
 }
-
-
-
-
