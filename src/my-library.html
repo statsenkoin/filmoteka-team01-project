@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Library</title>
 
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Library</title>
 
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
-  <body>
-    <div id="page-container">
-      <!-- ❗️❗️❗️ Add partials like so for every page -->
-      <include src="./partials/library-header.html"></include>
-      <include src="./partials/library-gallery.html"></include>
-      <include src="./partials/footer.html"></include>
-    </div>
-  </body>
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="./sass/index.scss" />
+  <script type="module" src="./index.js"></script>
+</head>
+
+<body>
+  <div id="page-container">
+    <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <include src="./partials/library-header.html"></include>
+    <include src="./partials/library-gallery.html"></include>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/btn-up.html"></include>
+  </div>
+</body>
+
 </html>
