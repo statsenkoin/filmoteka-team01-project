@@ -1,0 +1,225 @@
+// ---перенести к глобальным --------------------------------
+:root {
+  --white: #ffffff;
+  --text-error: #ff001b;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+// ----------------------------------------------------------------
+
+// ---согласовать контейнер --------------------------------
+.container {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+}
+// =================================================================
+.header {
+  padding-top: 40px;
+  padding-bottom: 44px;
+  background-repeat: no-repeat;
+  background-image: url(../images/home_mobile_background_1x.png);
+  background-position: center;
+  background-size: 100% 100%;
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    background-image: url(../images/home-mobile_background_2x.png);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 45px;
+    background-image: url(../images/home_tablet_background_1x.png);
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+      background-image: url(../images/home_tablet_background_2x.png);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url(../images/home_desktop_background_1x.png);
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+      background-image: url(../images/home_desktop_background_2x.png);
+    }
+  }
+}
+
+.container-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-main {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-decoration: none;
+
+  @media (min-width: 1280px) {
+    gap: 10px;
+  }
+
+  &__name {
+    @media (max-width: 767px) {
+      display: none;
+    }
+
+    font-family: inherit; //'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.menu-nav {
+  list-style: none;
+  display: flex;
+  gap: 39px;
+  margin: auto;
+
+  &__item {
+    text-align: center;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+
+    font-family: inherit; //'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+
+    align-items: baseline;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+  }
+}
+
+//добавить сталь на странице библиотеки на
+.current::after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 3px;
+  bottom: -3px; //поправить до -2px после добавления шрифтов
+  background-color: var(--text-error);
+  transform: scaleX(1);
+}
+.search-form {
+  width: 280px;
+  padding-top: 54px;
+  padding-bottom: 16px;
+
+  margin: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 394px;
+  }
+
+  &__input {
+    width: 100%;
+    min-height: 20px;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.5px solid var(--white);
+
+    font-family: inherit; //'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+  }
+
+  &__button {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.5px solid var(--white);
+    padding: 10px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 1px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+  }
+}
+
+::placeholder {
+  color: var(--white);
+  opacity: 1;
+}
+
+.error-text {
+  // opacity: 0;
+  font-family: inherit; //'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  align-items: center;
+  display: flex;
+  color: var(--text-error);
+  margin: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 393px;
+  }
+}
