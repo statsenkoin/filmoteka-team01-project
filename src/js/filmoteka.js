@@ -1,4 +1,5 @@
 import { fetchPopular, fetchGenre } from './api-service';
+import { updatePagination, getCurrentPage } from './custom-pagination';
 
 // емуляція locale stotage
 let locStorageGenres;
@@ -7,6 +8,19 @@ let locStorageFilms;
 
 let currentPage = 1;
 let totalPages = 1;
+
+// ===== pagination =====================================
+const paginationRef = document.querySelector('.pagination');
+paginationRef.addEventListener('click', onPaginationButtonClick);
+
+async function onPaginationButtonClick(event) {
+  const targetPage = getCurrentPage(event);
+  if (targetPage === currentPage) return;
+  currentPage = targetPage;
+
+  await updateGallery();
+}
+// ======================================================
 
 const homeGallery = document.querySelector('.home-gallery');
 
@@ -26,4 +40,6 @@ async function updateGallery() {
   console.log('locStorageFilms :>> ', locStorageFilms);
   console.log('totalPages :>> ', totalPages);
   // markupTrending(locStorageFilms, homeGallery);
+
+  updatePagination(currentPage, totalPages, paginationRef);
 }
