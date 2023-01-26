@@ -1,4 +1,4 @@
-const btnUp = {
+export const btnUp = {
       el: document.querySelector('.btn-up'),
       scrolling: false,
       show() {
@@ -50,4 +50,4 @@ const btnUp = {
       }
     }
 
-    btnUp.addEventListener();
+btnUp.addEventListener();
