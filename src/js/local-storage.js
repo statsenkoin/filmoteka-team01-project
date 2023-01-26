@@ -105,13 +105,13 @@ export function updateLocalStorage(key, film) {
     const currentFilms = response;
 
     if (currentFilms.find(item => item.title === film.title)) {
-      console.log('I delete film from the collection!');
+      console.log('I`m delete film from the collection!');
 
       const indexFilm = currentFilms.findIndex(item => item.title === film.title);
       currentFilms.splice(indexFilm, 1);
       setLocalStorage(key, response);
     } else {
-      console.log('I add film to the collection!');
+      console.log('I`m add film to the collection!');
 
       currentFilms.push(film);
       setLocalStorage(key, response);
@@ -164,7 +164,7 @@ export class LocalStorage {
       const currentFilms = response;
       console.log('Current', currentFilms);
       if (currentFilms.find(item => item.title === film.title)) {
-        console.log('I delete film from the collection!');
+        console.log('I`m delete film from the collection!');
         const indexFilm = currentFilms.findIndex(item => item.title === film.title);
 
         currentFilms.splice(indexFilm, 1);
@@ -172,7 +172,7 @@ export class LocalStorage {
         this.value = currentFilms;
         this.setLocalStorage();
       } else {
-        console.log('I add film to the collection!');
+        console.log('I`m add film to the collection!');
         currentFilms.push(film);
         this.value = currentFilms;
         this.setLocalStorage();
