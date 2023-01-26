@@ -1,0 +1,127 @@
+.movies {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.movies-images {
+    &__list {
+        @extend %list;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin: 0;
+        padding: 0;
+        gap: 20px;
+    }
+
+    &__item {
+        width: 280px;
+        height: 443px;
+    }
+
+}
+
+.movie-image {
+    width: 280px;
+    height: 402px;
+    border-radius: 5px;
+}
+
+.box-description {
+    padding-top: 10px;
+
+    &__title {
+        margin: 0;
+        color: #000000;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 1.17;
+        text-transform: uppercase;
+    }
+
+    &__text {
+        margin: 0;
+        color: #FF6B08;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 1.33;
+    }
+
+    &__span::after {
+        content: "";
+        position: relative;
+        display: inline-flex;
+        width: 10px;
+        bottom: 4px;
+        height: 0;
+        border: 1px solid #ff6b08;
+        transform: rotate(90deg);
+    }
+}
+@media screen and (min-width:768px) {
+    .movies {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .movies-images {
+        &__list {
+            gap: 32px;
+        }
+        &__item {
+            width: 336px;
+            height: 494px;
+        }
+    }
+    .movie-image {
+        width: 336px;
+        height: 455px;
+    }
+    .box-description {
+        padding-top: 8px;
+        &__title {
+            line-height: 1.33;
+        }
+        
+    }
+
+
+}
+
+@media screen and (min-width:1280px) {
+    
+    .movie-image {
+        width: 395px;
+        height: 574px;
+    }
+    .box-description {
+        padding-top: 12px;
+        &__title {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+        &__text {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+        &__span::after {
+            width: 17px;
+            bottom: 6px;
+        }
+    }
+    .movies-images {
+        &__list {
+            column-gap: 15px;
+            row-gap: 32px;
+        }
+        &__item {
+            width: 395px;
+            height: 634px;
+        }
+    }
+
+
+}
