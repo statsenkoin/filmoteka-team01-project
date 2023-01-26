@@ -130,7 +130,7 @@ export function updateLocalStorage(key, film) {
 
 //LocalStorage is implemented here through the class
 
-class LocalStorage {
+export class LocalStorage {
   constructor(key, value = []) {
     this.key = key;
     this.value = value;
