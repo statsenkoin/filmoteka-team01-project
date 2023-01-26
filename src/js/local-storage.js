@@ -1,6 +1,5 @@
 import { dataFilms, dataGenres } from './test';
 
-
 // const TEST_FILM = {
 //   adult: false,
 //   backdrop_path: '/5kAGbi9MFAobQTVfK4kWPnIfnP0.jpg',
@@ -20,9 +19,6 @@ import { dataFilms, dataGenres } from './test';
 //   vote_count: 586,
 // };
 
-
-
-
 //keys for LocalStorage
 const KEYS = {
   popular: 'popular',
@@ -36,7 +32,7 @@ const KEYS = {
  * @param {*string} key
  * @param {*array} item
  */
-function setLocalStorage(key, item) {
+export function setLocalStorage(key, item) {
   localStorage.setItem(key, JSON.stringify(item));
   console.log('OK!!!');
 }
@@ -44,7 +40,7 @@ function setLocalStorage(key, item) {
  * This function return data from LocalStorage
  * @param {*string} key
  */
-function getLocalStorage(key) {
+export function getLocalStorage(key) {
   try {
     const responseLocalStorage = localStorage.getItem(key);
     console.log('I am get IT!');
@@ -62,7 +58,7 @@ function getLocalStorage(key) {
  * @param {*string} key
  * @param {*object} film
  */
-function updateLocalStorage(key, film) {
+export function updateLocalStorage(key, film) {
   const response = getLocalStorage(key);
   const currentFilms = response.results;
   console.log('Current', currentFilms);
