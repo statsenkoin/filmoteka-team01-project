@@ -79,7 +79,7 @@ export const dataGenres = {
   ],
 };
 
-const dataFilms = {
+export const dataFilms = {
   page: 1,
   results: [
     {
