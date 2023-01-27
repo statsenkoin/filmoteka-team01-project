@@ -1,6 +1,8 @@
 import { fetchPopular, fetchGenre } from './api-service';
 import { updatePagination, getCurrentPage } from './custom-pagination';
-import { markupTrending } from './markups';
+import { markupTrending, getGenreByIdList } from './markups';
+import createMarkupModalWindow from './modal-window-markup';
+import modalActions from './modal-servise';
 
 // емуляція locale stotage
 let locStorageGenres;
@@ -25,7 +27,6 @@ async function onPaginationButtonClick(event) {
 
 const homeGallery = document.querySelector('.home-gallery');
 
-
 initGallery();
 
 async function initGallery() {
@@ -34,8 +35,6 @@ async function initGallery() {
   console.log('locStorageGenres :>> ', locStorageGenres);
   await updateGallery();
 }
-
-
 
 async function updateGallery() {
   const data = await fetchPopular(currentPage);
@@ -46,4 +45,16 @@ async function updateGallery() {
   markupTrending(locStorageFilms, homeGallery);
 
   updatePagination(currentPage, totalPages, paginationRef);
+}
+
+homeGallery.addEventListener('click', onCardClick);
+
+function onCardClick(event) {
+  const filmBox = event.target.closest('.movies-images__item');
+  if (!filmBox) return;
+  const filmBoxId = Number(filmBox.dataset.id);
+  const data = locStorageFilms.find(film => film.id === filmBoxId);
+  const filmGenres = getGenreByIdList(data.genre_ids);
+  modalActions(event);
+  createMarkupModalWindow(data, filmGenres);
 }

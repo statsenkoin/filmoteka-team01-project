@@ -44,10 +44,20 @@ export function getGenreById(genreIds, genreList = dataGenres.genres) {
   return filmGenres.join(', ');
 }
 
-export function getGenreByIdList(genreIds) {
-  console.log(genreIds);
-  return genreIds
-    .filter(genre => genreIds.includes(genre.id))
-    .map(item => item.name)
-    .join(', ');
+// export function getGenreByIdList(genreIds) {
+//   console.log(genreIds);
+//   return genreIds
+//     .filter(genre => genreIds.includes(genre.id))
+//     .map(item => item.name)
+//     .join(', ');
+// }
+
+export function getGenreByIdList(genreIds, genreList = dataGenres.genres) {
+  let filmGenres = [];
+
+  for (const genreId of genreIds) {
+    const ganreObject = genreList.find(element => element.id === genreId);
+    filmGenres.push(ganreObject.name);
+  }
+  return filmGenres.join(', ');
 }
