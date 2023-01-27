@@ -4,20 +4,20 @@ export function markupTrending(arrMovies, homeGallery) {
   const date = new Date();
   const markup = arrMovies
     .map(
-      ({ id, title, genre_ids, original_title, release_date, poster_path }) => {
-        const genre = getGenreById(genre_ids);
-        console.log(genre);
+      ({ id, title, genre_ids, original_title, release_date, poster_path }) => 
+        // const genre = getGenreById(genre_ids);
+        // console.log(genre);
         `<li class="movies-images__item" data-id=${id}>
             <img class="movie-image" src="https://image.tmdb.org/t/p/w500${poster_path || "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}" 
             alt="Movie ${title || original_title}" />
         <div class="box-description">
             <h2 class="box-description__title">${title || original_title}</h2>
             <p class="box-description__text">
-                <span class="box-description__span">${genre}</span>${date.getFullYear(release_date)}
+                <span class="box-description__span">${genre_ids}</span>${date.getFullYear(release_date)}
             </p>
         </div>
     </li>`
-      }).join('');
+      ).join('');
   
   homeGallery.innerHTML = markup;
 }
@@ -28,7 +28,7 @@ const GENRE_LIMIT = 3;
 
 export function getGenreById(genreIds, genreList = dataGenres.genres) {
   let filmGenres = [];
-  console.log(genreIds)
+  
   for (const genreId of genreIds) {
     const ganreObject = genreList.find(element => element.id === genreId);
     filmGenres.push(ganreObject.name);
@@ -41,9 +41,10 @@ export function getGenreById(genreIds, genreList = dataGenres.genres) {
   return filmGenres.join(', ');
 }
 
-export function getGenreByIdList(genre_ids) {
-  return genre_ids
-    .filter(genre => genre_ids.includes(genre.id))
+export function getGenreByIdList(genreIds) {
+  console.log(genreIds)
+  return genreIds
+    .filter(genre => genreIds.includes(genre.id))
     .map(item => item.name)
     .join(', ');
 }
