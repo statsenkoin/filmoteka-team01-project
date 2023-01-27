@@ -1,9 +1,8 @@
-const modalTrigers = document.querySelectorAll('.js-modal-triger');
-const overlay = document.querySelector('.backdrop');
-const modals = document.querySelectorAll('.modal');
-const closeButtons = document.querySelectorAll('.modal-close-btn');
-
 export default function modalActions() {
+  const modalTrigers = document.querySelectorAll('.js-modal-triger');
+  const overlay = document.querySelector('.backdrop');
+  const modals = document.querySelectorAll('.modal');
+  const closeButtons = document.querySelectorAll('.modal-close-btn');
   document.addEventListener('keydown', closeModalOnEscapePress);
   overlay.addEventListener('click', closeModalOnOverlayClick);
   Array.from(modalTrigers).forEach(trigger => {
