@@ -35,8 +35,8 @@ export default function modalActions() {
     event.preventDefault();
     this.closest('.modal').classList.remove('active');
     overlay.classList.remove('active');
-    document.removeEventListener('keydown', closeModalOnEscapePress);
-    overlay.removeEventListener('click', closeModalOnOverlayClick);
+    // document.removeEventListener('keydown', closeModalOnEscapePress);
+    // overlay.removeEventListener('click', closeModalOnOverlayClick);
   }
 
   function closeModalOnEscapePress(event) {
@@ -46,11 +46,11 @@ export default function modalActions() {
       Array.from(modals).forEach(modal => {
         modal.classList.remove('active');
       });
-      overlay.classList.remove('active');
-      overlay.removeEventListener('click', closeModalOnOverlayClick);
-      Array.from(closeButtons).forEach(button => {
-        button.removeEventListener('click', closeModalOncloseButtonsСlick);
-      });
+      // overlay.classList.remove('active');
+      // overlay.removeEventListener('click', closeModalOnOverlayClick);
+      // Array.from(closeButtons).forEach(button => {
+      //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
+      // });
     }
   }
 
@@ -58,10 +58,10 @@ export default function modalActions() {
     Array.from(modals).forEach(modal => {
       modal.classList.remove('active');
     });
-    overlay.classList.remove('active');
-    document.removeEventListener('keydown', closeModalOnEscapePress);
-    Array.from(closeButtons).forEach(button => {
-      button.removeEventListener('click', closeModalOncloseButtonsСlick);
-    });
+    // overlay.classList.remove('active');
+    // document.removeEventListener('keydown', closeModalOnEscapePress);
+    // Array.from(closeButtons).forEach(button => {
+    //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
+    // });
   }
 }
