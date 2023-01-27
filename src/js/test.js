@@ -448,9 +448,7 @@ export const dataFilms = {
 };
 
 import modalActions from './modal-servise';
-
+modalActions();
 // function showModalOnClick() {
 //   modalActions();
 // }
-
-modalActions();
