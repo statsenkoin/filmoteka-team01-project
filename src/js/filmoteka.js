@@ -1,5 +1,6 @@
 import { fetchPopular, fetchGenre } from './api-service';
 import { updatePagination, getCurrentPage } from './custom-pagination';
+import { markupTrending } from './markups';
 
 // емуляція locale stotage
 let locStorageGenres;
@@ -24,6 +25,7 @@ async function onPaginationButtonClick(event) {
 
 const homeGallery = document.querySelector('.home-gallery');
 
+
 initGallery();
 
 async function initGallery() {
@@ -33,13 +35,15 @@ async function initGallery() {
   await updateGallery();
 }
 
+
+
 async function updateGallery() {
   const data = await fetchPopular(currentPage);
   locStorageFilms = data.results;
   totalPages = data.total_pages;
   console.log('locStorageFilms :>> ', locStorageFilms);
   console.log('totalPages :>> ', totalPages);
-  // markupTrending(locStorageFilms, homeGallery);
+  markupTrending(locStorageFilms, homeGallery);
 
   updatePagination(currentPage, totalPages, paginationRef);
 }
