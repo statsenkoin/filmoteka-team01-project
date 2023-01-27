@@ -1,24 +1,28 @@
 export function markupTrending(arrMovies, homeGallery) {
-  console.log(arrMovies)
+  console.log(arrMovies);
 
   const date = new Date();
   const markup = arrMovies
     .map(
-      ({ id, title, genre_ids, original_title, release_date, poster_path }) => 
-        // const genre = getGenreById(genre_ids);
-        // console.log(genre);
+      ({ id, title, genre_ids, original_title, release_date, poster_path }) =>
         `<li class="movies-images__item" data-id=${id}>
-            <img class="movie-image" src="https://image.tmdb.org/t/p/w500${poster_path || "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}" 
+            <img class="movie-image" src="https://image.tmdb.org/t/p/w500${
+              poster_path ||
+              'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
+            }" 
             alt="Movie ${title || original_title}" />
         <div class="box-description">
             <h2 class="box-description__title">${title || original_title}</h2>
             <p class="box-description__text">
-                <span class="box-description__span">${genre_ids}</span>${date.getFullYear(release_date)}
+                <span class="box-description__span">${getGenreById(
+                  genre_ids
+                )}</span>${date.getFullYear(release_date)}
             </p>
         </div>
     </li>`
-      ).join('');
-  
+    )
+    .join('');
+
   homeGallery.innerHTML = markup;
 }
 
@@ -28,7 +32,7 @@ const GENRE_LIMIT = 3;
 
 export function getGenreById(genreIds, genreList = dataGenres.genres) {
   let filmGenres = [];
-  
+
   for (const genreId of genreIds) {
     const ganreObject = genreList.find(element => element.id === genreId);
     filmGenres.push(ganreObject.name);
@@ -37,12 +41,11 @@ export function getGenreById(genreIds, genreList = dataGenres.genres) {
     filmGenres = filmGenres.slice(0, 2);
     filmGenres.push('Other');
   }
-  
   return filmGenres.join(', ');
 }
 
 export function getGenreByIdList(genreIds) {
-  console.log(genreIds)
+  console.log(genreIds);
   return genreIds
     .filter(genre => genreIds.includes(genre.id))
     .map(item => item.name)
