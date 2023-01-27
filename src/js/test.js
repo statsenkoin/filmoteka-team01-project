@@ -448,10 +448,7 @@ export const dataFilms = {
 };
 
 import modalActions from './modal-servise';
-const modalTrigers = document.querySelectorAll('.js-modal-triger');
-const overlay = document.querySelector('.backdrop');
-const modal = document.querySelector('.modal');
-const closeButtons = document.querySelectorAll('.modal-close-btn');
+
 const test_button = document.querySelector('.test_button');
 
 test_button.addEventListener('click', modalActions);

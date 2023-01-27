@@ -1,18 +1,17 @@
-const modalTrigers = document.querySelectorAll('.js-modal-triger');
-const overlay = document.querySelector('.backdrop');
-const modal = document.querySelector('.modal');
-const closeButtons = document.querySelectorAll('.modal-close-btn');
-
 export default function modalActions() {
+  const modalTrigers = document.querySelectorAll('.js-modal-triger');
+  const overlay = document.querySelector('.backdrop');
+  const modals = document.querySelectorAll('.modal');
+  const closeButtons = document.querySelectorAll('.modal-close-btn');
+  document.addEventListener('keydown', closeModalOnEscapePress);
+  overlay.addEventListener('click', closeModalOnOverlayClick);
   Array.from(modalTrigers).forEach(trigger => {
     trigger.addEventListener('click', openModalOnclick);
   });
 
   Array.from(closeButtons).forEach(button => {
-    button.addEventListener('click', closeModalOnclick);
+    button.addEventListener('click', closeModalOncloseButtonsСlick);
   });
-
-  document.addEventListener('keydown', closeModalOnPress);
 
   function openModalOnclick(event) {
     event.preventDefault();
@@ -32,18 +31,37 @@ export default function modalActions() {
     overlay.classList.add('active');
   }
 
-  function closeModalOnclick(event) {
+  function closeModalOncloseButtonsСlick(event) {
     event.preventDefault();
     this.closest('.modal').classList.remove('active');
     overlay.classList.remove('active');
+    document.removeEventListener('keydown', closeModalOnEscapePress);
+    overlay.removeEventListener('click', closeModalOnOverlayClick);
   }
 
-  function closeModalOnPress(event) {
+  function closeModalOnEscapePress(event) {
     if (event.code !== 'Escape') {
       return;
     } else {
-      modal.classList.remove('active');
+      Array.from(modals).forEach(modal => {
+        modal.classList.remove('active');
+      });
       overlay.classList.remove('active');
+      overlay.removeEventListener('click', closeModalOnOverlayClick);
+      Array.from(closeButtons).forEach(button => {
+        button.removeEventListener('click', closeModalOncloseButtonsСlick);
+      });
     }
+  }
+
+  function closeModalOnOverlayClick(event) {
+    Array.from(modals).forEach(modal => {
+      modal.classList.remove('active');
+    });
+    overlay.classList.remove('active');
+    document.removeEventListener('keydown', closeModalOnEscapePress);
+    Array.from(closeButtons).forEach(button => {
+      button.removeEventListener('click', closeModalOncloseButtonsСlick);
+    });
   }
 }
