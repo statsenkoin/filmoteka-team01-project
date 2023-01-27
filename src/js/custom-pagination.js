@@ -120,3 +120,9 @@ function markupPagination(output, paginationElem) {
   paginationElem.innerHTML = '';
   paginationElem.insertAdjacentHTML('beforeend', markup);
 }
+
+window.addEventListener('resize', () => {
+  const isMatch = window.matchMedia('(min-width: 768px)').matches;
+  maxPages = isMatch ? 9 : 5;
+  updatePagination(currentPage, totalPages, paginationElem);
+});
