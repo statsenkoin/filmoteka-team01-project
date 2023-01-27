@@ -1,6 +1,7 @@
 import { fetchPopular, fetchPopularDay } from './api-service';
 
 const toggle = document.querySelector('#input-toggle');
+console.dir(toggle);
 
 toggle.addEventListener('change', onCheckBox);
 function onCheckBox() {

@@ -3,7 +3,7 @@ import { dataFilms, dataGenres } from './test';
 // const TEST_FILM = {
 //   adult: false,
 //   backdrop_path: '/5kAGbi9MFAobQTVfK4kWPnIfnP0.jpg',
-//   id: 536554,
+//   id: 536558,
 //   title: 'IAMMY',
 //   original_language: 'en',
 //   original_title: 'M3GAN',
@@ -21,7 +21,7 @@ import { dataFilms, dataGenres } from './test';
 // const TEST_FILM_1 = {
 //   adult: false,
 //   backdrop_path: '/5kAGbi9MFAobQTVfK4kWPnIfnP0.jpg',
-//   id: 536554,
+//   id: 53659,
 //   title: 'MAMMY',
 //   original_language: 'en',
 //   original_title: 'M3GAN',
@@ -39,7 +39,7 @@ import { dataFilms, dataGenres } from './test';
 // const TEST_FILM_2 = {
 //   adult: false,
 //   backdrop_path: '/5kAGbi9MFAobQTVfK4kWPnIfnP0.jpg',
-//   id: 536554,
+//   id: 53660,
 //   title: 'FIFTY',
 //   original_language: 'en',
 //   original_title: 'M3GAN',
@@ -136,8 +136,8 @@ export class LocalStorage {
     this.value = value;
   }
   //This function save data in LocalStorage
-  setLocalStorage() {
-    localStorage.setItem(this.key, JSON.stringify(this.value));
+  setLocalStorage(dataFilms) {
+    localStorage.setItem(this.key, JSON.stringify(dataFilms));
   }
 
   //This function return data from LocalStorage
@@ -159,39 +159,39 @@ export class LocalStorage {
 
     if (!response.length) {
       this.value.push(film);
-      this.setLocalStorage();
+      this.setLocalStorage(this.value);
     } else {
       const currentFilms = response;
-      console.log('Current', currentFilms);
-      if (currentFilms.find(item => item.title === film.title)) {
+      // console.log('Current', currentFilms);
+      if (currentFilms.find(item => item.id === film.id)) {
         console.log('I`m delete film from the collection!');
         const indexFilm = currentFilms.findIndex(item => item.id === film.id);
 
         currentFilms.splice(indexFilm, 1);
 
         this.value = currentFilms;
-        this.setLocalStorage();
+        this.setLocalStorage(this.value);
       } else {
         console.log('I`m add film to the collection!');
         currentFilms.push(film);
         this.value = currentFilms;
-        this.setLocalStorage();
+        this.setLocalStorage(this.value);
       }
     }
   }
 }
 
 ///tests for Class
-const popularFilms = new LocalStorage(KEYS.popular, dataFilms);
-const watchedFilms = new LocalStorage(KEYS.watched);
-const queueFilms = new LocalStorage(KEYS.queue);
-const genres = new LocalStorage(KEYS.genres, dataGenres);
+// const popularFilms = new LocalStorage(KEYS.popular);
+// const watchedFilms = new LocalStorage(KEYS.watched);
+// const queueFilms = new LocalStorage(KEYS.queue);
+// const genres = new LocalStorage(KEYS.genres);
 
 //inicialization storage
-// popularFilms.setLocalStorage();
-// watchedFilms.setLocalStorage();
-// queueFilms.setLocalStorage();
-// genres.setLocalStorage();
+// popularFilms.setLocalStorage(dataFilms);
+// watchedFilms.setLocalStorage([]);
+// queueFilms.setLocalStorage([]);
+// genres.setLocalStorage(dataGenres);
 
 // watchedFilms.updateLocalStorage(TEST_FILM);
 
