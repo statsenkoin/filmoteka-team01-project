@@ -3,7 +3,7 @@ const overlay = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal');
 const closeButtons = document.querySelectorAll('.modal-close-btn');
 
-function modalActions() {
+export default function modalActions() {
   Array.from(modalTrigers).forEach(trigger => {
     trigger.addEventListener('click', openModalOnclick);
   });
@@ -17,9 +17,9 @@ function modalActions() {
   function openModalOnclick(event) {
     event.preventDefault();
     console.log(event.target);
-    if (!event.target.classList.contains('movies-images__item')) {
-      return;
-    }
+    // if (!event.target.classList.contains('movies-images__item')) {
+    //   return;
+    // }
 
     const modalName = event.currentTarget.dataset.modal;
 
@@ -47,5 +47,3 @@ function modalActions() {
     }
   }
 }
-
-modalActions();
