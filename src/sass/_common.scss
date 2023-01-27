@@ -1,4 +1,25 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+.test_button {
+  margin-right: 30px;
+  width: 200px;
+  height: 50px;
+  background-color: palevioletred;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    color: #fff;
+    border: 1px solid #ff6b01;
+  }
+}
 
 #page-container {
   position: relative;
@@ -29,10 +50,9 @@
 }
 
 @media screen and (min-width: 1280px) {
-    .container {
-        width: 1280px;
-    }
-
+  .container {
+    width: 1280px;
+  }
 }
 
 .active {
