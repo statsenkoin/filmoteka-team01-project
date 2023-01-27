@@ -15,7 +15,7 @@ export default function modalActions() {
 
   function openModalOnclick(event) {
     event.preventDefault();
-    console.log(event.target);
+    // console.log(event.target);
     // if (!event.target.classList.contains('movies-images__item')) {
     //   return;
     // }
@@ -24,8 +24,8 @@ export default function modalActions() {
 
     const modal = document.querySelector('.' + modalName);
 
-    console.log(modalName);
-    console.log(modal);
+    // console.log(modalName);
+    // console.log(modal);
 
     modal.classList.add('active');
     overlay.classList.add('active');
@@ -46,7 +46,7 @@ export default function modalActions() {
       Array.from(modals).forEach(modal => {
         modal.classList.remove('active');
       });
-      // overlay.classList.remove('active');
+      overlay.classList.remove('active');
       // overlay.removeEventListener('click', closeModalOnOverlayClick);
       // Array.from(closeButtons).forEach(button => {
       //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
@@ -58,7 +58,7 @@ export default function modalActions() {
     Array.from(modals).forEach(modal => {
       modal.classList.remove('active');
     });
-    // overlay.classList.remove('active');
+    overlay.classList.remove('active');
     // document.removeEventListener('keydown', closeModalOnEscapePress);
     // Array.from(closeButtons).forEach(button => {
     //   button.removeEventListener('click', closeModalOncloseButtonsСlick);

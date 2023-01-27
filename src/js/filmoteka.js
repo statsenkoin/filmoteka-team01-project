@@ -25,7 +25,6 @@ async function onPaginationButtonClick(event) {
 
 const homeGallery = document.querySelector('.home-gallery');
 
-
 initGallery();
 
 async function initGallery() {
@@ -34,8 +33,6 @@ async function initGallery() {
   console.log('locStorageGenres :>> ', locStorageGenres);
   await updateGallery();
 }
-
-
 
 async function updateGallery() {
   const data = await fetchPopular(currentPage);
@@ -47,3 +44,7 @@ async function updateGallery() {
 
   updatePagination(currentPage, totalPages, paginationRef);
 }
+
+//
+// import modalActions from './modal-servise';
+// modalActions();
