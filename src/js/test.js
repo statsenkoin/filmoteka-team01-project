@@ -448,12 +448,7 @@ export const dataFilms = {
 };
 
 import modalActions from './modal-servise';
-
-const test_button = document.querySelector('.test_button');
-
-test_button.addEventListener('click', modalActions);
-
+modalActions();
 // function showModalOnClick() {
 //   modalActions();
 // }
-console.log(modalActions);

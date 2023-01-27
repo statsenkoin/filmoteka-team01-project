@@ -58,3 +58,4 @@ function onCardClick(event) {
   modalActions(event);
   createMarkupModalWindow(data, filmGenres);
 }
+
