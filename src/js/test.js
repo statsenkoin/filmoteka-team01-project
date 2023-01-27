@@ -446,3 +446,17 @@ export const dataFilms = {
   total_pages: 1000,
   total_results: 20000,
 };
+
+import modalActions from './modal-servise';
+const modalTrigers = document.querySelectorAll('.js-modal-triger');
+const overlay = document.querySelector('.backdrop');
+const modal = document.querySelector('.modal');
+const closeButtons = document.querySelectorAll('.modal-close-btn');
+const test_button = document.querySelector('.test_button');
+
+test_button.addEventListener('click', modalActions);
+
+// function showModalOnClick() {
+//   modalActions();
+// }
+console.log(modalActions);
