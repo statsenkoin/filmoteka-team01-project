@@ -144,8 +144,14 @@
 }
 
 .library__header__btn {
-  height: 42px;
-  width: 148px;
+  width: 152px;
+  @media (max-width: 767px) {
+    width: 129px;
+  }
+  padding: 13px 46px;
+  @media (max-width: 767px) {
+    padding: 14px 36px 12px;
+  }
   margin-right: 16px;
 
   border-radius: 5px;
@@ -156,6 +162,7 @@
 
   font-size: 12px;
   font-weight: 500;
+  line-height: 1.33;
   text-transform: uppercase;
   color: #ffffff;
   background: none;
