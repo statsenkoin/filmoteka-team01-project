@@ -49,6 +49,7 @@ function onWathedBtn(event) {
       if (!response) {
         watchedFilms.setLocalStorage();
       }
+
       watchedFilms.addFilmtoStorage(currentFilm);
     } else if (element.classList.contains('js-add-to-queue')) {
       const response = queueFilms.getLocalStorage();
