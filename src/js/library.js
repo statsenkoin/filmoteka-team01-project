@@ -49,4 +49,6 @@ function onWathedBtn(event) {
       queueFilms.addFilmtoStorage(currentFilm);
     }
   }
+  element.disabled = 'true';
+  element.style.background = '#FF7F50';
 }
