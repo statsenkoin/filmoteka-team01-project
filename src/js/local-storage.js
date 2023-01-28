@@ -44,17 +44,17 @@ export class LocalStorage {
     const response = this.getLocalStorage(this.key);
     if (!response.length) {
       return;
-    } else {
-      if (response.find(item => item.id === film.id)) {
-        console.log('I`m delete film from the collection!');
-        const indexFilm = response.findIndex(item => item.id === film.id);
-        response.splice(indexFilm, 1);
+    }
 
-        this.value = currentFilms;
-        this.setLocalStorage(this.value);
-      } else {
-        console.log('Cannot find film in collection');
-      }
+    if (response.find(item => item.id === film.id)) {
+      console.log('I`m delete film from the collection!');
+      const indexFilm = response.findIndex(item => item.id === film.id);
+      response.splice(indexFilm, 1);
+
+      this.value = currentFilms;
+      this.setLocalStorage(this.value);
+    } else {
+      console.log('Cannot find film in collection');
     }
   }
 }
