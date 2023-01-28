@@ -47,6 +47,7 @@
 }
 
 .poster-block {
+  position: relative;
   margin-bottom: 20px;
 }
 
@@ -198,4 +199,24 @@
   .btn-add {
     width: 136px;
   }
+}
+
+.youtube__btn {
+  position: absolute;
+  font-size: 70px;
+  top: 50%;
+  left: 50%;
+  color: red;
+  background: 0 0;
+  border: none;
+  transform: translate(-50%, -50%);
+}
+.fa {
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.25s linear;
+  border-radius: 5px;
+}
+.fa:hover {
+  transform: scale(1.3);
 }

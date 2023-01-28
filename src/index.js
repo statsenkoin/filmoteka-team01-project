@@ -5,3 +5,4 @@ import './js/modal-servise';
 import './js/test';
 import './js/toggle';
 import './js/library';
+import './js/trailer';

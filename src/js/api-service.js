@@ -16,7 +16,9 @@ export async function fetchGenre() {
 
 export async function fetchSingleMovie(movieId) {
   try {
-    const responce = fetch(`${URL}${QUERY_MOVIE}/${movieId}?api_key=${API_KEY}&language=en-US`);
+    const responce = fetch(
+      `${URL}${QUERY_MOVIE}/${movieId}?api_key=${API_KEY}&language=en-US`
+    );
     return (await responce).json();
   } catch (error) {
     return console.log('error :>> ', error);
@@ -36,7 +38,9 @@ export async function fetchQuery(queryByWord, page) {
 
 export async function fetchPopular(page) {
   try {
-    const responce = fetch(`${URL}${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`);
+    const responce = fetch(
+      `${URL}${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`
+    );
 
     return (await responce).json();
   } catch (error) {
@@ -46,9 +50,21 @@ export async function fetchPopular(page) {
 // //for DAY
 export async function fetchPopularDay(page) {
   try {
-    const responce = await fetch(`${URL}${QUERY_TRENDING_DAY}?api_key=${API_KEY}&page=${page}`);
+    const responce = await fetch(
+      `${URL}${QUERY_TRENDING_DAY}?api_key=${API_KEY}&page=${page}`
+    );
     return await responce.json();
   } catch (error) {
     return console.log('error :>> ', error);
   }
+}
+
+export async function fetchTrailers(movie_id) {
+  try {
+    const responce = fetch(
+      `${URL}/movie/${movie_id}/videos?api_key=${API_KEY}&language=en-US`
+    );
+    return (await responce).json();
+  } catch (error) {}
+  return console.log('error :>> ', error);
 }
