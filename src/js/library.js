@@ -1,5 +1,11 @@
 import { updateLocalStorage, LocalStorage, KEYS } from './local-storage';
-import { popularFilmsbyDay, popularFilmsbyWeek } from './toggle';
+// ============================================================================
+// Parcel дає помилку при збірці
+// import { popularFilmsbyDay, popularFilmsbyWeek } from './toggle';
+
+// Додав, щоб Parcel не ругався
+import { popularFilmsbyWeek } from './local-storage';
+// ============================================================================
 //Реаліція додавання в бібліотеку з картки-модалки
 
 // 1) імпортувати класи з популярними з toggle
