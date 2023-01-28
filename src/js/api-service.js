@@ -5,6 +5,7 @@ const QUERY_TRENDING_DAY = '/trending/movie/day';
 const QUERY_GENRE = '/genre/movie/list';
 const QUERY_MOVIE = '/movie';
 const QUERY_MOVIE_BY_GENRE = '/discover/movie';
+
 export async function fetchGenre() {
   try {
     const response = fetch(`${URL}${QUERY_GENRE}?api_key=${API_KEY}`);
@@ -49,23 +50,21 @@ export async function fetchQuery(queryByWord, page) {
 
 export async function fetchPopular(page) {
   try {
-    const responce = fetch(
+    const response = fetch(
       `${URL}${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`
     );
-
     return (await response).json();
   } catch (error) {
     return console.log('error :>> ', error);
   }
 }
-// //for DAY
+
 export async function fetchPopularDay(page) {
   try {
     const response = await fetch(
       `${URL}${QUERY_TRENDING_DAY}?api_key=${API_KEY}&page=${page}`
     );
     return await response.json();
-
   } catch (error) {
     return console.log('error :>> ', error);
   }
