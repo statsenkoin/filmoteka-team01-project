@@ -28,7 +28,6 @@ export function updatePagination(page, pages, paginationRef) {
  * @returns currentPage
  */
 export function getCurrentPage(event) {
-  if (event.target.nodeName !== 'BUTTON') return;
   const targetPageText = event.target.textContent;
 
   if (!isNaN(Number(targetPageText))) targetPage = Number(targetPageText);

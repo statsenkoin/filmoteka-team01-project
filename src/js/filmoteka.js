@@ -24,6 +24,7 @@ const paginationRef = document.querySelector('.pagination');
 paginationRef.addEventListener('click', onPaginationButtonClick);
 
 async function onPaginationButtonClick(event) {
+  if (event.target.nodeName !== 'BUTTON') return;
   loadSpinner.show();
   const targetPage = getCurrentPage(event);
   if (targetPage === currentPage) return;
