@@ -142,7 +142,7 @@
 
 @media screen and (max-width: 767px) {
   .modal {
-      overflow-y: auto;
+    overflow-y: auto;
   }
 }
 
@@ -216,6 +216,16 @@
   border: none;
   transform: translate(-50%, -50%);
 }
+.background-image {
+  height: 35px;
+  width: 30px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .fa {
   cursor: pointer;
   transform: scale(1);
