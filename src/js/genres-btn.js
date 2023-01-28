@@ -1,27 +1,33 @@
 import { dataGenres } from './test';
+import { fetchMoivesByGenre } from './api-service';
 
 const dropdown = document.querySelector('.dropdown');
 const items = document.querySelector('.items');
 
-dropdown.addEventListener('click', () => {
-  dropdown.classList.toggle('active');
-});
+dropdown.addEventListener('click', onButtonClick);
 function btnGenres() {
   const liArr = dataGenres.genres
     .map(
       (element, index) =>
-        `<a href="#" style ="--i:${index + 1}">
+        `<a href="#" style="--i:${index + 1}" id="${element.id}">
            <span></span>${element.name}
          </a>`
     )
     .join('');
-  //     const newLi = document.createElement('a');
-  //     newLi.classList.add(`dropdown-li-${index + 1}`);
-  //     newLi.textContent = element.name;
+
   items.insertAdjacentHTML('beforeend', liArr);
-  //     return newLi;
-  //   });
-  //   items.append(...liArr);
 }
 
+items.addEventListener('click', onGanreClick);
 btnGenres();
+
+function onButtonClick(evt) {
+  evt.preventDefault();
+  dropdown.classList.toggle('active');
+}
+
+async function onGanreClick(evt) {
+  evt.preventDefault();
+
+  console.log(await fetchMoivesByGenre(evt.target.id));
+}
