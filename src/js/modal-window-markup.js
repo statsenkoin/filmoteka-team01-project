@@ -14,7 +14,10 @@ export default function createMarkupModalWindow(data, filmGenres) {
 
   const markup = `<div class="poster-block">
         <img class="poster" src="https://image.tmdb.org/t/p/w500/${poster_path}" />
-           <button type="button" data-modal-id=${id}  class="youtube__btn js__youtube__btn"><i class="fa fa-youtube-play"></i></button>
+           <button type="button" data-modal-id=${id}  class="youtube__btn js__youtube__btn">
+        <span class="background-image"></span>
+           <i class="fa fa-youtube-play" aria-hidden="true"></i>
+           </button>
       </div>
       <div class="film-information">
         <h2 class="film-information-title">${title}</h2>
