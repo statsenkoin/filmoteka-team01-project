@@ -6,12 +6,10 @@ import modalActions from './modal-servise';
 
 import LoadSpinner from './spinner';
 
-
 const loadSpinner = new LoadSpinner({
   selector: '.loading',
-  
 });
-console.log("🚀 ~ loadSpinner", loadSpinner)
+console.log('🚀 ~ loadSpinner', loadSpinner);
 
 // емуляція locale stotage
 let locStorageGenres;
@@ -73,4 +71,3 @@ function onCardClick(event) {
   modalActions(event);
   createMarkupModalWindow(data, filmGenres);
 }
-
