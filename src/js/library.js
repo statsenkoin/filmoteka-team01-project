@@ -24,10 +24,6 @@ let filmCollection = null;
 function onWathedBtn(event) {
   const element = event.target;
 
-  if (element.localName !== 'button') {
-    return;
-  }
-
   if (
     element.classList.contains('js-add-to-watched') ||
     element.classList.contains('js-add-to-queue')
@@ -58,11 +54,8 @@ function onWathedBtn(event) {
       }
 
       queueFilms.addFilmtoStorage(currentFilm);
-
-      // queueFilms.setLocalStorage();
-      // queueFilms.addFilmtoStorage(currentFilm);
     }
+    element.disabled = 'true';
+    element.style.background = '#FF7F50';
   }
-  element.disabled = 'true';
-  element.style.background = '#FF7F50';
 }
