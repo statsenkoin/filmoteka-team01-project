@@ -1,7 +1,8 @@
 export function markupTrending(arrMovies, homeGallery) {
   console.log(arrMovies);
   const noGenre = "There are no genres";
-  const date = new Date();
+  // const defaultImg = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg";
+  // https://image.tmdb.org/t/p/w500${poster_path} 
   const markup = arrMovies
     .map(
       ({ id,
@@ -9,12 +10,12 @@ export function markupTrending(arrMovies, homeGallery) {
         genre_ids,
         original_title,
         release_date,
-        poster_path = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}) =>
+        poster_path }) =>
         `<li class="movies-images__item" data-id=${id}>
-            <img class="movie-image" src="https://image.tmdb.org/t/p/w500${poster_path }" 
+            <img class="movie-image" src="${noImage(poster_path)}" 
             alt="Movie ${title || original_title}" />
         <div class="box-description">
-            <h2 class="box-description__title">${title || original_title}</h2>
+            <div class="title_wrraper"><h2 class="box-description__title">${title || original_title}</h2></div>
             <p class="box-description__text">
                 <span class="box-description__span">${getGenreById(
                   genre_ids 
@@ -28,6 +29,15 @@ export function markupTrending(arrMovies, homeGallery) {
   homeGallery.innerHTML = markup;
 }
 
+function noImage(image) {
+  console.dir(image)
+  // const no_image = document.querySelector('.no_image');
+  const url = `https://image.tmdb.org/t/p/w500${image}`;
+  if (image === 'null') {
+    url='https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
+  }
+  return url
+}
 import { dataGenres } from './test';
 
 const GENRE_LIMIT = 3;
