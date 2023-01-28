@@ -30,6 +30,7 @@ async function onPaginationButtonClick(event) {
   currentPage = targetPage;
 
   await updateGallery();
+  window.scrollTo(0, 0);
   loadSpinner.hide();
 }
 // ======================================================
