@@ -59,6 +59,12 @@ export class LocalStorage {
   }
 }
 
+export const popularFilmsbyDay = new LocalStorage(KEYS.popularByDay);
+export const popularFilmsbyWeek = new LocalStorage(KEYS.popularByWeek);
+export const watchedFilms = new LocalStorage(KEYS.watched);
+export const queueFilms = new LocalStorage(KEYS.queue);
+export const genresFilm = new LocalStorage(KEYS.genres);
+
 // /tests for Class
 // const popularFilms = new LocalStorage(KEYS.popular);
 // const watchedFilms = new LocalStorage(KEYS.watched);
