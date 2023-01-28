@@ -16,7 +16,8 @@ export class LocalStorage {
   }
   //This function save data in LocalStorage
   setLocalStorage(dataFilms) {
-    localStorage.setItem(this.key, JSON.stringify(dataFilms));
+    this.value = dataFilms;
+    localStorage.setItem(this.key, JSON.stringify(this.value));
   }
 
   //This function return data from LocalStorage
