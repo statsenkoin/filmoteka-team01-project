@@ -49,7 +49,7 @@ export async function fetchQuery(queryByWord, page) {
 
 export async function fetchPopular(page) {
   try {
-    const response = fetch(
+    const responce = fetch(
       `${URL}${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`
     );
 
@@ -65,7 +65,18 @@ export async function fetchPopularDay(page) {
       `${URL}${QUERY_TRENDING_DAY}?api_key=${API_KEY}&page=${page}`
     );
     return await response.json();
+
   } catch (error) {
     return console.log('error :>> ', error);
   }
+}
+
+export async function fetchTrailers(movie_id) {
+  try {
+    const responce = fetch(
+      `${URL}/movie/${movie_id}/videos?api_key=${API_KEY}&language=en-US`
+    );
+    return (await responce).json();
+  } catch (error) {}
+  return console.log('error :>> ', error);
 }

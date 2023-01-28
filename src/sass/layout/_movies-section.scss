@@ -26,6 +26,12 @@
     height: 402px;
     border-radius: 5px;
 }
+.title_wrraper {
+    width: 350px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: auto;
+}
 
 .box-description {
     padding-top: 10px;
@@ -35,7 +41,7 @@
         color: #000000;
         font-family: 'Roboto';
         font-style: normal;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 12px;
         line-height: 1.17;
         text-transform: uppercase;
@@ -46,7 +52,7 @@
         color: #FF6B08;
         font-family: 'Roboto';
         font-style: normal;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 12px;
         line-height: 1.33;
     }
@@ -62,6 +68,8 @@
         transform: rotate(90deg);
     }
 }
+
+
 @media screen and (min-width:768px) {
     .movies {
         padding-top: 60px;

@@ -1,3 +1,5 @@
+import scrollController from "./scroll_lock";
+
 export default function modalActions() {
   const modalTrigers = document.querySelectorAll('.js-modal-triger');
   const overlay = document.querySelector('.backdrop');
@@ -15,7 +17,7 @@ export default function modalActions() {
 
   function openModalOnclick(event) {
     event.preventDefault();
-    console.log(event.target);
+    // console.log(event.target);
     // if (!event.target.classList.contains('movies-images__item')) {
     //   return;
     // }
@@ -24,19 +26,21 @@ export default function modalActions() {
 
     const modal = document.querySelector('.' + modalName);
 
-    console.log(modalName);
-    console.log(modal);
+    // console.log(modalName);
+    // console.log(modal);
 
     modal.classList.add('active');
     overlay.classList.add('active');
+    scrollController.disabledScroll();
   }
 
   function closeModalOncloseButtonsСlick(event) {
     event.preventDefault();
     this.closest('.modal').classList.remove('active');
     overlay.classList.remove('active');
-    document.removeEventListener('keydown', closeModalOnEscapePress);
-    overlay.removeEventListener('click', closeModalOnOverlayClick);
+    scrollController.enabledScroll();
+    // document.removeEventListener('keydown', closeModalOnEscapePress);
+    // overlay.removeEventListener('click', closeModalOnOverlayClick);
   }
 
   function closeModalOnEscapePress(event) {
@@ -45,23 +49,27 @@ export default function modalActions() {
     } else {
       Array.from(modals).forEach(modal => {
         modal.classList.remove('active');
+        scrollController.enabledScroll();
       });
       overlay.classList.remove('active');
-      overlay.removeEventListener('click', closeModalOnOverlayClick);
-      Array.from(closeButtons).forEach(button => {
-        button.removeEventListener('click', closeModalOncloseButtonsСlick);
-      });
+      scrollController.enabledScroll();
+      // overlay.removeEventListener('click', closeModalOnOverlayClick);
+      // Array.from(closeButtons).forEach(button => {
+      //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
+      // });
     }
   }
 
   function closeModalOnOverlayClick(event) {
     Array.from(modals).forEach(modal => {
       modal.classList.remove('active');
+      scrollController.enabledScroll();
     });
     overlay.classList.remove('active');
-    document.removeEventListener('keydown', closeModalOnEscapePress);
-    Array.from(closeButtons).forEach(button => {
-      button.removeEventListener('click', closeModalOncloseButtonsСlick);
-    });
+    scrollController.enabledScroll();
+    // document.removeEventListener('keydown', closeModalOnEscapePress);
+    // Array.from(closeButtons).forEach(button => {
+    //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
+    // });
   }
 }
