@@ -1,3 +1,5 @@
+import scrollController from "./scroll_lock";
+
 export default function modalActions() {
   const modalTrigers = document.querySelectorAll('.js-modal-triger');
   const overlay = document.querySelector('.backdrop');
@@ -29,12 +31,14 @@ export default function modalActions() {
 
     modal.classList.add('active');
     overlay.classList.add('active');
+    scrollController.disabledScroll();
   }
 
   function closeModalOncloseButtonsСlick(event) {
     event.preventDefault();
     this.closest('.modal').classList.remove('active');
     overlay.classList.remove('active');
+    scrollController.enabledScroll();
     // document.removeEventListener('keydown', closeModalOnEscapePress);
     // overlay.removeEventListener('click', closeModalOnOverlayClick);
   }
@@ -45,8 +49,10 @@ export default function modalActions() {
     } else {
       Array.from(modals).forEach(modal => {
         modal.classList.remove('active');
+        scrollController.enabledScroll();
       });
       overlay.classList.remove('active');
+      scrollController.enabledScroll();
       // overlay.removeEventListener('click', closeModalOnOverlayClick);
       // Array.from(closeButtons).forEach(button => {
       //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
@@ -57,8 +63,10 @@ export default function modalActions() {
   function closeModalOnOverlayClick(event) {
     Array.from(modals).forEach(modal => {
       modal.classList.remove('active');
+      scrollController.enabledScroll();
     });
     overlay.classList.remove('active');
+    scrollController.enabledScroll();
     // document.removeEventListener('keydown', closeModalOnEscapePress);
     // Array.from(closeButtons).forEach(button => {
     //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
