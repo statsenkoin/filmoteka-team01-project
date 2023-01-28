@@ -4,11 +4,11 @@ const QUERY_TRENDING = '/trending/movie/week';
 const QUERY_TRENDING_DAY = '/trending/movie/day';
 const QUERY_GENRE = '/genre/movie/list';
 const QUERY_MOVIE = '/movie';
-
+const QUERY_MOVIE_BY_GENRE = '/discover/movie';
 export async function fetchGenre() {
   try {
-    const responce = fetch(`${URL}${QUERY_GENRE}?api_key=${API_KEY}`);
-    return (await responce).json();
+    const response = fetch(`${URL}${QUERY_GENRE}?api_key=${API_KEY}`);
+    return (await response).json();
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -16,10 +16,21 @@ export async function fetchGenre() {
 
 export async function fetchSingleMovie(movieId) {
   try {
-    const responce = fetch(
+    const response = fetch(
       `${URL}${QUERY_MOVIE}/${movieId}?api_key=${API_KEY}&language=en-US`
     );
-    return (await responce).json();
+    return (await response).json();
+  } catch (error) {
+    return console.log('error :>> ', error);
+  }
+}
+
+export async function fetchMoivesByGenre(genreId, page = 1) {
+  try {
+    const response = fetch(
+      `${URL}${QUERY_MOVIE_BY_GENRE}?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`
+    );
+    return (await response).json();
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -27,10 +38,10 @@ export async function fetchSingleMovie(movieId) {
 
 export async function fetchQuery(queryByWord, page) {
   try {
-    const responce = fetch(
+    const response = fetch(
       `${URL}/search/movie?api_key=${API_KEY}&page=${page}&query=${queryByWord}`
     );
-    return (await responce).json();
+    return (await response).json();
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -42,7 +53,7 @@ export async function fetchPopular(page) {
       `${URL}${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`
     );
 
-    return (await responce).json();
+    return (await response).json();
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -50,10 +61,11 @@ export async function fetchPopular(page) {
 // //for DAY
 export async function fetchPopularDay(page) {
   try {
-    const responce = await fetch(
+    const response = await fetch(
       `${URL}${QUERY_TRENDING_DAY}?api_key=${API_KEY}&page=${page}`
     );
-    return await responce.json();
+    return await response.json();
+
   } catch (error) {
     return console.log('error :>> ', error);
   }
