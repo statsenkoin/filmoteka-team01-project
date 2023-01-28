@@ -53,7 +53,7 @@ export class LocalStorage {
         this.value = currentFilms;
         this.setLocalStorage(this.value);
       } else {
-        console.log('Cannot find film in cillection');
+        console.log('Cannot find film in collection');
       }
     }
   }
