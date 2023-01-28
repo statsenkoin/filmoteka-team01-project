@@ -1,8 +1,10 @@
 import { dataGenres } from './test';
 import { fetchMoivesByGenre } from './api-service';
+import { markupTrending } from './markups';
 
 const dropdown = document.querySelector('.dropdown');
 const items = document.querySelector('.items');
+const homeGallery = document.querySelector('.home-gallery');
 
 dropdown.addEventListener('click', onButtonClick);
 function btnGenres() {
@@ -29,5 +31,6 @@ function onButtonClick(evt) {
 async function onGanreClick(evt) {
   evt.preventDefault();
 
-  console.log(await fetchMoivesByGenre(evt.target.id));
+  const arrMovies = await fetchMoivesByGenre(evt.target.id, 1);
+  markupTrending(arrMovies.results, homeGallery);
 }
