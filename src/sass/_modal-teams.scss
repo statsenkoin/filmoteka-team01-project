@@ -1,0 +1,105 @@
+.box {
+    display: flex;
+    position: fixed;
+    bottom: 67;
+    right: 0;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(.17, .04, .03, .94);
+    transform: translate(100%, 0px);
+}
+
+.box_img{
+    height: 100px;
+}
+
+.box_active {
+    z-index: 2;
+    opacity: 1;
+    transform: translate(0, 0);
+    cursor: pointer;
+}
+
+.fon{
+    position: fixed;
+        /* top: 0; */
+        /* right: 0; */
+        /* bottom: 0; */
+        /* left: 0; */
+    border-radius: 5px;
+    margin: 0px;
+    height: 100ex;
+    pointer-events: none;
+    background: #e8e8e8;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
+}
+
+.fon_active {
+        top: 50;
+        right: 50;
+        bottom: 50;
+        left: 50;
+    pointer-events: all;
+    background: #e8e8e8;
+    opacity: 0.3;
+    
+}
+
+.teams_desk{
+    display: flexbox;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 80px;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
+    transform: translate(0, -550px);
+    /* z-index: 0; */
+}
+
+.teams_desk_active{
+    opacity: 1;
+    pointer-events: all;
+    z-index: 5;
+    width: 300px;
+    transform: translate(0, 0);
+    cursor: pointer;
+}
+
+.teams_desk_title{
+padding-top: 20px;
+padding-left: 20px;
+
+}
+
+.teams_desk_text{
+padding-top: 10px;
+padding-left: 20px;
+}
+
+.soc_icons{
+    display: flex;
+    gap: 30px;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+
+.soc_icon{
+    /* display: flex; */
+    width: 100px;
+    padding-top: 35px;
+}
+
+
+
+.in {
+    position: relative;
+        top: -12px;
+        left: 12px;
+
+}
