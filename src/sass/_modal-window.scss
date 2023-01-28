@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 280px;
-  height: 940px;
+  max-height: calc(100vh - 20px);
   background-color: white;
   padding: 40px 20px;
   visibility: hidden;
@@ -15,7 +15,6 @@
     opacity: 1;
   }
 }
-
 .modal-close-btn {
   position: absolute;
   top: 8px;
@@ -137,6 +136,12 @@
     background-color: #ff6b01;
     color: #fff;
     border: 1px solid #ff6b01;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal {
+      overflow-y: auto;
   }
 }
 
