@@ -4,6 +4,15 @@ import { markupTrending, getGenreByIdList } from './markups';
 import createMarkupModalWindow from './modal-window-markup';
 import modalActions from './modal-servise';
 
+import LoadSpinner from './spinner';
+
+
+const loadSpinner = new LoadSpinner({
+  selector: '.loading',
+  
+});
+console.log("🚀 ~ loadSpinner", loadSpinner)
+
 // емуляція locale stotage
 let locStorageGenres;
 let locStorageFilms;
@@ -17,11 +26,13 @@ const paginationRef = document.querySelector('.pagination');
 paginationRef.addEventListener('click', onPaginationButtonClick);
 
 async function onPaginationButtonClick(event) {
+  loadSpinner.show();
   const targetPage = getCurrentPage(event);
   if (targetPage === currentPage) return;
   currentPage = targetPage;
 
   await updateGallery();
+  loadSpinner.hide();
 }
 // ======================================================
 
@@ -30,13 +41,16 @@ const homeGallery = document.querySelector('.home-gallery');
 initGallery();
 
 async function initGallery() {
+  loadSpinner.show();
   const data = await fetchGenre();
   locStorageGenres = data.genres;
   console.log('locStorageGenres :>> ', locStorageGenres);
   await updateGallery();
+  loadSpinner.hide();
 }
 
 async function updateGallery() {
+  loadSpinner.show();
   const data = await fetchPopular(currentPage);
   locStorageFilms = data.results;
   totalPages = data.total_pages;
@@ -45,6 +59,7 @@ async function updateGallery() {
   markupTrending(locStorageFilms, homeGallery);
 
   updatePagination(currentPage, totalPages, paginationRef);
+  loadSpinner.hide();
 }
 
 homeGallery.addEventListener('click', onCardClick);
