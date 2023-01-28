@@ -1,8 +1,7 @@
 export function markupTrending(arrMovies, homeGallery) {
   console.log(arrMovies);
   const noGenre = "There are no genres";
-  // const defaultImg = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg";
-  // https://image.tmdb.org/t/p/w500${poster_path} 
+  const noYear = "No year";
   const markup = arrMovies
     .map(
       ({ id,
@@ -19,7 +18,7 @@ export function markupTrending(arrMovies, homeGallery) {
             <p class="box-description__text">
                 <span class="box-description__span">${getGenreById(
                   genre_ids 
-                )|| noGenre}</span>${release_date.slice(0,4)}
+                )|| noGenre}</span>${release_date.slice(0,4) || noYear}
             </p>
         </div>
     </li>`
@@ -30,14 +29,13 @@ export function markupTrending(arrMovies, homeGallery) {
 }
 
 function noImage(image) {
-  console.dir(image)
-  // const no_image = document.querySelector('.no_image');
-  const url = `https://image.tmdb.org/t/p/w500${image}`;
-  if (image === 'null') {
+  let url = `https://image.tmdb.org/t/p/w500${image}`;
+  if (image === null) {
     url='https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
   }
   return url
 }
+
 import { dataGenres } from './test';
 
 const GENRE_LIMIT = 3;
