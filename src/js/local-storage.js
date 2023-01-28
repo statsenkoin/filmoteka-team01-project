@@ -15,8 +15,9 @@ export class LocalStorage {
     this.value = value;
   }
   //This function save data in LocalStorage
-  setLocalStorage(dataFilms) {
-    localStorage.setItem(this.key, JSON.stringify(dataFilms));
+  setLocalStorage(dataFilms = []) {
+    this.value = dataFilms;
+    localStorage.setItem(this.key, JSON.stringify(this.value));
   }
 
   //This function return data from LocalStorage
@@ -35,6 +36,7 @@ export class LocalStorage {
   //This function add new film(object) to LocalStorage.
   addFilmtoStorage(film) {
     const response = this.getLocalStorage(this.key);
+
     response.push(film);
     this.value = response;
     this.setLocalStorage(this.value);
@@ -66,11 +68,11 @@ export const queueFilms = new LocalStorage(KEYS.queue);
 export const genresFilm = new LocalStorage(KEYS.genres);
 
 // //inicialization storage
-popularFilmsbyDay.setLocalStorage([]);
-popularFilmsbyWeek.setLocalStorage([]);
-watchedFilms.setLocalStorage([]);
-queueFilms.setLocalStorage([]);
-genresFilm.setLocalStorage([]);
+// popularFilmsbyDay.setLocalStorage([]);
+// popularFilmsbyWeek.setLocalStorage([]);
+// watchedFilms.setLocalStorage([]);
+// queueFilms.setLocalStorage([]);
+// genresFilm.setLocalStorage([]);
 
 // /tests for Class
 // const popularFilms = new LocalStorage(KEYS.popular);

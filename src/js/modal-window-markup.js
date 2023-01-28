@@ -12,11 +12,15 @@ export default function createMarkupModalWindow(data, filmGenres) {
     overview,
   } = data;
 
+  const modalWindow = document.querySelector('.modal-film-info');
+
+
+
   const markup = `<div class="poster-block">
         <img class="poster" src="https://image.tmdb.org/t/p/w500/${poster_path}" />
            <button type="button" data-modal-id=${id}  class="youtube__btn js__youtube__btn"><i class="fa fa-youtube-play"></i></button>
       </div>
-      <div class="film-information">
+      <div class="film-information" id='${id}'>
         <h2 class="film-information-title">${title}</h2>
         <table class="rating-table">
           <tr>
@@ -43,8 +47,8 @@ export default function createMarkupModalWindow(data, filmGenres) {
           ${overview}
         </p>
         <div class="buttons-add">
-          <button type="button" class="btn-add">add to Watched</button>
-          <button type="button" class="btn-add">add to queue</button>
+          <button type="button" class="btn-add js-add-to-watched">add to Watched</button>
+          <button type="button" class="btn-add js-add-to-queue">add to queue</button>
         </div>
       </div>`;
 
