@@ -26,6 +26,12 @@
     height: 402px;
     border-radius: 5px;
 }
+.title_wrraper {
+    width: 350px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: auto;
+}
 
 .box-description {
     padding-top: 10px;
@@ -62,6 +68,8 @@
         transform: rotate(90deg);
     }
 }
+
+
 @media screen and (min-width:768px) {
     .movies {
         padding-top: 60px;
