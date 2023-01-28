@@ -9,17 +9,16 @@ export function markupTrending(arrMovies, homeGallery) {
         genre_ids,
         original_title,
         release_date,
-        poster_path=""}) =>
+        poster_path = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}) =>
         `<li class="movies-images__item" data-id=${id}>
-            <img class="movie-image" src="https://image.tmdb.org/t/p/w500${
-              poster_path }" 
+            <img class="movie-image" src="https://image.tmdb.org/t/p/w500${poster_path }" 
             alt="Movie ${title || original_title}" />
         <div class="box-description">
             <h2 class="box-description__title">${title || original_title}</h2>
             <p class="box-description__text">
                 <span class="box-description__span">${getGenreById(
                   genre_ids 
-                )|| noGenre}</span>${date.getFullYear(release_date)}
+                )|| noGenre}</span>${release_date.slice(0,4)}
             </p>
         </div>
     </li>`
