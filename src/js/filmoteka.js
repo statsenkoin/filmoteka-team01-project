@@ -108,3 +108,49 @@ async function onPaginationButtonClick(event) {
   window.scrollTo(0, 0);
   loadSpinner.hide();
 }
+// =======================fetchQuery
+import { fetchQuery } from './api-service';
+import { markupSearch } from './markups';
+
+const searchForm = document.querySelector('.search-form');
+const errorMessage = document.querySelector('.error-text');
+errorMessage.style.opacity = '0';
+let page = 1;
+
+searchForm.addEventListener('submit', onSearchForm);
+
+function onSearchForm(evt) {
+  evt.preventDefault();
+  searchQuery = evt.target.elements.searchQuery.value;
+
+  resetPage();
+
+  if (searchQuery === ' ') {
+    warningMessage();
+    return;
+  }
+
+  fetchQuery(searchQuery, page).then(data => {
+    if (data.results.length === 0) {
+      warningMessage();
+      return;
+    }
+    const dataSearch = data.results;
+    markupSearch(dataSearch, homeGallery);
+  });
+}
+
+function warningMessage() {
+  errorMessage.style.opacity = '1';
+  timeoutRemoveErrorMessage();
+}
+
+function timeoutRemoveErrorMessage() {
+  setTimeout(() => {
+    errorMessage.style.opacity = '0';
+  }, 2000);
+}
+
+function resetPage() {
+  page = 1;
+}
