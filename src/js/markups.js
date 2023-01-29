@@ -25,7 +25,7 @@ export function markupTrending(arrMovies, homeGallery) {
   homeGallery.innerHTML = markup;
 }
 
-function noImage(image) {
+export function noImage(image) {
   let url = `https://image.tmdb.org/t/p/w500${image}`;
   if (image === null) {
     url = 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg';
@@ -62,9 +62,14 @@ export function getGenreById(genreIds, genreList = dataGenres.genres) {
 export function getGenreByIdList(genreIds, genreList = dataGenres.genres) {
   let filmGenres = [];
 
-  for (const genreId of genreIds) {
-    const ganreObject = genreList.find(element => element.id === genreId);
-    filmGenres.push(ganreObject.name);
+  if (genreIds.length === 0) {
+    filmGenres.push('There are no genres');
+    return filmGenres;
+  } else {
+    for (const genreId of genreIds) {
+      const ganreObject = genreList.find(element => element.id === genreId);
+      filmGenres.push(ganreObject.name);
+    }
+    return filmGenres.join(', ');
   }
-  return filmGenres.join(', ');
 }

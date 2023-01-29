@@ -1,4 +1,7 @@
+import { noImage } from './markups'
+
 export const modalWindow = document.querySelector('.modal-film-info');
+
 
 export default function createMarkupModalWindow(data, filmGenres) {
   const {
@@ -15,7 +18,7 @@ export default function createMarkupModalWindow(data, filmGenres) {
   const modalWindow = document.querySelector('.modal-film-info');
 
   const markup = `<div class="poster-block">
-        <img class="poster" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
+        <img class="poster" src="${noImage(poster_path)}" alt="${title}" />
            <button type="button" data-modal-id=${id}  class="youtube__btn js__youtube__btn">
         <span class="background-image"></span>
            <i class="fa fa-youtube-play" aria-hidden="true"></i>
