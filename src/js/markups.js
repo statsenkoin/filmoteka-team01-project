@@ -10,9 +10,8 @@ export function markupTrending(arrMovies, homeGallery) {
         original_title,
         release_date,
         poster_path }) =>
-        `<li class="movies-images__item" data-id=${id}>
-            <img class="movie-image" src="${noImage(poster_path)}" 
-            alt="Movie ${title || original_title}" />
+        `
+        <li class="movies-images__item" data-id=${id}>
         <div class="box-description">
             <div class="title_wrraper"><h2 class="box-description__title">${title || original_title}</h2></div>
             <p class="box-description__text">
@@ -21,6 +20,9 @@ export function markupTrending(arrMovies, homeGallery) {
                 )|| noGenre}</span>${release_date.slice(0,4) || noYear}
             </p>
         </div>
+            <img class="movie-image" src="${noImage(poster_path)}" 
+            alt="Movie ${title || original_title}" />
+        
     </li>`
     )
     .join('');

@@ -3,6 +3,7 @@
     padding-bottom: 40px;
 }
 
+
 .movies-images {
     &__list {
         @extend %list;
@@ -20,12 +21,64 @@
     }
 
 }
+// ------------------------------------------------------------
+.movies-images__item {
+    cursor: pointer;
+}
 
+//------------------------
 .movie-image {
     width: 280px;
     height: 402px;
     border-radius: 5px;
+///---------------------------
+ /* adjust the below to control the 3D effect */
+ --x: 10px;
+ --y: 20px;
+ transform: perspective(1000px) rotateX(var(--_a,40deg));
+ /* */
+ clip-path: polygon(       
+    var(--y)              var(--y),       
+    calc(100% - var(--y)) var(--y),       
+    calc(100% - var(--y)) calc(100% - var(--y)),       
+    calc(100% - var(--y) - var(--x)) var(--_c,100%),       
+    calc(var(--x) + var(--y))        var(--_c,100%),      
+    var(--y)        calc(100% - var(--y))       
+    );
+ outline: var(--y) solid rgba(0,0,0,0.4);
+ outline-offset: calc(-1*var(--y));
+ padding: var(--y) var(--y) 0 var(--y);
+ transition: 1s;
 }
+
+
+.movies-images__item:hover {
+    --_a: 0deg;
+    --_c: calc(100% - var(--y));
+}
+
+
+.movies-images__item .box-description {
+    text-align: center;
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+  transform: translateY(250%);
+  transition: .8s;
+}
+
+.movies-images__item:hover .box-description{
+    
+    transform: translateY(0%);
+    transition: .8s .2s;
+    opacity: 1;
+  }
+  
+
+// --------------------------------------------------
+
+
 .title_wrraper {
     width: 350px;
     white-space: nowrap;
@@ -35,7 +88,10 @@
 
 .box-description {
     padding-top: 10px;
-
+    // -------
+    opacity: 0;
+    //--------
+    
     &__title {
         margin: 0;
         color: #000000;
@@ -46,6 +102,7 @@
         line-height: 1.17;
         text-transform: uppercase;
     }
+        
 
     &__text {
         margin: 0;
