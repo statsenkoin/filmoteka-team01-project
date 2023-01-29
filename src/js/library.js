@@ -4,11 +4,11 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 //options for notiflix
 const options = {
-  width: '500px',
+  width: '280px',
   borderRadius: '30px',
   position: 'center-bottom',
   distance: '25px',
-  fontSize: '30px',
+  fontSize: '18px',
   timeout: 2000,
 };
 
