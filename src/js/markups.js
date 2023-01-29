@@ -25,33 +25,6 @@ export function markupTrending(arrMovies, homeGallery) {
   homeGallery.innerHTML = markup;
 }
 
-export function markupSearch(arrMovies, homeGallery) {
-  console.log('markupTrending-arrMovies :>> ', arrMovies);
-  const noGenre = 'There are no genres';
-  const noYear = 'No year';
-  const markup = arrMovies
-    .map(
-      ({ id, title, genre_ids, original_title, release_date, poster_path }) =>
-        `<li class="movies-images__item" data-id=${id}>
-            <img class="movie-image" src="${noImage(poster_path)}" 
-            alt="Movie ${title || original_title}" />
-        <div class="box-description">
-            <div class="title_wrraper"><h2 class="box-description__title">${
-              title || original_title
-            }</h2></div>
-            <p class="box-description__text">
-                <span class="box-description__span">${getGenreById(genre_ids) || noGenre}</span>${
-          release_date.slice(0, 4) || noYear
-        }
-            </p>
-        </div>
-    </li>`
-    )
-    .join('');
-
-  homeGallery.innerHTML = markup;
-}
-
 function noImage(image) {
   let url = `https://image.tmdb.org/t/p/w500${image}`;
   if (image === null) {

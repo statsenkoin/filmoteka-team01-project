@@ -1,6 +1,16 @@
-import { fetchPopular, fetchPopularDay, fetchGenre, fetchMoivesByGenre } from './api-service';
+import {
+  fetchPopular,
+  fetchPopularDay,
+  fetchGenre,
+  fetchMoivesByGenre,
+  fetchQuery,
+} from './api-service';
 import { updatePagination, getCurrentPage } from './custom-pagination';
-import { markupTrending, getGenreByIdList, createMarkupModalWindow } from './markups';
+import {
+  markupTrending,
+  getGenreByIdList,
+  createMarkupModalWindow,
+} from './markups';
 import modalActions from './modal-servise';
 import LoadSpinner from './spinner';
 import { genresFilm, LocalStorage } from './local-storage';
@@ -14,20 +24,27 @@ const loadSpinner = new LoadSpinner({
 const homeGallery = document.querySelector('.home-gallery');
 const paginationRef = document.querySelector('.pagination');
 const toggle = document.querySelector('#input-toggle');
+const searchForm = document.querySelector('.search-form');
+const errorMessage = document.querySelector('.error-text');
 
 homeGallery.addEventListener('click', onCardClick);
 paginationRef.addEventListener('click', onPaginationButtonClick);
 toggle.addEventListener('change', onCheckBox);
 items.addEventListener('click', onGanreClick);
+searchForm.addEventListener('submit', onSearchForm);
 
 let receivedFilmList;
 let currentGenres;
 let currentFilmsList;
+let searchQuery = '';
+let tempPage = 1;
 let currentPage = 1;
 let totalPages = 1;
+let genreId;
 let isTodayChecked = false;
 let isGenreChoosen = false;
-let genreId;
+let isSearchChoosen = false;
+errorMessage.style.opacity = '0';
 
 initGallery();
 
@@ -42,23 +59,33 @@ async function initGallery() {
 
 async function updateGallery() {
   loadSpinner.show();
-  // =======================================================
-  if (isGenreChoosen) {
+  await chooseSearchQuery();
+  // ======================================================
+  totalPages = isGenreChoosen ? 300 : receivedFilmList.total_pages;
+  // ======================================================
+  currentFilmsList = receivedFilmList.results;
+  popularFilms.setLocalStorage(currentFilmsList);
+  markupTrending(currentFilmsList, homeGallery);
+  updatePagination(currentPage, totalPages, paginationRef);
+  loadSpinner.hide();
+}
+
+async function chooseSearchQuery() {
+  if (isSearchChoosen) {
+    const searchFilmList = await fetchQuery(searchQuery, currentPage);
+    if (!searchFilmList.results.length) {
+      currentPage = tempPage;
+      loadSpinner.hide();
+      return;
+    }
+    receivedFilmList = searchFilmList;
+  } else if (isGenreChoosen) {
     receivedFilmList = await fetchMoivesByGenre(genreId, currentPage);
   } else {
     receivedFilmList = isTodayChecked
       ? await fetchPopularDay(currentPage)
       : await fetchPopular(currentPage);
   }
-  // ======================================================
-  currentFilmsList = receivedFilmList.results;
-  popularFilms.setLocalStorage(currentFilmsList);
-  console.log('currentFilmsList :>> ', currentFilmsList);
-  totalPages = receivedFilmList.total_pages;
-  markupTrending(currentFilmsList, homeGallery);
-
-  updatePagination(currentPage, totalPages, paginationRef);
-  loadSpinner.hide();
 }
 
 function onCardClick(event) {
@@ -75,6 +102,7 @@ function onCardClick(event) {
 async function onGanreClick(evt) {
   evt.preventDefault();
   isGenreChoosen = true;
+  isSearchChoosen = false;
   genreId = evt.target.id;
   currentPage = 1;
   await updateGallery();
@@ -84,8 +112,34 @@ async function onGanreClick(evt) {
 async function onCheckBox(event) {
   isTodayChecked = event.currentTarget.checked;
   isGenreChoosen = false;
+  isSearchChoosen = false;
   currentPage = 1;
   await updateGallery();
+}
+
+// ===== search input =================================
+async function onSearchForm(evt) {
+  evt.preventDefault();
+  searchQuery = evt.target.elements.searchQuery.value.trim();
+  searchForm.reset();
+  if (!searchQuery) {
+    warningMessage();
+    return;
+  }
+  isSearchChoosen = true;
+  isGenreChoosen = false;
+  tempPage = currentPage;
+  currentPage = 1;
+  await updateGallery();
+}
+function warningMessage() {
+  errorMessage.style.opacity = '1';
+  timeoutRemoveErrorMessage();
+}
+function timeoutRemoveErrorMessage() {
+  setTimeout(() => {
+    errorMessage.style.opacity = '0';
+  }, 2000);
 }
 
 // ===== pagination =====================================
@@ -98,50 +152,4 @@ async function onPaginationButtonClick(event) {
   await updateGallery();
   window.scrollTo(0, 0);
   loadSpinner.hide();
-}
-// =======================fetchQuery
-import { fetchQuery } from './api-service';
-import { markupSearch } from './markups';
-
-const searchForm = document.querySelector('.search-form');
-const errorMessage = document.querySelector('.error-text');
-errorMessage.style.opacity = '0';
-let page = 1;
-
-searchForm.addEventListener('submit', onSearchForm);
-
-function onSearchForm(evt) {
-  evt.preventDefault();
-  searchQuery = evt.target.elements.searchQuery.value;
-
-  resetPage();
-
-  if (searchQuery === ' ') {
-    warningMessage();
-    return;
-  }
-
-  fetchQuery(searchQuery, page).then(data => {
-    if (data.results.length === 0) {
-      warningMessage();
-      return;
-    }
-    const dataSearch = data.results;
-    markupSearch(dataSearch, homeGallery);
-  });
-}
-
-function warningMessage() {
-  errorMessage.style.opacity = '1';
-  timeoutRemoveErrorMessage();
-}
-
-function timeoutRemoveErrorMessage() {
-  setTimeout(() => {
-    errorMessage.style.opacity = '0';
-  }, 2000);
-}
-
-function resetPage() {
-  page = 1;
 }
