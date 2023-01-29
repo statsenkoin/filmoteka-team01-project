@@ -1,4 +1,5 @@
 import { popularFilmsbyDay, popularFilmsbyWeek, watchedFilms, queueFilms } from './local-storage';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // ============================================================================
 //Реаліція додавання в бібліотеку з картки-модалки
 
@@ -12,9 +13,18 @@ import { popularFilmsbyDay, popularFilmsbyWeek, watchedFilms, queueFilms } from 
 // 8) Потім обробник має шукати ключ до фільму на картці - властивість element.closest('селектор батька').Потім якимось чином беремо звідти id - запитати по реалізацію у Ігора, бо зараз id на картці не має!!!!!! ++++
 // 9) Потім проводимо пошук через arr.fiter(умова - співпадання id), де  arr - це масив популярних фільмів(за станом чекбокса) ++++
 //10) Знаходимо об'єкт фільма і викликаємо метод updateLocalStorage(об'єкт фільма отриманий з фільтра) ++++
-//11) Дістаємо з стореджа Watched або Queue масив(тут залежить від таргета кнопки) - getLocalStorage
-//12) викликаємо функцію, яка має малювати галерею бібліотеки(передаємо в неї масив з п.11 та селектор галереї )
+
 //13) Потім міняєм вигляд кнопки
+
+//options for notiflix
+const options = {
+  width: '500px',
+  borderRadius: '30px',
+  position: 'center-bottom',
+  distance: '25px',
+  fontSize: '30px',
+  timeout: 2000,
+};
 
 const overlay = document.querySelector('.js-filmInfoModal');
 const checkBox = document.querySelector('#input-toggle');
@@ -45,15 +55,29 @@ function onWathedBtn(event) {
       if (!response) {
         watchedFilms.setLocalStorage();
       }
+      const currentCollection = watchedFilms.getLocalStorage();
+      const filmIncludes = currentCollection.filter(item => item[0].id == idFilm);
 
-      watchedFilms.addFilmtoStorage(currentFilm);
+      if (filmIncludes.length) {
+        Notify.warning('The movie has already been added to my library', options);
+      } else {
+        watchedFilms.addFilmtoStorage(currentFilm);
+        Notify.success('The movie has been added to my library', options);
+      }
     } else if (element.classList.contains('js-add-to-queue')) {
       const response = queueFilms.getLocalStorage();
       if (!response) {
         queueFilms.setLocalStorage();
       }
+      const currentCollection = queueFilms.getLocalStorage();
+      const filmIncludes = currentCollection.filter(item => item[0].id == idFilm);
 
-      queueFilms.addFilmtoStorage(currentFilm);
+      if (filmIncludes.length) {
+        Notify.warning('The movie has already been added to my library', options);
+      } else {
+        queueFilms.addFilmtoStorage(currentFilm);
+        Notify.success('The movie has been added to my library', options);
+      }
     }
     element.disabled = 'true';
     element.style.background = '#FF7F50';
