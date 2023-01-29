@@ -1,4 +1,8 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+html {
+  scroll-behavior: smooth;
+}
+
 .test_button {
   margin-right: 30px;
   width: 200px;
