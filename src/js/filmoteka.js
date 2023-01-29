@@ -1,21 +1,12 @@
-import {
-  fetchPopular,
-  fetchPopularDay,
-  fetchGenre,
-  fetchMoivesByGenre,
-} from './api-service';
+import { fetchPopular, fetchPopularDay, fetchGenre, fetchMoivesByGenre } from './api-service';
 import { updatePagination, getCurrentPage } from './custom-pagination';
-import {
-  markupTrending,
-  getGenreByIdList,
-  createMarkupModalWindow,
-} from './markups';
+import { markupTrending, getGenreByIdList, createMarkupModalWindow } from './markups';
 import modalActions from './modal-servise';
 import LoadSpinner from './spinner';
 import { genresFilm, LocalStorage } from './local-storage';
 import { items } from './genres-btn';
 
-const popularFilms = new LocalStorage('currentFilmsList');
+export const popularFilms = new LocalStorage('currentFilmsList');
 const loadSpinner = new LoadSpinner({
   selector: '.loading',
 });
