@@ -1,7 +1,7 @@
 // import * as basicLightbox from 'basiclightbox';
 // import 'basiclightbox/dist/basicLightbox.min.css';
 import { fetchTrailers } from './api-service';
-import { modalWindow } from './modal-window-markup';
+import { modalWindow } from './markups';
 
 modalWindow.addEventListener('click', onTrailerBtn);
 
