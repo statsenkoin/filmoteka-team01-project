@@ -25,7 +25,7 @@ export function markupTrending(arrMovies, homeGallery) {
   homeGallery.innerHTML = markup;
 }
 
-export function noImage(image) {
+function noImage(image) {
   let url = `https://image.tmdb.org/t/p/w500${image}`;
   if (image === null) {
     url = 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg';
@@ -91,7 +91,7 @@ export function createMarkupModalWindow(data, filmGenres) {
   const modalWindow = document.querySelector('.modal-film-info');
 
   const markup = `<div class="poster-block">
-        <img class="poster" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
+        <img class="poster" src="${noImage(poster_path)}" alt="${title}" />
            <button type="button" data-modal-id=${id}  class="youtube__btn js__youtube__btn">
         <span class="background-image"></span>
            <i class="fa fa-youtube-play" aria-hidden="true"></i>
