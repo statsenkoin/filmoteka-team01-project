@@ -7,3 +7,4 @@ import './js/test';
 // import './js/toggle';
 import './js/library';
 import './js/trailer';
+import './js/firebase';

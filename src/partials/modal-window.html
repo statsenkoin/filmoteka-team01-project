@@ -78,10 +78,12 @@
       id="password"
     />
 
-    <button type="button" class="auth_modal_form_button">Log In</button>
+    <button type="button" class="auth_modal_form_button js-firebaseLogInbtn">
+      Log In
+    </button>
     <button
       type="button"
-      class="js-modal-triger auth_modal_form_button"
+      class="js-modal-triger auth_modal_form_button js-firebaseSingInbtn"
       data-modal="js-sing_in_modal"
     >
       Sign In
@@ -108,7 +110,7 @@
       class="auth_modal_form_input"
       type="text"
       placeholder="Email or Phone"
-      id="username"
+      name="username"
     />
 
     <label class="auth_modal_form_lable" for="password">Password</label>
@@ -116,7 +118,7 @@
       class="auth_modal_form_input"
       type="password"
       placeholder="Password"
-      id="password"
+      name="password"
     />
 
     <button type="button" class="auth_modal_form_button">Sign In</button>
