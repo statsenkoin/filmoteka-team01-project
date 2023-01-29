@@ -1,5 +1,5 @@
-import { popularFilmsbyDay, popularFilmsbyWeek, watchedFilms, queueFilms } from './local-storage';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { popularFilmsbyDay, popularFilmsbyWeek, watchedFilms, queueFilms } from './local-storage';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // ============================================================================
 //Реаліція додавання в бібліотеку з картки-модалки
 
@@ -56,10 +56,15 @@ function onWathedBtn(event) {
         watchedFilms.setLocalStorage();
       }
       const currentCollection = watchedFilms.getLocalStorage();
-      const filmIncludes = currentCollection.filter(item => item[0].id == idFilm);
+      const filmIncludes = currentCollection.filter(
+        item => item[0].id == idFilm
+      );
 
       if (filmIncludes.length) {
-        Notify.warning('The movie has already been added to my library', options);
+        Notify.warning(
+          'The movie has already been added to my library',
+          options
+        );
       } else {
         watchedFilms.addFilmtoStorage(currentFilm);
         Notify.success('The movie has been added to my library', options);
@@ -70,10 +75,15 @@ function onWathedBtn(event) {
         queueFilms.setLocalStorage();
       }
       const currentCollection = queueFilms.getLocalStorage();
-      const filmIncludes = currentCollection.filter(item => item[0].id == idFilm);
+      const filmIncludes = currentCollection.filter(
+        item => item[0].id == idFilm
+      );
 
       if (filmIncludes.length) {
-        Notify.warning('The movie has already been added to my library', options);
+        Notify.warning(
+          'The movie has already been added to my library',
+          options
+        );
       } else {
         queueFilms.addFilmtoStorage(currentFilm);
         Notify.success('The movie has been added to my library', options);

@@ -1,5 +1,5 @@
-import * as basicLightbox from 'basiclightbox';
-import 'basiclightbox/dist/basicLightbox.min.css';
+// import * as basicLightbox from 'basiclightbox';
+// import 'basiclightbox/dist/basicLightbox.min.css';
 import { fetchTrailers } from './api-service';
 import { modalWindow } from './modal-window-markup';
 
