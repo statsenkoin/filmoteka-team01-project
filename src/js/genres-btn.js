@@ -1,11 +1,14 @@
 import { dataGenres } from './test';
-import { fetchMoivesByGenre } from './api-service';
-import { markupTrending } from './markups';
+// import { fetchMoivesByGenre } from './api-service';
+// import { markupTrending } from './markups';
 
 const dropdown = document.querySelector('.dropdown');
 const items = document.querySelector('.items');
-const homeGallery = document.querySelector('.home-gallery');
+// const homeGallery = document.querySelector('.home-gallery');
 
+// =====================================
+export { items };
+// =====================================
 dropdown.addEventListener('click', onButtonClick);
 function btnGenres() {
   const liArr = dataGenres.genres
@@ -20,7 +23,7 @@ function btnGenres() {
   items.insertAdjacentHTML('beforeend', liArr);
 }
 
-items.addEventListener('click', onGanreClick);
+// items.addEventListener('click', onGanreClick);
 btnGenres();
 
 function onButtonClick(evt) {
@@ -28,9 +31,9 @@ function onButtonClick(evt) {
   dropdown.classList.toggle('active');
 }
 
-async function onGanreClick(evt) {
-  evt.preventDefault();
+// async function onGanreClick(evt) {
+//   evt.preventDefault();
 
-  const arrMovies = await fetchMoivesByGenre(evt.target.id, 1);
-  markupTrending(arrMovies.results, homeGallery);
-}
+//   const arrMovies = await fetchMoivesByGenre(evt.target.id, 1);
+//   markupTrending(arrMovies.results, homeGallery);
+// }

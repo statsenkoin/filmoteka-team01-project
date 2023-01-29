@@ -1,24 +1,21 @@
 export function markupTrending(arrMovies, homeGallery) {
-  console.log(arrMovies);
-  const noGenre = "There are no genres";
-  const noYear = "No year";
+  console.log('markupTrending-arrMovies :>> ', arrMovies);
+  const noGenre = 'There are no genres';
+  const noYear = 'No year';
   const markup = arrMovies
     .map(
-      ({ id,
-        title,
-        genre_ids,
-        original_title,
-        release_date,
-        poster_path }) =>
+      ({ id, title, genre_ids, original_title, release_date, poster_path }) =>
         `<li class="movies-images__item" data-id=${id}>
             <img class="movie-image" src="${noImage(poster_path)}" 
             alt="Movie ${title || original_title}" />
         <div class="box-description">
-            <div class="title_wrraper"><h2 class="box-description__title">${title || original_title}</h2></div>
+            <div class="title_wrraper"><h2 class="box-description__title">${
+              title || original_title
+            }</h2></div>
             <p class="box-description__text">
-                <span class="box-description__span">${getGenreById(
-                  genre_ids 
-                )|| noGenre}</span>${release_date.slice(0,4) || noYear}
+                <span class="box-description__span">${
+                  getGenreById(genre_ids) || noGenre
+                }</span>${release_date.slice(0, 4) || noYear}
             </p>
         </div>
     </li>`
@@ -31,9 +28,9 @@ export function markupTrending(arrMovies, homeGallery) {
 function noImage(image) {
   let url = `https://image.tmdb.org/t/p/w500${image}`;
   if (image === null) {
-    url='https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
+    url = 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg';
   }
-  return url
+  return url;
 }
 
 import { dataGenres } from './test';
