@@ -13,7 +13,7 @@ const options = {
 };
 
 const overlay = document.querySelector('.js-filmInfoModal');
-const checkBox = document.querySelector('#input-toggle');
+
 overlay.addEventListener('click', onWathedBtn);
 let filmCollection = null;
 
@@ -36,12 +36,12 @@ function onWathedBtn(event) {
         watchedFilms.setLocalStorage();
       }
 
-      const filmIncludes = response.filter(item => item[0].id == idFilm);
+      const filmIncludes = response.filter(item => item.id == idFilm);
 
       if (filmIncludes.length) {
         Notify.warning('The movie has already been added to my library', options);
       } else {
-        watchedFilms.addFilmtoStorage(currentFilm);
+        watchedFilms.addFilmtoStorage(...currentFilm);
         Notify.success('The movie has been added to my library', options);
       }
     } else if (element.classList.contains('js-add-to-queue')) {
@@ -50,12 +50,12 @@ function onWathedBtn(event) {
         queueFilms.setLocalStorage();
       }
 
-      const filmIncludes = response.filter(item => item[0].id == idFilm);
+      const filmIncludes = response.filter(item => item.id == idFilm);
 
       if (filmIncludes.length) {
         Notify.warning('The movie has already been added to my library', options);
       } else {
-        queueFilms.addFilmtoStorage(currentFilm);
+        queueFilms.addFilmtoStorage(...currentFilm);
         Notify.success('The movie has been added to my library', options);
       }
     }
