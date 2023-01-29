@@ -1,15 +1,21 @@
-import { fetchPopular, fetchGenre } from './api-service';
+import {
+  fetchPopular,
+  fetchPopularDay,
+  fetchGenre,
+  fetchMoivesByGenre,
+} from './api-service';
 import { updatePagination, getCurrentPage } from './custom-pagination';
 import { markupTrending, getGenreByIdList } from './markups';
 import createMarkupModalWindow from './modal-window-markup';
 import modalActions from './modal-servise';
-
 import LoadSpinner from './spinner';
+// ==============================================
+import { popularFilmsbyDay, popularFilmsbyWeek } from './local-storage';
+// ==============================================
 
 const loadSpinner = new LoadSpinner({
   selector: '.loading',
 });
-console.log('🚀 ~ loadSpinner', loadSpinner);
 
 // емуляція locale stotage
 let locStorageGenres;
@@ -34,28 +40,59 @@ async function onPaginationButtonClick(event) {
   window.scrollTo(0, 0);
   loadSpinner.hide();
 }
-// ======================================================
+// ===== checkBox week/today ========================
+let isTodayChecked = false;
+let genreId;
+let isGenreChoosen = false;
+const toggle = document.querySelector('#input-toggle');
+toggle.addEventListener('change', onCheckBox);
+async function onCheckBox(event) {
+  isTodayChecked = event.currentTarget.checked;
+  isGenreChoosen = false;
+  currentPage = 1;
+  await updateGallery();
+}
+// ===== button genres ===============================
+import { items } from './genres-btn';
+items.addEventListener('click', onGanreClick);
+
+async function onGanreClick(evt) {
+  console.log('evt :>> ', evt);
+  evt.preventDefault();
+  isGenreChoosen = true;
+  genreId = evt.target.id;
+  currentPage = 1;
+  console.log('genreId :>> ', genreId);
+  console.log('isGenreChoosen :>> ', isGenreChoosen);
+  await updateGallery();
+}
+// ====================================================
 
 const homeGallery = document.querySelector('.home-gallery');
 
 initGallery();
-
+let data;
 async function initGallery() {
   loadSpinner.show();
-  const data = await fetchGenre();
+  data = await fetchGenre();
   locStorageGenres = data.genres;
-  console.log('locStorageGenres :>> ', locStorageGenres);
   await updateGallery();
   loadSpinner.hide();
 }
 
 async function updateGallery() {
   loadSpinner.show();
-  const data = await fetchPopular(currentPage);
+  // =======================================================
+  if (isGenreChoosen) {
+    data = await fetchMoivesByGenre(genreId, currentPage);
+  } else {
+    data = isTodayChecked
+      ? await fetchPopularDay(currentPage)
+      : await fetchPopular(currentPage);
+  }
+  // ======================================================
   locStorageFilms = data.results;
   totalPages = data.total_pages;
-  console.log('locStorageFilms :>> ', locStorageFilms);
-  console.log('totalPages :>> ', totalPages);
   markupTrending(locStorageFilms, homeGallery);
 
   updatePagination(currentPage, totalPages, paginationRef);
