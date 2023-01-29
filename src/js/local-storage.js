@@ -1,7 +1,5 @@
 //keys for LocalStorage
 export const KEYS = {
-  popularByWeek: ' popularByWeek',
-  popularByDay: ' popularByDay',
   watched: 'watched',
   queue: 'queue',
   genres: 'genres',
@@ -61,8 +59,6 @@ export class LocalStorage {
   }
 }
 
-export const popularFilmsbyDay = new LocalStorage(KEYS.popularByDay);
-export const popularFilmsbyWeek = new LocalStorage(KEYS.popularByWeek);
 export const watchedFilms = new LocalStorage(KEYS.watched);
 export const queueFilms = new LocalStorage(KEYS.queue);
 export const genresFilm = new LocalStorage(KEYS.genres);
@@ -124,7 +120,9 @@ export function updateLocalStorage(key, film) {
     if (currentFilms.find(item => item.title === film.title)) {
       console.log('I`m delete film from the collection!');
 
-      const indexFilm = currentFilms.findIndex(item => item.title === film.title);
+      const indexFilm = currentFilms.findIndex(
+        item => item.title === film.title
+      );
       currentFilms.splice(indexFilm, 1);
       setLocalStorage(key, response);
     } else {
