@@ -1,6 +1,4 @@
 import {
-  popularFilmsbyDay,
-  popularFilmsbyWeek,
   watchedFilms,
   queueFilms,
 } from './local-storage';
