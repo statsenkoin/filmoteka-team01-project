@@ -1,4 +1,4 @@
-import { popularFilmsbyDay, popularFilmsbyWeek, watchedFilms, queueFilms } from './local-storage';
+import { watchedFilms, queueFilms } from './local-storage';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // ============================================================================
 //Реаліція додавання в бібліотеку з картки-модалки
@@ -55,7 +55,7 @@ function onWathedBtn(event) {
       if (!response) {
         watchedFilms.setLocalStorage();
       }
-      const currentCollection = watchedFilms.getLocalStorage(); /// переписати
+      const currentCollection = watchedFilms.getLocalStorage();
       const filmIncludes = currentCollection.filter(item => item[0].id == idFilm);
 
       if (filmIncludes.length) {
