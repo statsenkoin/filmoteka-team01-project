@@ -4,11 +4,11 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 //options for notiflix
 const options = {
-  width: '500px',
+  width: '280px',
   borderRadius: '30px',
   position: 'center-bottom',
   distance: '25px',
-  fontSize: '30px',
+  fontSize: '18px',
   timeout: 2000,
 };
 
@@ -31,11 +31,10 @@ function onWathedBtn(event) {
     const currentFilm = filmCollection.filter(film => film.id == idFilm);
 
     if (element.classList.contains('js-add-to-watched')) {
-      const response = watchedFilms.getLocalStorage();
-      if (!response) {
+      if (!watchedFilms.getLocalStorage()) {
         watchedFilms.setLocalStorage();
       }
-
+      const response = watchedFilms.getLocalStorage();
       const filmIncludes = response.filter(item => item.id == idFilm);
 
       if (filmIncludes.length) {
@@ -45,10 +44,10 @@ function onWathedBtn(event) {
         Notify.success('The movie has been added to my library', options);
       }
     } else if (element.classList.contains('js-add-to-queue')) {
-      const response = queueFilms.getLocalStorage();
-      if (!response) {
+      if (!queueFilms.getLocalStorage()) {
         queueFilms.setLocalStorage();
       }
+      const response = queueFilms.getLocalStorage();
 
       const filmIncludes = response.filter(item => item.id == idFilm);
 
