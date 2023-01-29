@@ -1,7 +1,9 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import { fetchTrailers } from './api-service';
-import { modalWindow } from './modal-window-markup';
+import { modalWindow } from './markups';
 
 modalWindow.addEventListener('click', onTrailerBtn);
 
@@ -12,14 +14,17 @@ function onTrailerBtn(evt) {
 
   if (trailerBtn) {
     onTrailerClick(trailerId);
-    console.log(trailerId);
   }
 }
 
 async function onTrailerClick(movie_id) {
-  const data = await fetchTrailers(movie_id);
-  const id = data.results[0].key;
-  onRenderTrailer(id);
+  try {
+    const data = await fetchTrailers(movie_id);
+    const id = data.results[0].key;
+    onRenderTrailer(id);
+  } catch (error) {
+    Notify.warning('video is not available');
+  }
 }
 
 let renderTrailer;
