@@ -1,5 +1,10 @@
-// import { popularFilmsbyDay, popularFilmsbyWeek, watchedFilms, queueFilms } from './local-storage';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import {
+  popularFilmsbyDay,
+  popularFilmsbyWeek,
+  watchedFilms,
+  queueFilms,
+} from './local-storage';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // ============================================================================
 //Реаліція додавання в бібліотеку з картки-модалки
 
