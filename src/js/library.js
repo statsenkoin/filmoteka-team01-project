@@ -49,13 +49,13 @@ function onWathedBtn(event) {
     const idFilm = overlay.lastElementChild.lastElementChild.id;
 
     const currentFilm = filmCollection.filter(film => film.id == idFilm);
-    console.dir(element);
+
     if (element.classList.contains('js-add-to-watched')) {
       const response = watchedFilms.getLocalStorage();
       if (!response) {
         watchedFilms.setLocalStorage();
       }
-      const currentCollection = watchedFilms.getLocalStorage();
+      const currentCollection = watchedFilms.getLocalStorage(); /// переписати
       const filmIncludes = currentCollection.filter(item => item[0].id == idFilm);
 
       if (filmIncludes.length) {
