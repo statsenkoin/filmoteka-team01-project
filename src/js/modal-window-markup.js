@@ -12,7 +12,7 @@ export default function createMarkupModalWindow(data, filmGenres) {
     overview,
   } = data;
 
-  const modalWindow = document.querySelector('.modal-film-info');
+  // const modalWindow = document.querySelector('.modal-film-info');
 
   const markup = `<div class="poster-block">
         <img class="poster" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
