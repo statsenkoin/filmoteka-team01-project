@@ -63,19 +63,6 @@ export const watchedFilms = new LocalStorage(KEYS.watched);
 export const queueFilms = new LocalStorage(KEYS.queue);
 export const genresFilm = new LocalStorage(KEYS.genres);
 
-// //inicialization storage
-// popularFilmsbyDay.setLocalStorage([]);
-// popularFilmsbyWeek.setLocalStorage([]);
-// watchedFilms.setLocalStorage([]);
-// queueFilms.setLocalStorage([]);
-// genresFilm.setLocalStorage([]);
-
-// /tests for Class
-// const popularFilms = new LocalStorage(KEYS.popular);
-// const watchedFilms = new LocalStorage(KEYS.watched);
-// const queueFilms = new LocalStorage(KEYS.queue);
-// const genresFilm = new LocalStorage(KEYS.genres);
-
 /**
  * This function save data in LocalStorage
  * @param {*string} key
@@ -120,9 +107,7 @@ export function updateLocalStorage(key, film) {
     if (currentFilms.find(item => item.title === film.title)) {
       console.log('I`m delete film from the collection!');
 
-      const indexFilm = currentFilms.findIndex(
-        item => item.title === film.title
-      );
+      const indexFilm = currentFilms.findIndex(item => item.title === film.title);
       currentFilms.splice(indexFilm, 1);
       setLocalStorage(key, response);
     } else {
