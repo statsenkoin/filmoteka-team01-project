@@ -6,7 +6,7 @@ import {
 } from './api-service';
 import { updatePagination, getCurrentPage } from './custom-pagination';
 import { markupTrending, getGenreByIdList } from './markups';
-import createMarkupModalWindow from './modal-window-markup';
+import createMarkupModalWindow from './markups';
 import modalActions from './modal-servise';
 import LoadSpinner from './spinner';
 import { genresFilm, LocalStorage } from './local-storage';
