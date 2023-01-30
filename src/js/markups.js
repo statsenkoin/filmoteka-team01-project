@@ -16,9 +16,9 @@ export function markupTrending(arrMovies, homeGallery) {
               title || original_title
             }</h2></div>
             <p class="box-description__text">
-                <span class="box-description__span">${
-                  getGenreById(genre_ids) || noGenre
-                }</span>${release_date.slice(0, 4) || noYear}
+                <span class="box-description__span">${getGenreById(genre_ids) || noGenre}</span>${
+          release_date.slice(0, 4) || noYear
+        }
             </p>
         </div>
     </li>`
@@ -183,8 +183,8 @@ export function createMarkupModalWindowMyLibrary(data, filmGenres) {
           ${overview}
         </p>
         <div class="buttons-add">
-          <button type="button" class="btn-add js-add-to-watched">delete to Watched</button>
-          <button type="button" class="btn-add js-add-to-queue">delete to queue</button>
+          <button type="button" class="btn-add js-delete-from-watched">Delete from watched</button>
+          <button type="button" class="btn-add js-delete-from-queue">Delete from queue</button>
         </div>
       </div>`;
 
