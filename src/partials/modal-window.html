@@ -59,37 +59,46 @@
     <div class="shape"></div>
     <div class="shape"></div>
   </div>
-  <form class="auth_modal_form">
-    <h3 class="auth_modal_form_title">Login Here</h3>
+  <div class="auth_modal_box">
+    <form class="auth_modal_form">
+      <h3 class="auth_modal_form_title">Login Here</h3>
 
-    <label class="auth_modal_form_lable" for="username">Username</label>
-    <input
-      class="auth_modal_form_input"
-      type="text"
-      placeholder="Email or Phone"
-      id="username"
-    />
+      <label class="auth_modal_form_lable" for="username">Username</label>
+      <input
+        class="auth_modal_form_input"
+        type="text"
+        placeholder="Email or Phone"
+        id="username"
+      />
 
-    <label class="auth_modal_form_lable" for="password">Password</label>
-    <input
-      class="auth_modal_form_input"
-      type="password"
-      placeholder="Password"
-      id="password"
-    />
-
-    <button type="button" class="auth_modal_form_button">Log In</button>
-    <button
-      type="button"
-      class="js-modal-triger auth_modal_form_button"
-      data-modal="js-sing_in_modal"
-    >
-      Sign In
-    </button>
-  </form>
+      <label class="auth_modal_form_lable" for="password">Password</label>
+      <input
+        class="auth_modal_form_input"
+        type="password"
+        placeholder="Password"
+        id="password"
+      />
+      <div class="auth_modal_loginError">
+        <p class="auth_modal_loginError_errorText"></p>
+      </div>
+      <button type="button" class="auth_modal_form_button js-firebaseLogInbtn">
+        Log In
+      </button>
+      <button
+        type="button"
+        class="auth_modal_form_button js-firebaseSingInbtn"
+        data-modal="js-sing_in_modal"
+      >
+        Sign In
+      </button>
+    </form>
+  </div>
+  <div class="auth_modal-loginGreetingsBox">
+    <p class="auth_modal-loginGreetingsBox_text"></p>
+  </div>
 </div>
 
-<div class="modal auth_modal js-sing_in_modal">
+<!-- <div class="modal auth_modal js-sing_in_modal">
   <button type="button" class="modal-close-btn" data-modal-close>
     <svg class="icon-close" width="30" height="30">
       <use href="./images/sprite.svg#icon-close"></use>
@@ -108,7 +117,7 @@
       class="auth_modal_form_input"
       type="text"
       placeholder="Email or Phone"
-      id="username"
+      name="username"
     />
 
     <label class="auth_modal_form_lable" for="password">Password</label>
@@ -116,9 +125,9 @@
       class="auth_modal_form_input"
       type="password"
       placeholder="Password"
-      id="password"
+      name="password"
     />
 
     <button type="button" class="auth_modal_form_button">Sign In</button>
   </form>
-</div>
+</div> -->

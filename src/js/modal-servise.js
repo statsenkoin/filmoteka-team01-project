@@ -1,4 +1,6 @@
 import scrollController from './scroll_lock';
+import { refs } from './references';
+import showLoginForm from './firebase';
 
 export default function modalActions() {
   const modalTrigers = document.querySelectorAll('.js-modal-triger');
@@ -17,12 +19,13 @@ export default function modalActions() {
 
   function openModalOnclick(event) {
     event.preventDefault();
-    // console.log(event.currentTarget);
-    // console.log(event.target);
-
-    if (event.target.classList.contains('home-gallery')) {
-      return;
-    }
+    console.log(event.target);
+    // if (
+    //   !event.target.classList.contains('movies-images') ||
+    //   !event.target.classList.contains('js-login-button')
+    // ) {
+    //   return;
+    // }
 
     const modalName = event.currentTarget.dataset.modal;
 
@@ -34,6 +37,7 @@ export default function modalActions() {
     modal.classList.add('active');
     overlay.classList.add('active');
     scrollController.disabledScroll();
+    showLoginForm();
   }
 
   function closeModalOncloseButtonsСlick(event) {
@@ -41,6 +45,7 @@ export default function modalActions() {
     this.closest('.modal').classList.remove('active');
     overlay.classList.remove('active');
     scrollController.enabledScroll();
+
     // document.removeEventListener('keydown', closeModalOnEscapePress);
     // overlay.removeEventListener('click', closeModalOnOverlayClick);
   }

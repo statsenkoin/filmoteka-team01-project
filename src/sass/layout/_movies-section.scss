@@ -91,14 +91,9 @@
 }
 
 .title_wrraper {
-  // width: 350px;
   white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
-  // overflow: hidden;
-
-  &:hover {
-    overflow: visible;
-  }
 }
 
 .box-description {
