@@ -314,23 +314,21 @@
 
 .btn-container {
   @media screen and (min-width: 320px) {
+    width: 280px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
     margin-left: auto;
     margin-right: auto;
   }
   @media screen and (min-width: 768px) {
-    width: 624px;
+    width: 336px;
     justify-content: space-between;
     padding-top: 22px;
     padding-left: 0px;
     padding-right: 0px;
   }
   @media screen and (min-width: 1280px) {
-    width: 1140px;
+    width: 394px;
   }
 }

@@ -1,7 +1,7 @@
 :root {
-  --container-checkbox: 80px;
-  --height-checkbox: 41px;
-  --ball-checkbox: 38px;
+  --container-checkbox: 75px;
+  --height-checkbox: 35px;
+  --ball-checkbox: 34px;
 }
 @media screen and (min-width: 320px) {
   .custom__checkbox {
@@ -89,18 +89,18 @@
 }
 @media screen and (min-width: 768px) {
   .checkbox__container {
-    inline-size: 130px;
-    block-size: 50px;
+    inline-size: 95px;
+    block-size: 38px;
   }
   :checked ~ .checkbox__container .ball {
     transform: translateX(
         calc(
-          (var(--container-checkbox) - -53px) - var(--ball-checkbox) - 0.9rem
+          (var(--container-checkbox) - -28px) - var(--ball-checkbox) - 0.9rem
         )
       )
       rotate(540deg);
   }
   .ball {
-    width: 47px;
+    width: 38px;
   }
 }
