@@ -6,7 +6,7 @@
 
 @media screen and (min-width: 320px) {
   #content-wrap {
-    padding-bottom: 100px;
+    padding-bottom: 80px;
   }
 
   .footer {
@@ -28,6 +28,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 1.17;
+      // position: relative;
     }
 
     &__link {
@@ -38,13 +39,114 @@
 
 @media screen and (min-width: 768px) {
   #content-wrap {
-    padding-bottom: 77px;
+    padding-bottom: 60px;
   }
   .footer {
     height: 77px;
 
     &__content {
       font-size: 16px;
+    }
+  }
+}
+
+.easter__egg {
+  transform: translate(0%, 0%);
+  font-size: 16px;
+  color: transparent;
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 16px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 14px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    font-size: 14px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    font-size: 14px;
+  }
+
+  &:hover span:nth-child(1) {
+    transform: translate(-50%, -130%);
+    transition-delay: 3000ms;
+  }
+
+  &:hover span:nth-child(2) {
+    transform: translate(-50%, 30%);
+    transition-delay: 3000ms;
+  }
+
+  &:hover span:nth-child(3) {
+    opacity: 1;
+    transition: opacity 700ms ease;
+    transition-delay: 3000ms;
+  }
+
+  & span:nth-child(1),
+  & span:nth-child(2) {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: #545454;
+    transition: 0.5s;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  & span:nth-child(1) {
+    clip-path: polygon(0 0, 100% 0%, 100% 50%, 0 50%);
+  }
+
+  & span:nth-child(2) {
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+  }
+
+  & span:nth-child(3) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-transform: uppercase;
+
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 350ms ease;
+    font-size: 8px;
+    color: #fff;
+    background: #ff8445;
+    width: 97.5%;
+    padding-left: 5px;
+    text-align: center;
+    letter-spacing: 7px;
+    word-spacing: 0.6rem;
+    line-height: 100%;
+
+    @media only screen and (max-width: 1100px) {
+      font-size: 8px;
+    }
+
+    @media only screen and (max-width: 900px) {
+      font-size: 8px;
+      width: 97%;
+      letter-spacing: 4px;
+    }
+
+    @media only screen and (max-width: 700px) {
+      font-size: 8px;
+      width: 96%;
+      letter-spacing: 2px;
+      word-spacing: 0.5rem;
+    }
+
+    @media only screen and (max-width: 480px) {
+      font-size: 8px;
+      letter-spacing: 2px;
+      word-spacing: 0.2rem;
     }
   }
 }

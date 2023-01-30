@@ -78,6 +78,7 @@ async function chooseSearchQuery() {
     if (!searchFilmList.results.length) {
       currentPage = tempPage;
       loadSpinner.hide();
+      warningMessage();
       return;
     }
     receivedFilmList = searchFilmList;
@@ -96,7 +97,7 @@ function onCardClick(event) {
   const filmBoxId = Number(filmBox.dataset.id);
   const data = currentFilmsList.find(film => film.id === filmBoxId);
   const filmGenres = getGenreByIdList(data.genre_ids);
-  modalActions(event);
+  // modalActions(event);
   createMarkupModalWindow(data, filmGenres);
 }
 

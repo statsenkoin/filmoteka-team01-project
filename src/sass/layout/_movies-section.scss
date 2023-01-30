@@ -1,3 +1,67 @@
+////------------------------------------------
+.movies-images__item {
+  border-radius: 5px;
+  overflow: hidden;
+  // box-shadow: 0 0 8px rgba(200, 200, 200, 0.8);
+  // transition: box-shadow 250ms linear;
+  // transition-property: box-shadow;
+  transition-duration: 500ms;
+
+  @media screen and (min-width: 768px) {
+    width: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: calc((100% - 2 * 16px) / 3);
+  }
+
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 16px #a7151a;
+    transition-property: box-shadow;
+    // transition-duration: 2000ms;
+    cursor: pointer;
+  }
+}
+
+.movie-image__cover {
+  border-radius: 5px;
+  overflow: hidden;
+
+  @media (max-width: 767.98px) {
+    width: 280px;
+    height: 398px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 455px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+    height: 574px;
+  }
+}
+
+.movie-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 250ms linear;
+  transition-duration: 500ms;
+
+  // @media screen and (min-width: 768px) {
+  .movies-images__item:hover &,
+  .movies-images__item:focus & {
+    transform: scale(1.05);
+    transition-property: transform;
+  }
+ 
+}
+
+///----------------------------------------------------------------
+
 .movies {
   padding-top: 20px;
   padding-bottom: 40px;
@@ -21,15 +85,16 @@
 }
 
 .movie-image {
-  width: 280px;
-  height: 402px;
+  // width: 280px;
+  // height: 402px;
   border-radius: 5px;
 }
+
 .title_wrraper {
-  width: 350px;
+  // width: 350px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
+  // overflow: hidden;
 
   &:hover {
     overflow: visible;
@@ -37,7 +102,8 @@
 }
 
 .box-description {
-  padding-top: 10px;
+  // padding-top: 10px;
+  padding: 10px 2px 5px;
 
   &__title {
     margin: 0;
@@ -87,11 +153,13 @@
     }
   }
   .movie-image {
-    width: 336px;
-    height: 455px;
+    // width: 336px;
+    height: 460px;
   }
   .box-description {
-    padding-top: 8px;
+    // padding-top: 8px;
+    padding: 8px 2px 4px;
+
     &__title {
       line-height: 1.33;
     }
@@ -100,11 +168,13 @@
 
 @media screen and (min-width: 1280px) {
   .movie-image {
-    width: 395px;
-    height: 574px;
+    // width: 395px;
+    height: 580px;
   }
   .box-description {
-    padding-top: 12px;
+    // padding-top: 12px;
+    padding: 12px 3px 6px;
+
     &__title {
       font-size: 20px;
       line-height: 1.2;
@@ -125,7 +195,7 @@
     }
     &__item {
       width: 395px;
-      height: 634px;
+      height: 640px;
     }
   }
 }

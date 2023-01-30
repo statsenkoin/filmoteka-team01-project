@@ -6,8 +6,11 @@ export function markupTrending(arrMovies, homeGallery) {
     .map(
       ({ id, title, genre_ids, original_title, release_date, poster_path }) =>
         `<li class="movies-images__item" data-id=${id}>
-            <img class="movie-image" src="${noImage(poster_path)}" 
-            alt="Movie ${title || original_title}" />
+        <div class="movie-image__cover">        
+        <img class="movie-image" src="${noImage(poster_path)}" 
+        alt="Movie ${title || original_title}" />
+        </div>
+            
         <div class="box-description">
             <div class="title_wrraper"><h2 class="box-description__title">${
               title || original_title
@@ -180,8 +183,8 @@ export function createMarkupModalWindowMyLibrary(data, filmGenres) {
           ${overview}
         </p>
         <div class="buttons-add">
-          <button type="button" class="btn-add js-add-to-watched">delete to Watched</button>
-          <button type="button" class="btn-add js-add-to-queue">delete to queue</button>
+          <button type="button" class="btn-add js-delete-from-watched">Delete from watched</button>
+          <button type="button" class="btn-add js-delete-from-queue">Delete from queue</button>
         </div>
       </div>`;
 
