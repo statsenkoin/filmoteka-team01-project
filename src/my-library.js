@@ -3,3 +3,4 @@ import './js/modal-servise';
 import './js/library-markup';
 import './js/markups';
 import './js/trailer';
+import './js/btn-up';
