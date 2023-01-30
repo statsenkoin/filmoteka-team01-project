@@ -1,5 +1,5 @@
 // import { fetchPopular, fetchPopularDay } from './api-service';
-// import { updatePagination, getCurrentPage } from './custom-pagination';
+// // import { updatePagination, getCurrentPage } from './custom-pagination';
 // import { markupTrending, getGenreByIdList } from './markups';
 // import { popularFilmsbyDay, popularFilmsbyWeek } from './local-storage';
 
