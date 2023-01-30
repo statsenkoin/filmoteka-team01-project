@@ -23,16 +23,15 @@ refs.form.style.display = 'block';
 
 refs.btnLogin.addEventListener('click', loginEmailPassword);
 refs.btnSignin.addEventListener('click', creatAccount);
+
 function loginEmailPassword() {
   const loginEmail = refs.inputEmail.value;
   const loginPassword = refs.inputPassword.value;
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
     .then(userCredential => {
-      // Signed in
       const user = userCredential.user;
       console.log(user);
-
-      // ...
+      showGreetings(user);
     })
     .catch(error => {
       showLoginError(error);
@@ -44,21 +43,7 @@ function loginEmailPassword() {
     });
 }
 
-// async function creatAccount() {
-//   const loginEmail = refs.inputEmail.value;
-//   const loginPassword = refs.inputPassword.value;
-//   try {
-//     const userInfo = await createUserWithEmailAndPassword(
-//       auth,
-//       loginEmail,
-//       loginPassword
-//     );
-
-//     // console.log(userInfo.user);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+//
 
 function creatAccount(event) {
   const loginEmail = refs.inputEmail.value;
