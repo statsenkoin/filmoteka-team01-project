@@ -33,7 +33,7 @@
     margin-top: 45px;
     overflow: hidden;
     visibility: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
   }
 
   .dropdown.active .items {
@@ -54,7 +54,7 @@
     z-index: 1;
     overflow: hidden;
     transition: 0.2s;
-    transition-delay: calc(60ms * var(--i));
+    transition-delay: calc(25ms * var(--i));
   }
 
   .dropdown.active .items a {
