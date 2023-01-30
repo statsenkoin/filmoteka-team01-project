@@ -16,6 +16,8 @@ let movies;
 wachedBtn.addEventListener('click', onWachedBtn);
 queueBtn.addEventListener('click', onQueueBtn);
 
+window.scrollTo(0, 0);
+
 function onWachedBtn() {
   clearGallery();
   movies = watchedFilms.getLocalStorage();
@@ -40,7 +42,8 @@ function onQueueBtn() {
   }
 }
 function libraryError() {
-  defaultPage.firstElementChild.textContent = 'There are no movies in your library yet..';
+  defaultPage.firstElementChild.textContent =
+    'There are no movies in your library yet..';
   defaultPage.firstElementChild.style.color = '#ff001b';
   defaultPage.firstElementChild.style.boxShadow = '0px 0px 9px 0px #ff001b';
 }
