@@ -111,15 +111,12 @@
 .search-form__input {
   transition: border-bottom 500ms ease, box-shadow 500ms ease,
     transform 500ms ease;
-    
 
   &:hover,
   &:focus-within {
     transform: scale(1.1);
     border-bottom: 3px solid #a7151a;
     box-shadow: inset 3px -11px 25px -13px #a7151a;
-    
-
   }
   &:hover + .search-form__button {
     transform: scale(1.1);
