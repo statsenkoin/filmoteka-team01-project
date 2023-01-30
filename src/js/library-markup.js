@@ -11,13 +11,14 @@ const queueBtn = document.querySelector('.js-queue');
 const gallery = document.querySelector('.home-gallery');
 const defaultPage = document.querySelector('.default');
 console.dir(defaultPage.firstElementChild);
+let movies;
 
 wachedBtn.addEventListener('click', onWachedBtn);
 queueBtn.addEventListener('click', onQueueBtn);
 
 function onWachedBtn() {
   clearGallery();
-  const movies = watchedFilms.getLocalStorage();
+  movies = watchedFilms.getLocalStorage();
   if (!movies) {
     showDefaultPage();
     libraryError();
@@ -29,7 +30,7 @@ function onWachedBtn() {
 
 function onQueueBtn() {
   clearGallery();
-  const movies = queueFilms.getLocalStorage();
+  movies = queueFilms.getLocalStorage();
   if (!movies) {
     showDefaultPage();
     libraryError();
@@ -55,10 +56,8 @@ function clearGallery() {
 
 function onCardClick(event) {
   const filmBox = event.target.closest('.movies-images__item');
-  console.log('работает');
   if (!filmBox) return;
   const filmBoxId = Number(filmBox.dataset.id);
-  const movies = watchedFilms.getLocalStorage();
   const data = movies.find(film => film.id === filmBoxId);
   const filmGenres = getGenreByIdList(data.genre_ids);
   modalActions(event);
