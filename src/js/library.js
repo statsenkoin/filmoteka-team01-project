@@ -21,18 +21,22 @@
 
 //13) Потім міняєм вигляд кнопки
 
+import { watchedFilms, queueFilms } from './local-storage';
+import { popularFilms } from './filmoteka';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 //options for notiflix
 const options = {
-  width: '500px',
+  width: '280px',
   borderRadius: '30px',
   position: 'center-bottom',
   distance: '25px',
-  fontSize: '30px',
+  fontSize: '18px',
   timeout: 2000,
 };
 
 const overlay = document.querySelector('.js-filmInfoModal');
-const checkBox = document.querySelector('#input-toggle');
+
 overlay.addEventListener('click', onWathedBtn);
 let filmCollection = null;
 
@@ -43,27 +47,18 @@ function onWathedBtn(event) {
     element.classList.contains('js-add-to-watched') ||
     element.classList.contains('js-add-to-queue')
   ) {
-    if (checkBox.checked) {
-      filmCollection = popularFilmsbyDay.getLocalStorage();
-      console.log('Day', filmCollection);
-    } else {
-      filmCollection = popularFilmsbyWeek.getLocalStorage();
-      console.log('Week', filmCollection);
-    }
+    filmCollection = popularFilms.getLocalStorage();
 
     const idFilm = overlay.lastElementChild.lastElementChild.id;
 
     const currentFilm = filmCollection.filter(film => film.id == idFilm);
-    console.dir(element);
+
     if (element.classList.contains('js-add-to-watched')) {
-      const response = watchedFilms.getLocalStorage();
-      if (!response) {
+      if (!watchedFilms.getLocalStorage()) {
         watchedFilms.setLocalStorage();
       }
-      const currentCollection = watchedFilms.getLocalStorage();
-      const filmIncludes = currentCollection.filter(
-        item => item[0].id == idFilm
-      );
+      const response = watchedFilms.getLocalStorage();
+      const filmIncludes = response.filter(item => item.id == idFilm);
 
       if (filmIncludes.length) {
         Notify.warning(
@@ -71,18 +66,16 @@ function onWathedBtn(event) {
           options
         );
       } else {
-        watchedFilms.addFilmtoStorage(currentFilm);
+        watchedFilms.addFilmtoStorage(...currentFilm);
         Notify.success('The movie has been added to my library', options);
       }
     } else if (element.classList.contains('js-add-to-queue')) {
-      const response = queueFilms.getLocalStorage();
-      if (!response) {
+      if (!queueFilms.getLocalStorage()) {
         queueFilms.setLocalStorage();
       }
-      const currentCollection = queueFilms.getLocalStorage();
-      const filmIncludes = currentCollection.filter(
-        item => item[0].id == idFilm
-      );
+      const response = queueFilms.getLocalStorage();
+
+      const filmIncludes = response.filter(item => item.id == idFilm);
 
       if (filmIncludes.length) {
         Notify.warning(
@@ -90,7 +83,7 @@ function onWathedBtn(event) {
           options
         );
       } else {
-        queueFilms.addFilmtoStorage(currentFilm);
+        queueFilms.addFilmtoStorage(...currentFilm);
         Notify.success('The movie has been added to my library', options);
       }
     }
