@@ -1,4 +1,4 @@
-import scrollController from "./scroll_lock";
+import scrollController from './scroll_lock';
 
 export default function modalActions() {
   const modalTrigers = document.querySelectorAll('.js-modal-triger');
@@ -17,10 +17,12 @@ export default function modalActions() {
 
   function openModalOnclick(event) {
     event.preventDefault();
-    // console.log(event.target);
-    // if (!event.target.classList.contains('movies-images__item')) {
-    //   return;
-    // }
+    // console.log(event.currentTarget);
+    console.log(event.target);
+
+    if (event.target.classList.contains('home-gallery')) {
+      return;
+    }
 
     const modalName = event.currentTarget.dataset.modal;
 
