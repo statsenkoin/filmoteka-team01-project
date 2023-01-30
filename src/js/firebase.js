@@ -4,6 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
 } from 'firebase/auth';
 const firebaseConfig = {
   apiKey: 'AIzaSyBRS6xf_Enc8Wod3m1W0oIKY2kJtVDEMEM',
@@ -14,7 +15,6 @@ const firebaseConfig = {
   appId: '1:898404896822:web:1d04d11cb7f222feb28897',
 };
 
-console.log(refs);
 refs.btnLogin.addEventListener('click', loginEmailPassword);
 refs.btnSignin.addEventListener('click', creatAccount);
 const filmoteckApp = initializeApp(firebaseConfig);
@@ -22,6 +22,9 @@ const filmoteckApp = initializeApp(firebaseConfig);
 const auth = getAuth(filmoteckApp);
 
 async function loginEmailPassword() {
+  const loginEmail = refs.inputEmail.value;
+  const loginPassword = refs.inputPassword.value;
+
   try {
     const userInfo = await signInWithEmailAndPassword(
       auth,
@@ -29,14 +32,16 @@ async function loginEmailPassword() {
       loginPassword
     );
 
-    console.log(userInfo.user);
+    // console.log(userInfo.user);
   } catch (error) {
-    console.log(error.code);
+    console.log(error);
     showLoginError(error);
   }
 }
 
 async function creatAccount() {
+  const loginEmail = refs.inputEmail.value;
+  const loginPassword = refs.inputPassword.value;
   try {
     const userInfo = await createUserWithEmailAndPassword(
       auth,
@@ -44,9 +49,9 @@ async function creatAccount() {
       loginPassword
     );
 
-    console.log(userInfo.user);
+    // console.log(userInfo.user);
   } catch (error) {
-    console.log(error.code);
+    console.log(error);
     showLoginError(error);
   }
 }
@@ -59,3 +64,20 @@ function showLoginError(error) {
     refs.loginError_errorText.textContent = `Error ${error.code}`;
   }
 }
+
+async function monitorAuthchange() {
+  onAuthStateChanged(auth, user => {
+    {
+      if (user) {
+        console.log(user);
+        showGreetings(user);
+      } else {
+        showLoginForm;
+        // refs.authLable.textContent= "You are no logged in"
+      }
+    }
+  });
+}
+function showGreetings(user) {}
+
+function showLoginForm() {}
