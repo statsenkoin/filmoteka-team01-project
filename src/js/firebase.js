@@ -86,7 +86,11 @@ monitorAuthchange();
 function showGreetings(user) {
   refs.form.style.display = 'none';
   refs.greetingBox.style.display = 'block';
-  refs.greetingText.textContent = ` Dear ${user.email} Wellcome to Filmoteka`;
+  refs.greetingBox.innerHTML = `<p>
+  <span class="word">Dear ${user.email} <span class="superscript"></span> Wellcome to </span>
+  <span class="word">Filmoteka</span>
+</p>`;
+  // refs.greetingText.textContent = ` Dear ${user.email} Wellcome to Filmoteka`;
 }
 
 function showLoginError(error) {
