@@ -40,9 +40,9 @@ function onQueueBtn() {
   }
 }
 function libraryError() {
-  defaultPage.firstElementChild.textContent =
-    'There are no movies in your library yet..';
+  defaultPage.firstElementChild.textContent = 'There are no movies in your library yet..';
   defaultPage.firstElementChild.style.color = '#ff001b';
+  defaultPage.firstElementChild.style.boxShadow = '0px 0px 9px 0px #ff001b';
 }
 function hiddenDefaultPage() {
   defaultPage.classList.add('visually-hidden');
