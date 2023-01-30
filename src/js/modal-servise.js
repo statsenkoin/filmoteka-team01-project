@@ -1,5 +1,5 @@
-import scrollController from "./scroll_lock";
-
+import scrollController from './scroll_lock';
+import { refs } from './references';
 export default function modalActions() {
   const modalTrigers = document.querySelectorAll('.js-modal-triger');
   const overlay = document.querySelector('.backdrop');
@@ -39,6 +39,10 @@ export default function modalActions() {
     this.closest('.modal').classList.remove('active');
     overlay.classList.remove('active');
     scrollController.enabledScroll();
+    refs.form.style.display = 'block';
+    refs.form.reset();
+    refs.greetingBox.style.display = 'none';
+
     // document.removeEventListener('keydown', closeModalOnEscapePress);
     // overlay.removeEventListener('click', closeModalOnOverlayClick);
   }

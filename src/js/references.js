@@ -8,4 +8,6 @@ export const refs = {
   loginError_errorText: document.querySelector(
     '.auth_modal_loginError_errorText'
   ),
+  greetingBox: document.querySelector('.auth_modal-loginGreetingsBox'),
+  greetingText: document.querySelector('.auth_modal-loginGreetingsBox_text'),
 };

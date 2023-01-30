@@ -20,7 +20,7 @@ refs.btnSignin.addEventListener('click', creatAccount);
 const filmoteckApp = initializeApp(firebaseConfig);
 
 const auth = getAuth(filmoteckApp);
-
+showLoginForm();
 async function loginEmailPassword() {
   const loginEmail = refs.inputEmail.value;
   const loginPassword = refs.inputPassword.value;
@@ -55,29 +55,40 @@ async function creatAccount() {
     showLoginError(error);
   }
 }
+
+async function monitorAuthchange() {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      console.log(user);
+      showGreetings(user);
+    } else {
+      showLoginError;
+    }
+  });
+}
+
+monitorAuthchange();
+function showGreetings(user) {
+  refs.form.style.display = 'none';
+  refs.greetingBox.style.display = 'block';
+  refs.greetingText.textContent = ` Dear ${user.email} Wellcome to Filmoteka`;
+}
+
+function showLoginForm() {
+  refs.divAuth_modal_loginError.style.display = 'none';
+  refs.form.style.display = 'block';
+  refs.btnLogin.style.display = 'block';
+}
 function showLoginError(error) {
   refs.divAuth_modal_loginError.style.display = 'block';
   if (error.code == 'auth/wrong-password ') {
     refs.loginError_errorText.textContent =
       'The password you entered is incorrect';
+  }
+  if (error.code == 'auth/user-not-found') {
+    showLoginForm();
+    refs.loginError_errorText.textContent = ' User not found, please signed in';
   } else {
     refs.loginError_errorText.textContent = `Error ${error.code}`;
   }
 }
-
-async function monitorAuthchange() {
-  onAuthStateChanged(auth, user => {
-    {
-      if (user) {
-        console.log(user);
-        showGreetings(user);
-      } else {
-        showLoginForm;
-        // refs.authLable.textContent= "You are no logged in"
-      }
-    }
-  });
-}
-function showGreetings(user) {}
-
-function showLoginForm() {}
