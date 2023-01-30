@@ -76,6 +76,7 @@ async function chooseSearchQuery() {
     if (!searchFilmList.results.length) {
       currentPage = tempPage;
       loadSpinner.hide();
+      warningMessage();
       return;
     }
     receivedFilmList = searchFilmList;
