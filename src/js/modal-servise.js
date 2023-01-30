@@ -1,6 +1,7 @@
 import scrollController from './scroll_lock';
 import { refs } from './references';
 import showLoginForm from './firebase';
+
 export default function modalActions() {
   const modalTrigers = document.querySelectorAll('.js-modal-triger');
   const overlay = document.querySelector('.backdrop');

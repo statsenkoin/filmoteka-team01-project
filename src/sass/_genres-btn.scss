@@ -1,12 +1,11 @@
 @media screen and (min-width: 320px) {
   .box-genre {
     position: relative;
-    width: 100px;
-    margin: 0 auto;
   }
+
   .dropdown {
     position: relative;
-    height: 44px;
+    height: 35px;
     width: 95px;
     background: #ff001b;
     color: #fff;
@@ -16,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 50px;
     border: 1px solid #fff;
     cursor: pointer;
   }
@@ -33,7 +32,7 @@
     margin-top: 45px;
     overflow: hidden;
     visibility: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
   }
 
   .dropdown.active .items {
@@ -48,13 +47,13 @@
     background: #fff;
     color: #ff001b;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px;
     padding: 10px 5px;
     margin-top: 2px;
     z-index: 1;
     overflow: hidden;
-    transition: 0.5s;
-    transition-delay: calc(60ms * var(--i));
+    transition: 0.2s;
+    transition-delay: calc(25ms * var(--i));
   }
 
   .dropdown.active .items a {
@@ -67,7 +66,7 @@
   .dropdown .items a span {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -6;
     width: 100%;
     height: 100%;
     background: #ff001b;
@@ -85,20 +84,20 @@
 @media screen and (min-width: 768px) {
   .box-genre {
     position: relative;
-    width: 150px;
-    margin: 0 auto;
+    // width: 150px;
+    // margin: 0 auto;
   }
   .dropdown {
-    height: 42px;
-    width: 148px;
+    height: 38px;
+    width: 115px;
   }
   .dropdown .items {
-    width: 148px;
-    margin-top: 63px;
+    width: 115px;
+    margin-top: 45px;
   }
 
   .dropdown .items a {
-    width: 148px;
+    width: 115px;
     padding: 10px 15px;
   }
 
@@ -125,5 +124,20 @@
   }
   .dropdown.active .right-icon {
     transform: rotate(-135deg);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .dropdown {
+    height: 38px;
+    width: 115px;
+  }
+  .dropdown .items {
+    width: 115px;
+    margin-top: 45px;
+  }
+
+  .dropdown .items a {
+    width: 115px;
+    padding: 10px 15px;
   }
 }

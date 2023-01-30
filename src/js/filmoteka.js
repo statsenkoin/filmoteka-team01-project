@@ -26,6 +26,8 @@ const paginationRef = document.querySelector('.pagination');
 const toggle = document.querySelector('#input-toggle');
 const searchForm = document.querySelector('.search-form');
 const errorMessage = document.querySelector('.error-text');
+const weekFalseButton = document.querySelector('#week-btn');
+const todayFalseButton = document.querySelector('#today-btn');
 
 homeGallery.addEventListener('click', onCardClick);
 paginationRef.addEventListener('click', onPaginationButtonClick);
@@ -76,6 +78,7 @@ async function chooseSearchQuery() {
     if (!searchFilmList.results.length) {
       currentPage = tempPage;
       loadSpinner.hide();
+      warningMessage();
       return;
     }
     receivedFilmList = searchFilmList;
@@ -94,7 +97,7 @@ function onCardClick(event) {
   const filmBoxId = Number(filmBox.dataset.id);
   const data = currentFilmsList.find(film => film.id === filmBoxId);
   const filmGenres = getGenreByIdList(data.genre_ids);
-  modalActions(event);
+  // modalActions(event);
   createMarkupModalWindow(data, filmGenres);
 }
 
@@ -114,6 +117,15 @@ async function onCheckBox(event) {
   isGenreChoosen = false;
   isSearchChoosen = false;
   currentPage = 1;
+
+  if (isTodayChecked) {
+    todayFalseButton.classList.add('line-after');
+    weekFalseButton.classList.remove('line-after');
+  } else {
+    todayFalseButton.classList.remove('line-after');
+    weekFalseButton.classList.add('line-after');
+  }
+
   await updateGallery();
 }
 

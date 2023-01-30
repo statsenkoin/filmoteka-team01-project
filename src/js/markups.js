@@ -183,8 +183,8 @@ export function createMarkupModalWindowMyLibrary(data, filmGenres) {
           ${overview}
         </p>
         <div class="buttons-add">
-          <button type="button" class="btn-add js-add-to-watched">delete to Watched</button>
-          <button type="button" class="btn-add js-add-to-queue">delete to queue</button>
+          <button type="button" class="btn-add js-delete-from-watched">Delete from watched</button>
+          <button type="button" class="btn-add js-delete-from-queue">Delete from queue</button>
         </div>
       </div>`;
 
