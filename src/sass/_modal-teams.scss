@@ -1,27 +1,23 @@
 ul {
-    margin: 0;
-    padding-left: 0;
     list-style: none;
 }
 
-a {
-    text-decoration: none;
-    color: currentColor;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    margin: 0px;
+.line1,
+.line11,
+.line12,
+.line13,
+.line2,
+.line21,
+.line3{
+    position: fixed;
+    opacity: 0;
 }
 
 
-@media screen and (min-width: 320px) {
-.line {
+.line1,
+.line11,
+.line12,
+.line13 {
     display: flex;
     position: fixed;
     bottom: 67;
@@ -31,24 +27,20 @@ p {
     transform: translate(100%, 0px);
 }
 
-.line2 {
-    display: flex;
-    position: fixed;
+.line11 {
     bottom: 177;
-    left: 0;
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(.17, .04, .03, .94);
+    left: -40;
     transform: translate(-100%, 0px);
 }
 
-.line3 {
-    display: flex;
-    position: fixed;
+.line12 {
     bottom: 287;
-    right: 0;
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(.17, .04, .03, .94);
-    transform: translate(100%, 0px);
+}
+
+.line13 {
+    bottom: 397;
+    left: -40;
+    transform: translate(-100%, 0px);
 }
 
 .line_img{
@@ -68,20 +60,16 @@ p {
     right: 0;
     bottom: 0;
     left: 0;
-    // border-radius: 5px;
-    // margin: 0px;
-    // height: 100ex;
     pointer-events: none;
     background: #e8e8e8;
     opacity: 0;
-    // transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
+    transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
 }
 
 .fon_active {
     pointer-events: all;
     background: #444444;
     opacity: 0.8;
-    
 }
 
 .teams_desk{
@@ -90,15 +78,18 @@ p {
     margin: auto;
     padding: 0;
     position: fixed;
-    left: -20%;
+    left: 0;
     right: 0;
-    top: 80px;
+    top: 150px;
     box-sizing: border-box;
     opacity: 0;
     pointer-events: none;
     transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
     transform: translate(0, -550px);
-    /* z-index: 0; */
+}
+
+.teams_img{
+    width: 300px;
 }
 
 .teams_desk_active{
@@ -111,27 +102,27 @@ p {
 }
 
 .teams_desk_title{
-    padding-top: 10px;
-    padding-left: 20px;
-
+    color: #e8e8e8;
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .teams_desk_text{
-    padding-top: 0px;
-    padding-left: 20px;
+    color: #e8e8e8;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-bottom: 30px;
 }
 
 .soc_icons{
     display: flex;
     gap: 30px;
-    padding: 0 20px;
+    margin: 0 0px;
     justify-content: space-between;
 }
 
 .soc_icon{
-    /* display: flex; */
-    width: 100px;
-    padding-top: 35px;
+    width: 80px;
 }
 
 .in {
@@ -139,10 +130,11 @@ p {
     top: -12px;
     left: 12px;
 }
-}
 
-@media screen and (min-width: 768px) {
-.line {
+
+@media screen and (min-width: 768px ) {
+.line2, 
+.line21 {
     display: flex;
     position: fixed;
     bottom: 67;
@@ -152,18 +144,10 @@ p {
     transform: translate(100%, 0px);
 }
 
-.line2 {
-    display: flex;
-    position: fixed;
+.line21 {
     bottom: 177;
-    left: 0;
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(.17, .04, .03, .94);
+    left: -40;
     transform: translate(-100%, 0px);
-}
-
-.line_img{
-    height: 100px;
 }
 
 .line_active {
@@ -173,88 +157,25 @@ p {
     cursor: pointer;
 }
 
-.fon{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    // border-radius: 5px;
-    // margin: 0px;
-    // height: 100ex;
-    pointer-events: none;
-    background: #e8e8e8;
-    opacity: 0;
-    // transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
-}
-
-.fon_active {
-    pointer-events: all;
-    background: #e8e8e8;
-    opacity: 0.8;
-    
-}
-
 .teams_desk{
-    display: flexbox;
-    width: 100%;
-    margin: auto;
-    padding: 0;
-    position: fixed;
-    left: -50;
+    left: -100;
     right: 0;
     top: 80px;
-    box-sizing: border-box;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
-    transform: translate(0, -550px);
-    /* z-index: 0; */
 }
 
-.teams_desk_active{
-    opacity: 1;
-    pointer-events: all;
-    z-index: 5;
-    width: 300px;
-    transform: translate(0, 0);
-    cursor: pointer;
-}
-
-.teams_desk_title{
-    padding-top: 10px;
-    padding-left: 20px;
-
-}
-
-.teams_desk_text{
-    padding-top: 0px;
-    padding-left: 20px;
-}
-
-.soc_icons{
-    display: flex;
-    gap: 30px;
-    padding: 0 20px;
-    justify-content: space-between;
+.teams_img{
+width: 400px;
 }
 
 .soc_icon{
-    /* display: flex; */
     width: 100px;
-    padding-top: 35px;
-}
-
-.in {
-    position: relative;
-    top: -12px;
-    left: 12px;
+    margin: 0 8px;
 }
 
 }
 
 @media screen and (min-width: 1280px) {
-.line {
+.line3 {
     display: flex;
     position: fixed;
     bottom: 67;
@@ -264,96 +185,10 @@ p {
     transform: translate(100%, 0px);
 }
 
-.line_img{
-    height: 100px;
-}
-
 .line_active {
     z-index: 2;
     opacity: 1;
     transform: translate(0, 0);
     cursor: pointer;
 }
-
-.fon{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    // border-radius: 5px;
-    // margin: 0px;
-    // height: 100ex;
-    pointer-events: none;
-    background: #e8e8e8;
-    opacity: 0;
-    // transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
 }
-
-.fon_active {
-    pointer-events: all;
-    background: #e8e8e8;
-    opacity: 0.8;
-    
-}
-
-.teams_desk{
-    display: flexbox;
-    width: 100%;
-    margin: auto;
-    padding: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 80px;
-    box-sizing: border-box;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.8s cubic-bezier(.17, .04, .03, .94);
-    transform: translate(0, -550px);
-    /* z-index: 0; */
-}
-
-.teams_desk_active{
-    opacity: 1;
-    pointer-events: all;
-    z-index: 5;
-    width: 300px;
-    transform: translate(0, 0);
-    cursor: pointer;
-}
-
-.teams_desk_title{
-padding-top: 10px;
-padding-left: 20px;
-
-}
-
-.teams_desk_text{
-padding-top: 0px;
-padding-left: 20px;
-}
-
-.soc_icons{
-    display: flex;
-    gap: 30px;
-    padding: 0 20px;
-    justify-content: space-between;
-}
-
-.soc_icon{
-    /* display: flex; */
-    width: 100px;
-    padding-top: 35px;
-}
-
-
-
-.in {
-    position: relative;
-        top: -12px;
-        left: 12px;
-
-}
-}
-

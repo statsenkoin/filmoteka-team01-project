@@ -1,6 +1,10 @@
 const studentsRef = document.querySelector('.footer__link');
-const lineRef = document.querySelector('.line');
+const line1Ref = document.querySelector('.line1');
+const line11Ref = document.querySelector('.line11');
+const line12Ref = document.querySelector('.line12');
+const line13Ref = document.querySelector('.line13');
 const line2Ref = document.querySelector('.line2');
+const line21Ref = document.querySelector('.line21');
 const line3Ref = document.querySelector('.line3');
 const teamsDesk = document.querySelector('.teams_desk');
 const fonTeams = document.querySelector('.fon');
@@ -19,34 +23,64 @@ const p10Ref = document.querySelector('#p10');
 const p11Ref = document.querySelector('#p11');
 
 studentsRef.addEventListener('click', slider);
-lineRef.addEventListener('click', showPerson);
+
+line1Ref.addEventListener('click', showPerson)
+line11Ref.addEventListener('click', showPerson);
+line12Ref.addEventListener('click', showPerson);
+line13Ref.addEventListener('click', showPerson);
 line2Ref.addEventListener('click', showPerson);
-// line3Ref.addEventListener('click', showPerson);
+line21Ref.addEventListener('click', showPerson);
+line3Ref.addEventListener('click', showPerson);
 fonTeams.addEventListener('click', close);
 
 function slider(e) {
     e.preventDefault();
-    // line3Ref.classList.add('line_active');
-    line2Ref.classList.add('line_active');
-    lineRef.classList.add('line_active');
+    if (document.defaultView.innerWidth < 768) {
+        line1Ref.classList.add('line_active');
+        line11Ref.classList.add('line_active');
+        line12Ref.classList.add('line_active');
+        line13Ref.classList.add('line_active');
+        line2Ref.classList.add('line_active');
+        line21Ref.classList.add('line_active');
+        line3Ref.classList.add('line_active');
+    }
+
+    if (document.defaultView.innerWidth < 1280) {
+        line2Ref.classList.add('line_active');
+        line21Ref.classList.add('line_active');
+    }
+
+    if (document.defaultView.innerWidth > 1280) {
+        line3Ref.classList.add('line_active')
+    }
+
     fonTeams.classList.add('fon_active');
 }
 
 function showPerson(e) {
     e.preventDefault();
     removePerson();
-    // line3Ref.classList.remove('line_active');
+    line1Ref.classList.remove('line_active');
+    line11Ref.classList.remove('line_active');
+    line12Ref.classList.remove('line_active');
+    line13Ref.classList.remove('line_active');
     line2Ref.classList.remove('line_active');
-    lineRef.classList.remove('line_active');
+    line21Ref.classList.remove('line_active');
+    line3Ref.classList.remove('line_active');
     addPerson(e);
 }
 
 function close(e) {
     removePerson();
     fonTeams.classList.remove('fon_active');
-    // line3Ref.classList.remove('line_active');
+    line1Ref.classList.remove('line_active');
+    line11Ref.classList.remove('line_active');
+    line12Ref.classList.remove('line_active');
+    line13Ref.classList.remove('line_active');
     line2Ref.classList.remove('line_active');
-    lineRef.classList.remove('line_active');
+    line21Ref.classList.remove('line_active');
+    line3Ref.classList.remove('line_active');
+
 }
 
 function addPerson(e) {
@@ -87,3 +121,5 @@ function removePerson() {
   p10Ref.classList.remove('teams_desk_active');
   p11Ref.classList.remove('teams_desk_active');
 }
+
+console.dir(document.defaultView.innerWidth);
