@@ -6,8 +6,11 @@ export function markupTrending(arrMovies, homeGallery) {
     .map(
       ({ id, title, genre_ids, original_title, release_date, poster_path }) =>
         `<li class="movies-images__item" data-id=${id}>
-            <img class="movie-image" src="${noImage(poster_path)}" 
-            alt="Movie ${title || original_title}" />
+        <div class="movie-image__cover">        
+        <img class="movie-image" src="${noImage(poster_path)}" 
+        alt="Movie ${title || original_title}" />
+        </div>
+            
         <div class="box-description">
             <div class="title_wrraper"><h2 class="box-description__title">${
               title || original_title
