@@ -12,8 +12,7 @@ const QUERY_MOVIE_BY_GENRE = '/discover/movie';
 
 export async function fetchGenre() {
   try {
-    apiInstance.get(`${QUERY_GENRE}?api_key=${API_KEY}`);
-    return (await response).json();
+    return await apiInstance.get(`${QUERY_GENRE}?api_key=${API_KEY}`);
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -21,9 +20,7 @@ export async function fetchGenre() {
 
 export async function fetchSingleMovie(movieId) {
   try {
-    apiInstance.get(`${QUERY_MOVIE}/${movieId}?api_key=${API_KEY}&language=en-US`
-    );
-    return (await response).json();
+    return await apiInstance.get(`${QUERY_MOVIE}/${movieId}?api_key=${API_KEY}&language=en-US`);
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -31,9 +28,7 @@ export async function fetchSingleMovie(movieId) {
 
 export async function fetchMoivesByGenre(genreId, page = 1) {
   try {
-    apiInstance.get(`${QUERY_MOVIE_BY_GENRE}?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`
-    );
-    return (await response).json();
+    return await apiInstance.get(`${QUERY_MOVIE_BY_GENRE}?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`);
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -41,9 +36,7 @@ export async function fetchMoivesByGenre(genreId, page = 1) {
 
 export async function fetchQuery(queryByWord, page) {
   try {
-    apiInstance.get(`/search/movie?api_key=${API_KEY}&page=${page}&query=${queryByWord}`
-    );
-    return (await response).json();
+    return await apiInstance.get(`/search/movie?api_key=${API_KEY}&page=${page}&query=${queryByWord}`);
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -51,9 +44,7 @@ export async function fetchQuery(queryByWord, page) {
 
 export async function fetchPopular(page) {
   try {
-    apiInstance.get(`${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`
-    );
-    return (await response).json();
+    return await apiInstance.get(`${QUERY_TRENDING}?api_key=${API_KEY}&page=${page}`);
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -61,9 +52,7 @@ export async function fetchPopular(page) {
 
 export async function fetchPopularDay(page) {
   try {
-    apiInstance.get(`${QUERY_TRENDING_DAY}?api_key=${API_KEY}&page=${page}`
-    );
-    return await response.json();
+    return await apiInstance.get(`${QUERY_TRENDING_DAY}?api_key=${API_KEY}&page=${page}`);
   } catch (error) {
     return console.log('error :>> ', error);
   }
@@ -71,9 +60,9 @@ export async function fetchPopularDay(page) {
 
 export async function fetchTrailers(movie_id) {
   try {
-    apiInstance.get(`/movie/${movie_id}/videos?api_key=${API_KEY}&language=en-US`
+    return await apiInstance.get(`/movie/${movie_id}/videos?api_key=${API_KEY}&language=en-US`
     );
-    return (await responce).json();
+    // return (await responce).json();
   } catch (error) {}
   return console.log('error :>> ', error);
 }
