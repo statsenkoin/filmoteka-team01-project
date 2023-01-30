@@ -1,5 +1,10 @@
 import { watchedFilms, queueFilms } from './local-storage';
 import { markupTrending } from './markups';
+import { getGenreByIdList, createMarkupModalWindow } from './markups';
+import modalActions from './modal-servise';
+
+const homeGallery = document.querySelector('.home-gallery');
+homeGallery.addEventListener('click', onCardClick);
 
 const wachedBtn = document.querySelector('.js-watched');
 const queueBtn = document.querySelector('.js-queue');
@@ -34,7 +39,8 @@ function onQueueBtn() {
   }
 }
 function libraryError() {
-  defaultPage.firstElementChild.textContent = 'There are no movies in your library yet..';
+  defaultPage.firstElementChild.textContent =
+    'There are no movies in your library yet..';
   defaultPage.firstElementChild.style.color = '#ff001b';
 }
 function hiddenDefaultPage() {
@@ -45,4 +51,16 @@ function showDefaultPage() {
 }
 function clearGallery() {
   gallery.innerHTML = '';
+}
+
+function onCardClick(event) {
+  const filmBox = event.target.closest('.movies-images__item');
+  console.log('работает');
+  if (!filmBox) return;
+  const filmBoxId = Number(filmBox.dataset.id);
+  const movies = watchedFilms.getLocalStorage();
+  const data = movies.find(film => film.id === filmBoxId);
+  const filmGenres = getGenreByIdList(data.genre_ids);
+  modalActions(event);
+  createMarkupModalWindow(data, filmGenres);
 }
