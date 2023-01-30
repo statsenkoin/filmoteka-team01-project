@@ -18,7 +18,7 @@ export default function modalActions() {
   function openModalOnclick(event) {
     event.preventDefault();
     // console.log(event.currentTarget);
-    console.log(event.target);
+    // console.log(event.target);
 
     if (event.target.classList.contains('home-gallery')) {
       return;
