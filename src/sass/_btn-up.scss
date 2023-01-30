@@ -1,7 +1,7 @@
 .btn-up {
   position: fixed;
   background-color: #f57c00;
-  right: 60px;
+  right: 20px;
   bottom: 30px;
   border-radius: 25px;
   cursor: pointer;
@@ -14,9 +14,9 @@
   height: 50px;
   opacity: 0.5;
   transform: translateY(0);
-  @media screen and (min-width: 768px) {
-    right: 20px;
-  }
+  // @media screen and (min-width: 768px) {
+  //   right: 20px;
+  // }
 }
 
 .btn-up_hide {
