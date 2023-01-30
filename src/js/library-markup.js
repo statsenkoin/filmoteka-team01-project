@@ -1,5 +1,5 @@
 import { watchedFilms, queueFilms } from './local-storage';
-import { markupTrending } from './markups';
+import { markupTrending, createMarkupModalWindowMyLibrary } from './markups';
 import { getGenreByIdList, createMarkupModalWindow } from './markups';
 import modalActions from './modal-servise';
 
@@ -61,5 +61,5 @@ function onCardClick(event) {
   const data = movies.find(film => film.id === filmBoxId);
   const filmGenres = getGenreByIdList(data.genre_ids);
   modalActions(event);
-  createMarkupModalWindow(data, filmGenres);
+  createMarkupModalWindowMyLibrary(data, filmGenres);
 }
