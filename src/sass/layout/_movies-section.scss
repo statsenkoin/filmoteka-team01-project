@@ -26,14 +26,9 @@
   border-radius: 5px;
 }
 .title_wrraper {
-  width: 350px;
   white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
-
-  &:hover {
-    overflow: visible;
-  }
+  text-overflow: ellipsis;
 }
 
 .box-description {

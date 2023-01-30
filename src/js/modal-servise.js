@@ -18,8 +18,11 @@ export default function modalActions() {
 
   function openModalOnclick(event) {
     event.preventDefault();
-    // console.log(event.target);
-    // if (!event.target.classList.contains('movies-images__item')) {
+    console.log(event.target);
+    // if (
+    //   !event.target.classList.contains('movies-images') ||
+    //   !event.target.classList.contains('js-login-button')
+    // ) {
     //   return;
     // }
 
