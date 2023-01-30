@@ -1,12 +1,12 @@
 @media screen and (min-width: 320px) {
   .box-genre {
     position: relative;
-    width: 100px;
-    margin: 0 auto;
+    // width: 100px;
+    // margin: 0 auto;
   }
   .dropdown {
     position: relative;
-    height: 44px;
+    height: 41px;
     width: 95px;
     background: #ff001b;
     color: #fff;
@@ -53,7 +53,7 @@
     margin-top: 2px;
     z-index: 1;
     overflow: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
     transition-delay: calc(60ms * var(--i));
   }
 
@@ -85,20 +85,20 @@
 @media screen and (min-width: 768px) {
   .box-genre {
     position: relative;
-    width: 150px;
-    margin: 0 auto;
+    // width: 150px;
+    // margin: 0 auto;
   }
   .dropdown {
     height: 42px;
-    width: 148px;
+    width: 120px;
   }
   .dropdown .items {
-    width: 148px;
+    width: 120px;
     margin-top: 63px;
   }
 
   .dropdown .items a {
-    width: 148px;
+    width: 120px;
     padding: 10px 15px;
   }
 
@@ -125,5 +125,20 @@
   }
   .dropdown.active .right-icon {
     transform: rotate(-135deg);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .dropdown {
+    height: 50px;
+    width: 130px;
+  }
+  .dropdown .items {
+    width: 130px;
+    margin-top: 60px;
+  }
+
+  .dropdown .items a {
+    width: 130px;
+    padding: 10px 15px;
   }
 }
