@@ -16,9 +16,9 @@ export function markupTrending(arrMovies, homeGallery) {
               title || original_title
             }</h2></div>
             <p class="box-description__text">
-                <span class="box-description__span">${getGenreById(genre_ids) || noGenre}</span>${
-          release_date.slice(0, 4) || noYear
-        }
+                <span class="box-description__span">${
+                  getGenreById(genre_ids) || noGenre
+                }</span>${release_date.slice(0, 4) || noYear}
             </p>
         </div>
     </li>`
