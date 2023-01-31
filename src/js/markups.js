@@ -12,9 +12,7 @@ export function markupTrending(arrMovies, homeGallery) {
         </div>
             
         <div class="box-description">
-            <div class="title_wrraper"><h2 class="box-description__title">${
-              title || original_title
-            }</h2></div>
+            <h2 class="box-description__title">${title || original_title}</h2>
             <p class="box-description__text">
                 <span class="box-description__span">${
                   getGenreById(genre_ids) || noGenre
