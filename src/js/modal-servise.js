@@ -19,7 +19,8 @@ export default function modalActions() {
 
   function openModalOnclick(event) {
     event.preventDefault();
-    if (!event.target.closest('.movies-images__item')) return;
+    // if (!event.target.closest('.movies-images__item')) return;
+    if (event.target.classList.contains('home-gallery')) return;
 
     const modalName = event.currentTarget.dataset.modal;
     const modal = document.querySelector('.' + modalName);
@@ -31,8 +32,11 @@ export default function modalActions() {
   }
 
   function closeModalOncloseButtonsСlick(event) {
+    console.log(event.target);
     event.preventDefault();
-    this.closest('.modal').classList.remove('active');
+    Array.from(modals).forEach(modal => {
+      modal.classList.remove('active');
+    });
     overlay.classList.remove('active');
     scrollController.enabledScroll();
 

@@ -47,11 +47,13 @@
 //   // height: 100vh;
 // }
 
-p {
+.auth_modal-loginGreetingsBox_text {
   font-family: 'Playfair Display', Vidaloka, serif;
-  font-size: 70px;
-
-  line-height: 0.85;
+  font-size: 40px;
+  @media screen and (min-width: 480px) {
+    font-size: 60px;
+  }
+  line-height: 1.5;
   perspective: 500px;
 }
 
@@ -164,13 +166,7 @@ p {
   transform: scale(0);
 }
 
-@media screen and (max-width: 600px) {
-  h1 {
-    font-size: 5rem;
-  }
-
-  /* sparkle */
-  .superscript::after {
-    --size: 6rem;
-  }
+/* sparkle */
+.superscript::after {
+  --size: 6rem;
 }
