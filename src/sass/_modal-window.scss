@@ -240,6 +240,10 @@
   height: 690px;
   width: 500px;
   background-color: #080710;
+  background-repeat: no-repeat;
+  background-image: url(../images/loginFormBackground.png);
+  background-position: center;
+  background-size: 100% 100%;
   display: flex;
   justify-content: center;
 }
@@ -290,6 +294,13 @@
   letter-spacing: 0.4;
   // font-weight: 400;
   color: white;
+
+  &:focus {
+    transform: scale(1.1);
+    transition-property: transform;
+    transition-property: box-shadow;
+    box-shadow: 0 0 16px #a7151a;
+  }
 }
 ::placeholder {
   color: #e5e5e5;
