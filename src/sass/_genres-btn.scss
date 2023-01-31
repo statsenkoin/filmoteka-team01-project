@@ -5,18 +5,19 @@
 
   .dropdown {
     position: relative;
-    height: 35px;
-    width: 95px;
-    background: #ff001b;
+    height: 25px;
+    width: 90px;
+    // background: #ff001b;
     color: #fff;
     font-size: 12px;
     font-weight: 500;
+    line-height: 1.17;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     cursor: pointer;
   }
   .items {
@@ -28,7 +29,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 95px;
+    width: 90px;
     margin-top: 45px;
     overflow: hidden;
     visibility: hidden;
@@ -39,16 +40,16 @@
     visibility: visible;
   }
   .dropdown .items a {
-    width: 95px;
+    width: 90px;
     position: relative;
     left: 100%;
     display: flex;
-    font-size: 12px;
+    font-size: 11px;
     background: #fff;
     color: #ff001b;
     text-decoration: none;
     border-radius: 50px;
-    padding: 10px 5px;
+    padding: 8px 4px;
     margin-top: 2px;
     z-index: 1;
     overflow: hidden;
@@ -87,18 +88,18 @@
     // width: 150px;
     // margin: 0 auto;
   }
-  .dropdown {
-    height: 38px;
-    width: 115px;
-  }
+  // .dropdown {
+  //   height: 38px;
+  //   width: 115px;
+  // }
   .dropdown .items {
-    width: 115px;
+    width: 100px;
     margin-top: 45px;
   }
 
   .dropdown .items a {
-    width: 115px;
-    padding: 10px 15px;
+    width: 100px;
+    padding: 10px 5px;
   }
 
   .dropdown .left-icon,
@@ -127,17 +128,17 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .dropdown {
-    height: 38px;
-    width: 115px;
-  }
+  // .dropdown {
+  //   height: 38px;
+  //   width: 115px;
+  // }
   .dropdown .items {
-    width: 115px;
+    width: 100px;
     margin-top: 45px;
   }
 
   .dropdown .items a {
-    width: 115px;
-    padding: 10px 15px;
+    width: 100px;
+    padding: 10px 5px;
   }
 }

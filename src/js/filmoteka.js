@@ -119,13 +119,13 @@ async function onCheckBox(event) {
   isSearchChoosen = false;
   currentPage = 1;
 
-  if (isTodayChecked) {
-    todayFalseButton.classList.add('line-after');
-    weekFalseButton.classList.remove('line-after');
-  } else {
-    todayFalseButton.classList.remove('line-after');
-    weekFalseButton.classList.add('line-after');
-  }
+  // if (isTodayChecked) {
+  //   todayFalseButton.classList.add('line-after');
+  //   weekFalseButton.classList.remove('line-after');
+  // } else {
+  //   todayFalseButton.classList.remove('line-after');
+  //   weekFalseButton.classList.add('line-after');
+  // }
 
   await updateGallery();
 }
