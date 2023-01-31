@@ -47,14 +47,12 @@ export class LocalStorage {
     }
 
     if (response.find(item => item.id === film.id)) {
-      console.log('I`m delete film from the collection!');
+      // console.log('I`m delete film from the collection!');
       const indexFilm = response.findIndex(item => item.id === film.id);
       response.splice(indexFilm, 1);
 
-      this.value = currentFilms;
+      this.value = response;
       this.setLocalStorage(this.value);
-    } else {
-      console.log('Cannot find film in collection');
     }
   }
 }
