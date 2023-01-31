@@ -1,27 +1,92 @@
 import { watchedFilms, queueFilms } from './local-storage';
-import { markupTrending, createMarkupModalWindowMyLibrary } from './markups';
-import { getGenreByIdList, createMarkupModalWindow } from './markups';
+import { markupTrending, createMarkupModalWindowMyLibrary, getGenreByIdList } from './markups';
 import modalActions from './modal-servise';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+const options = {
+  width: '280px',
+  borderRadius: '30px',
+  position: 'center-bottom',
+  distance: '25px',
+  fontSize: '18px',
+  timeout: 2000,
+};
 
 const homeGallery = document.querySelector('.home-gallery');
 homeGallery.addEventListener('click', onCardClick);
 
-const wachedBtn = document.querySelector('.js-watched');
+const watchedBtn = document.querySelector('.js-watched');
 const queueBtn = document.querySelector('.js-queue');
 const gallery = document.querySelector('.home-gallery');
 const defaultPage = document.querySelector('.default');
-console.dir(defaultPage.firstElementChild);
-let movies;
+const modalWindow = document.querySelector('.js-filmInfoModal');
 
-wachedBtn.addEventListener('click', onWachedBtn);
+watchedBtn.classList.add('library_current');
+hiddenDefaultPage();
+let movies = watchedFilms.getLocalStorage() || [];
+if (watchedBtn.classList.contains('library_current')) {
+  const defaultMarkup = watchedFilms.getLocalStorage();
+  console.log(defaultMarkup);
+  if (!defaultMarkup || !defaultMarkup.length) {
+    libraryError();
+    showDefaultPage();
+  } else {
+    markupTrending(defaultMarkup, gallery);
+  }
+}
+
+watchedBtn.addEventListener('click', onWatchedBtn);
 queueBtn.addEventListener('click', onQueueBtn);
+modalWindow.addEventListener('click', onBtnDelete);
 
 window.scrollTo(0, 0);
 
-function onWachedBtn() {
+function onBtnDelete(event) {
+  const element = event.target;
+  if (element.classList.contains('js-delete')) {
+    if (watchedBtn.classList.contains('library_current')) {
+      movies = watchedFilms.getLocalStorage();
+
+      const filmID = modalWindow.lastElementChild.lastElementChild.id;
+
+      const currentFilm = movies.find(film => film.id == filmID);
+      watchedFilms.deleteFilmFromStorage(currentFilm);
+      Notify.success('The movie has been removed from the collection', options);
+      const currentResponse = watchedFilms.getLocalStorage();
+
+      if (!currentResponse.length) {
+        clearGallery();
+        libraryError();
+        showDefaultPage();
+      } else {
+        markupTrending(currentResponse, gallery);
+      }
+    }
+    if (queueBtn.classList.contains('library_current')) {
+      movies = queueFilms.getLocalStorage();
+      const filmID = modalWindow.lastElementChild.lastElementChild.id;
+      const currentFilm = movies.find(film => film.id == filmID);
+      queueFilms.deleteFilmFromStorage(currentFilm);
+      Notify.success('The movie has been removed from the collection', options);
+
+      const currentResponse = queueFilms.getLocalStorage();
+      if (!currentResponse.length) {
+        clearGallery();
+        libraryError();
+        showDefaultPage();
+      } else {
+        markupTrending(currentResponse, gallery);
+      }
+    }
+  }
+}
+
+function onWatchedBtn() {
   clearGallery();
+  queueBtn.classList.remove('library_current');
+  watchedBtn.classList.add('library_current');
   movies = watchedFilms.getLocalStorage();
-  if (!movies) {
+  if (!movies || !movies.length) {
     showDefaultPage();
     libraryError();
   } else {
@@ -32,8 +97,10 @@ function onWachedBtn() {
 
 function onQueueBtn() {
   clearGallery();
+  watchedBtn.classList.remove('library_current');
+  queueBtn.classList.add('library_current');
   movies = queueFilms.getLocalStorage();
-  if (!movies) {
+  if (!movies || !movies.length) {
     showDefaultPage();
     libraryError();
   } else {
@@ -42,8 +109,7 @@ function onQueueBtn() {
   }
 }
 function libraryError() {
-  defaultPage.firstElementChild.textContent =
-    'There are no movies in your library yet..';
+  defaultPage.firstElementChild.textContent = 'There are no movies in your library yet..';
   defaultPage.firstElementChild.style.color = '#ff001b';
   defaultPage.firstElementChild.style.boxShadow = '0px 0px 9px 0px #ff001b';
 }
