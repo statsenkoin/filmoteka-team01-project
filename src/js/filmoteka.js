@@ -49,6 +49,7 @@ let isSearchChoosen = false;
 errorMessage.style.opacity = '0';
 
 initGallery();
+window.scrollTo(0, 0);
 
 async function initGallery() {
   loadSpinner.show();
@@ -70,6 +71,7 @@ async function updateGallery() {
   markupTrending(currentFilmsList, homeGallery);
   updatePagination(currentPage, totalPages, paginationRef);
   loadSpinner.hide();
+  window.scrollTo(0, 0);
 }
 
 async function chooseSearchQuery() {
@@ -97,7 +99,6 @@ function onCardClick(event) {
   const filmBoxId = Number(filmBox.dataset.id);
   const data = currentFilmsList.find(film => film.id === filmBoxId);
   const filmGenres = getGenreByIdList(data.genre_ids);
-  // modalActions(event);
   createMarkupModalWindow(data, filmGenres);
 }
 
@@ -162,6 +163,6 @@ async function onPaginationButtonClick(event) {
   if (targetPage === currentPage) return;
   currentPage = targetPage;
   await updateGallery();
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
   loadSpinner.hide();
 }

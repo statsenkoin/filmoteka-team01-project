@@ -19,20 +19,10 @@ export default function modalActions() {
 
   function openModalOnclick(event) {
     event.preventDefault();
-    console.log(event.target);
-    // if (
-    //   !event.target.classList.contains('movies-images') ||
-    //   !event.target.classList.contains('js-login-button')
-    // ) {
-    //   return;
-    // }
+    if (!event.target.closest('.movies-images__item')) return;
 
     const modalName = event.currentTarget.dataset.modal;
-
     const modal = document.querySelector('.' + modalName);
-
-    // console.log(modalName);
-    // console.log(modal);
 
     modal.classList.add('active');
     overlay.classList.add('active');
@@ -46,8 +36,8 @@ export default function modalActions() {
     overlay.classList.remove('active');
     scrollController.enabledScroll();
 
-    // document.removeEventListener('keydown', closeModalOnEscapePress);
-    // overlay.removeEventListener('click', closeModalOnOverlayClick);
+    document.removeEventListener('keydown', closeModalOnEscapePress);
+    overlay.removeEventListener('click', closeModalOnOverlayClick);
   }
 
   function closeModalOnEscapePress(event) {
@@ -60,10 +50,11 @@ export default function modalActions() {
       });
       overlay.classList.remove('active');
       scrollController.enabledScroll();
-      // overlay.removeEventListener('click', closeModalOnOverlayClick);
-      // Array.from(closeButtons).forEach(button => {
-      //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
-      // });
+
+      overlay.removeEventListener('click', closeModalOnOverlayClick);
+      Array.from(closeButtons).forEach(button => {
+        button.removeEventListener('click', closeModalOncloseButtonsСlick);
+      });
     }
   }
 
@@ -74,9 +65,10 @@ export default function modalActions() {
     });
     overlay.classList.remove('active');
     scrollController.enabledScroll();
-    // document.removeEventListener('keydown', closeModalOnEscapePress);
-    // Array.from(closeButtons).forEach(button => {
-    //   button.removeEventListener('click', closeModalOncloseButtonsСlick);
-    // });
+
+    document.removeEventListener('keydown', closeModalOnEscapePress);
+    Array.from(closeButtons).forEach(button => {
+      button.removeEventListener('click', closeModalOncloseButtonsСlick);
+    });
   }
 }
