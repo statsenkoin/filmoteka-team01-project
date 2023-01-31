@@ -238,44 +238,17 @@
 
 .auth_modal {
   height: 690px;
+  width: 500px;
   background-color: #080710;
+  display: flex;
+  justify-content: center;
 }
-.auth_modal_background {
-  width: 430px;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-}
-.auth_modal_background .shape {
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
 
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  border-radius: 50%;
-}
-.shape:first-child {
-  background: linear-gradient(#1845ad, #23a2f6);
-  left: -80px;
-  top: -80px;
-}
-.shape:last-child {
-  background: linear-gradient(to right, #ff512f, #f09819);
-  right: -75px;
-  bottom: -80px;
-}
 .auth_modal_form {
   height: 600px;
   width: 400px;
-  @media screen and (max-width: 450px) {
-    width: 100%;
+  @media screen and (max-width: 400px) {
+    width: 300px;
   }
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
@@ -363,20 +336,14 @@
 }
 
 .auth_modal-loginGreetingsBox {
-  height: 400px;
-  width: 600px;
-
-  color: #fff;
-  font-size: 48px;
   text-align: center;
-
+  display: none;
   position: absolute;
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
 }
 
 .auth_modal-loginGreetingsBox_text {
-  margin: 25% 0;
+  color: #fff;
 }

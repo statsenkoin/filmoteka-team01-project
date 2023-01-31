@@ -86,7 +86,7 @@ monitorAuthchange();
 function showGreetings(user) {
   refs.form.style.display = 'none';
   refs.greetingBox.style.display = 'block';
-  refs.greetingBox.innerHTML = `<p>
+  refs.greetingBox.innerHTML = `<p  class="auth_modal-loginGreetingsBox_text">
   <span class="word">Dear ${user.email} <span class="superscript"></span> Wellcome to </span>
   <span class="word">Filmoteka</span>
 </p>`;
