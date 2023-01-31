@@ -15,7 +15,8 @@ import modalActions from './modal-servise';
 import LoadSpinner from './spinner';
 import { genresFilm, LocalStorage } from './local-storage';
 import { items } from './genres-btn';
-
+import modalActions from './modal-servise';
+modalActions();
 export const popularFilms = new LocalStorage('currentFilmsList');
 const loadSpinner = new LoadSpinner({
   selector: '.loading',

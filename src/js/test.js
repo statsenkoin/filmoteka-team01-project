@@ -446,9 +446,3 @@ export const dataFilms = {
   total_pages: 1000,
   total_results: 20000,
 };
-
-import modalActions from './modal-servise';
-modalActions();
-// function showModalOnClick() {
-//   modalActions();
-// }
