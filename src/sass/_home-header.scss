@@ -232,8 +232,6 @@
 
   @media screen and (min-width: 768px) {
     width: 336px;
-    // padding-top: 40px;
-    // padding-bottom: 20px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -260,13 +258,9 @@
   }
 
   &__button {
-    // position: relative;
-    // height: 20px;
-    // width: 20px;
     background-color: transparent;
     border: none;
-    // border-bottom: 0.5px solid var(--white);
-    // padding: 10px;
+
     cursor: pointer;
     font-family: inherit;
   }
@@ -276,10 +270,6 @@
   }
 
   &__icon {
-    // position: absolute;
-    // top: 50%;
-    // right: 1px;
-    // transform: translateY(-50%);
     width: 12px;
     height: 12px;
   }
@@ -292,8 +282,7 @@
 
 .error-text {
   opacity: 0;
-  font-family: inherit; //'Roboto';
-  font-style: normal;
+
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
@@ -301,10 +290,11 @@
   display: flex;
   color: var(--text-error);
   margin: auto;
-
-  @media screen and (min-width: 768px) {
-    width: 393px;
-  }
+  justify-content: center;
+  margin-bottom: 5px;
+  // @media screen and (min-width: 768px) {
+  //   width: 393px;
+  // }
 }
 
 .btn-container {
