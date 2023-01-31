@@ -249,10 +249,16 @@
 }
 
 .auth_modal_form {
-  height: 600px;
-  width: 400px;
-  @media screen and (max-width: 320px) {
+  height: 100%;
+  width: 100%;
+  @media screen and (min-width: 350px) {
     width: 280px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+  @media screen and (min-width: 1200px) {
+    height: 600px;
   }
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
@@ -286,6 +292,7 @@
   display: block;
   height: 50px;
   width: 100%;
+
   background-color: rgba(255, 255, 255, 0.07);
   border-radius: 3px;
   padding: 0 10px;
@@ -303,7 +310,8 @@
   }
 }
 ::placeholder {
-  color: #e5e5e5;
+  color: #7d7b7b;
+  font-size: 18px;
 }
 
 .auth_modal_form .auth_modal_form_button {
