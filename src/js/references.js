@@ -10,5 +10,4 @@ export const refs = {
   ),
   greetingBox: document.querySelector('.auth_modal-loginGreetingsBox'),
   greetingText: document.querySelector('.auth_modal-loginGreetingsBox_text'),
-  logigButton: document.querySelector('.js-login-button'),
 };
