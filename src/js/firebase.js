@@ -46,7 +46,7 @@ function loginEmailPassword() {
 //
 
 function creatAccount(event) {
-  const loginEmail = refs.inputEmail.value;
+  const loginEmail = refs.inputEmail.value.toLowerCase();
   const loginPassword = refs.inputPassword.value;
   createUserWithEmailAndPassword(auth, loginEmail, loginPassword)
     .then(userCredential => {
