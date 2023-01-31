@@ -7,8 +7,7 @@ export default function modalActions() {
   const overlay = document.querySelector('.backdrop');
   const modals = document.querySelectorAll('.modal');
   const closeButtons = document.querySelectorAll('.modal-close-btn');
-  document.addEventListener('keydown', closeModalOnEscapePress);
-  overlay.addEventListener('click', closeModalOnOverlayClick);
+
   Array.from(modalTrigers).forEach(trigger => {
     trigger.addEventListener('click', openModalOnclick);
   });
@@ -18,6 +17,8 @@ export default function modalActions() {
   });
 
   function openModalOnclick(event) {
+    document.addEventListener('keydown', closeModalOnEscapePress);
+    overlay.addEventListener('click', closeModalOnOverlayClick);
     event.preventDefault();
     // if (!event.target.closest('.movies-images__item')) return;
     if (event.target.classList.contains('home-gallery')) return;
@@ -56,9 +57,6 @@ export default function modalActions() {
       scrollController.enabledScroll();
 
       overlay.removeEventListener('click', closeModalOnOverlayClick);
-      Array.from(closeButtons).forEach(button => {
-        button.removeEventListener('click', closeModalOncloseButtonsСlick);
-      });
     }
   }
 
@@ -71,8 +69,5 @@ export default function modalActions() {
     scrollController.enabledScroll();
 
     document.removeEventListener('keydown', closeModalOnEscapePress);
-    Array.from(closeButtons).forEach(button => {
-      button.removeEventListener('click', closeModalOncloseButtonsСlick);
-    });
   }
 }
