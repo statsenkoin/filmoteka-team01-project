@@ -38,7 +38,10 @@ function onWathedBtn(event) {
       const filmIncludes = response.filter(item => item.id == idFilm);
 
       if (filmIncludes.length) {
-        Notify.warning('The movie has already been added to my library', options);
+        Notify.warning(
+          'The movie has already been added to my library',
+          options
+        );
       } else {
         watchedFilms.addFilmtoStorage(...currentFilm);
         Notify.success('The movie has been added to my library', options);
@@ -52,7 +55,10 @@ function onWathedBtn(event) {
       const filmIncludes = response.filter(item => item.id == idFilm);
 
       if (filmIncludes.length) {
-        Notify.warning('The movie has already been added to my library', options);
+        Notify.warning(
+          'The movie has already been added to my library',
+          options
+        );
       } else {
         queueFilms.addFilmtoStorage(...currentFilm);
         Notify.success('The movie has been added to my library', options);

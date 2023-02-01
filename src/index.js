@@ -5,6 +5,9 @@ import './js/modal-servise';
 import './js/modal-teams';
 import './js/test';
 // import './js/toggle';
-import './js/library';
+// import './js/library';
+import './js/markups';
+import './js/locale-storage-helper';
+
 import './js/trailer';
 import './js/firebase';
