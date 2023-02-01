@@ -1,4 +1,6 @@
 import { refs } from './references';
+import { isLogedIn } from './login_notification';
+import { intervalId } from './login_notification';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -6,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from 'firebase/auth';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyBRS6xf_Enc8Wod3m1W0oIKY2kJtVDEMEM',
   authDomain: 'filmoteka-team01-project.firebaseapp.com',
@@ -25,13 +28,16 @@ refs.btnLogin.addEventListener('click', loginEmailPassword);
 refs.btnSignin.addEventListener('click', creatAccount);
 
 function loginEmailPassword() {
+  isLogedIn = ' true';
+
   const loginEmail = refs.inputEmail.value;
   const loginPassword = refs.inputPassword.value;
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
     .then(userCredential => {
       const user = userCredential.user;
-      console.log(user);
+
       showGreetings(user);
+      clearInterval(intervalId);
     })
     .catch(error => {
       showLoginError(error);
@@ -53,6 +59,7 @@ function creatAccount(event) {
       // Signed in
       const user = userCredential.user;
       console.log(user);
+      clearInterval(intervalId);
       // showGreetings(user);
       // ...
     })
@@ -74,6 +81,7 @@ function monitorAuthchange() {
       // ...
 
       showGreetings(user);
+      showLoginForm();
     } else {
       // User is signed out
       // ...
@@ -111,4 +119,5 @@ export default function showLoginForm() {
   refs.greetingBox.style.display = 'none';
   refs.divAuth_modal_loginError.style.display = 'none';
   refs.loginError_errorText.textContent = '';
+  refs.greetingBox.innerHTML = '';
 }

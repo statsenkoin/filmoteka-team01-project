@@ -11,7 +11,6 @@ import {
   getGenreByIdList,
   createMarkupModalWindow,
 } from './markups';
-import modalActions from './modal-servise';
 import LoadSpinner from './spinner';
 import { genresFilm, LocalStorage } from './local-storage';
 import { items } from './genres-btn';

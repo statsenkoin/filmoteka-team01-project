@@ -1,4 +1,8 @@
 export const refs = {
+  authModal: document.querySelector('.js-auth_modal'),
+  overlay: document.querySelector('.backdrop'),
+  modals: document.querySelectorAll('.modal'),
+  modal: document.querySelector('.modal'),
   btnLogin: document.querySelector('.js-firebaseLogInbtn'),
   btnSignin: document.querySelector('.js-firebaseSingInbtn'),
   form: document.querySelector('.auth_modal_form'),

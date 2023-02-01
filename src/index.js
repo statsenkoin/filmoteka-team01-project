@@ -8,3 +8,4 @@ import './js/test';
 import './js/library';
 import './js/trailer';
 import './js/firebase';
+import './js/login_notification';
