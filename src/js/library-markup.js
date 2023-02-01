@@ -30,7 +30,7 @@ hiddenDefaultPage();
 let movies = watchedFilms.getLocalStorage() || [];
 if (watchedBtn.classList.contains('library_current')) {
   const defaultMarkup = watchedFilms.getLocalStorage();
-  console.log(defaultMarkup);
+  // console.log(defaultMarkup);
   if (!defaultMarkup || !defaultMarkup.length) {
     libraryError();
     showDefaultPage();
