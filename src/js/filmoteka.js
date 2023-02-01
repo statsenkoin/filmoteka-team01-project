@@ -28,8 +28,6 @@ const paginationRef = document.querySelector('.pagination');
 const toggle = document.querySelector('#input-toggle');
 const searchForm = document.querySelector('.search-form');
 const errorMessage = document.querySelector('.error-text');
-const weekFalseButton = document.querySelector('#week-btn');
-const todayFalseButton = document.querySelector('#today-btn');
 
 // homeGallery.addEventListener('click', onCardClick);
 paginationRef.addEventListener('click', onPaginationButtonClick);
@@ -136,14 +134,6 @@ async function onCheckBox(event) {
   isGenreChoosen = false;
   isSearchChoosen = false;
   currentPage = 1;
-
-  // if (isTodayChecked) {
-  //   todayFalseButton.classList.add('line-after');
-  //   weekFalseButton.classList.remove('line-after');
-  // } else {
-  //   todayFalseButton.classList.remove('line-after');
-  //   weekFalseButton.classList.add('line-after');
-  // }
 
   await updateGallery();
 }
