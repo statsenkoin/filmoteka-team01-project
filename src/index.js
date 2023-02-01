@@ -7,6 +7,4 @@ import './js/btn-up';
 import './js/modal-servise';
 import './js/trailer';
 import './js/modal-teams';
-import './js/test';
-// import './js/toggle';
 // import './js/library';
