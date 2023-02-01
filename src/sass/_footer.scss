@@ -50,10 +50,16 @@
   }
 }
 
+.git__link {
+  position: relative;
+  text-decoration: none;
+}
+
 .easter__egg {
   transform: translate(0%, 0%);
   font-size: 16px;
   color: transparent;
+  cursor: pointer;
 
   @media only screen and (max-width: 1100px) {
     font-size: 16px;
@@ -73,18 +79,18 @@
 
   &:hover span:nth-child(1) {
     transform: translate(-50%, -130%);
-    transition-delay: 3000ms;
+    transition-delay: 800ms;
   }
 
   &:hover span:nth-child(2) {
     transform: translate(-50%, 30%);
-    transition-delay: 3000ms;
+    transition-delay: 800ms;
   }
 
   &:hover span:nth-child(3) {
     opacity: 1;
     transition: opacity 700ms ease;
-    transition-delay: 3000ms;
+    transition-delay: 800ms;
   }
 
   & span:nth-child(1),
@@ -132,13 +138,13 @@
 
     @media only screen and (max-width: 900px) {
       font-size: 8px;
-      width: 97%;
+      width: 100%;
       letter-spacing: 4px;
     }
 
     @media only screen and (max-width: 700px) {
       font-size: 8px;
-      width: 96%;
+      width: 100%;
       letter-spacing: 2px;
       word-spacing: 0.5rem;
     }
