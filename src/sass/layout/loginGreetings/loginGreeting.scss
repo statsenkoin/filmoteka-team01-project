@@ -51,7 +51,13 @@
   font-family: 'Playfair Display', Vidaloka, serif;
   font-size: 20px;
   @media screen and (min-width: 480px) {
-    font-size: 40px;
+    font-size: 30px;
+  }
+  @media screen and (min-width: 780px) {
+    font-size: 50px;
+  }
+  @media screen and (min-width: 780px) {
+    font-size: 70px;
   }
   line-height: 1.5;
   perspective: 500px;
