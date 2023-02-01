@@ -1,5 +1,4 @@
 export function markupTrending(arrMovies, homeGallery) {
-  // console.log('markupTrending-arrMovies :>> ', arrMovies);
   const noGenre = 'There are no genres';
   const noYear = 'No year';
   const markup = arrMovies
@@ -14,9 +13,9 @@ export function markupTrending(arrMovies, homeGallery) {
         <div class="box-description">
             <h2 class="box-description__title">${title || original_title}</h2>
             <p class="box-description__text">
-                <span class="box-description__span">${getGenreById(genre_ids) || noGenre}</span>${
-          release_date.slice(0, 4) || noYear
-        }
+                <span class="box-description__span">${
+                  getGenreById(genre_ids) || noGenre
+                }</span>${release_date.slice(0, 4) || noYear}
             </p>
         </div>
     </li>`
@@ -52,14 +51,6 @@ export function getGenreById(genreIds, genreList = dataGenres.genres) {
   return filmGenres.join(', ');
 }
 
-// export function getGenreByIdList(genreIds) {
-//   console.log(genreIds);
-//   return genreIds
-//     .filter(genre => genreIds.includes(genre.id))
-//     .map(item => item.name)
-//     .join(', ');
-// }
-
 export function getGenreByIdList(genreIds, genreList = dataGenres.genres) {
   let filmGenres = [];
 
@@ -83,12 +74,10 @@ export function createMarkupModalWindow(
   isInWatched,
   isInQueue
 ) {
-  // =================================================================
   const buttonWatchedText = isInWatched
     ? 'remove from watched'
     : 'add to watched';
   const buttonQueueText = isInQueue ? 'remove from queue' : 'add to queue';
-  // =================================================================
   const {
     id,
     title,

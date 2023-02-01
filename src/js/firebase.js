@@ -42,7 +42,6 @@ function loginEmailPassword() {
     });
 }
 
-
 function creatAccount(event) {
   const loginEmail = refs.inputEmail.value.toLowerCase();
   const loginPassword = refs.inputPassword.value;
@@ -50,28 +49,22 @@ function creatAccount(event) {
     .then(userCredential => {
       const user = userCredential.user;
       console.log(user);
-   })
+    })
     .catch(error => {
       showLoginError(error);
 
       const errorCode = error.code;
       const errorMessage = error.message;
-   
     });
 }
 
 function monitorAuthchange() {
   onAuthStateChanged(auth, user => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-      // ...
 
       showGreetings(user);
     } else {
-      // User is signed out
-      // ...
     }
   });
 }
@@ -85,7 +78,6 @@ function showGreetings(user) {
   <span class="word">Dear ${user.email} <span class="superscript"></span> Wellcome to </span>
   <span class="word">Filmoteka</span>
 </p>`;
-  // refs.greetingText.textContent = ` Dear ${user.email} Wellcome to Filmoteka`;
 }
 
 function showLoginError(error) {
