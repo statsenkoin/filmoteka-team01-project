@@ -11,6 +11,7 @@ export { items };
 // =====================================
 dropdown.addEventListener('click', onButtonClick);
 function btnGenres() {
+  dataGenres.genres.unshift({ id: 'all', name: 'ALL' });
   const liArr = dataGenres.genres
     .map(
       (element, index) =>
