@@ -1,5 +1,10 @@
+import { genresFilm } from './local-storage';
+
+const GENRE_LIMIT = 3;
+const dataGenres = genresFilm.getLocalStorage();
+export const modalWindow = document.querySelector('.modal-film-info');
+
 export function markupTrending(arrMovies, homeGallery) {
-  // console.log('markupTrending-arrMovies :>> ', arrMovies);
   const noGenre = 'There are no genres';
   const noYear = 'No year';
   const markup = arrMovies
@@ -10,19 +15,17 @@ export function markupTrending(arrMovies, homeGallery) {
         <img class="movie-image" src="${noImage(poster_path)}" 
         alt="Movie ${title || original_title}" />
         </div>
-            
         <div class="box-description">
             <h2 class="box-description__title">${title || original_title}</h2>
             <p class="box-description__text">
-                <span class="box-description__span">${getGenreById(genre_ids) || noGenre}</span>${
-          release_date.slice(0, 4) || noYear
-        }
+                <span class="box-description__span">${
+                  getGenreById(genre_ids) || noGenre
+                }</span>${release_date.slice(0, 4) || noYear}
             </p>
         </div>
     </li>`
     )
     .join('');
-
   homeGallery.innerHTML = markup;
 }
 
@@ -34,13 +37,8 @@ function noImage(image) {
   return url;
 }
 
-import { dataGenres } from './test';
-
-const GENRE_LIMIT = 3;
-
-export function getGenreById(genreIds, genreList = dataGenres.genres) {
+export function getGenreById(genreIds, genreList = dataGenres) {
   let filmGenres = [];
-
   for (const genreId of genreIds) {
     const ganreObject = genreList.find(element => element.id === genreId);
     filmGenres.push(ganreObject.name);
@@ -52,17 +50,8 @@ export function getGenreById(genreIds, genreList = dataGenres.genres) {
   return filmGenres.join(', ');
 }
 
-// export function getGenreByIdList(genreIds) {
-//   console.log(genreIds);
-//   return genreIds
-//     .filter(genre => genreIds.includes(genre.id))
-//     .map(item => item.name)
-//     .join(', ');
-// }
-
-export function getGenreByIdList(genreIds, genreList = dataGenres.genres) {
+export function getGenreByIdList(genreIds, genreList = dataGenres) {
   let filmGenres = [];
-
   if (genreIds.length === 0) {
     filmGenres.push('There are no genres');
     return filmGenres;
@@ -75,20 +64,16 @@ export function getGenreByIdList(genreIds, genreList = dataGenres.genres) {
   }
 }
 
-export const modalWindow = document.querySelector('.modal-film-info');
-
 export function createMarkupModalWindow(
   data,
   filmGenres,
   isInWatched,
   isInQueue
 ) {
-  // =================================================================
   const buttonWatchedText = isInWatched
     ? 'remove from watched'
     : 'add to watched';
   const buttonQueueText = isInQueue ? 'remove from queue' : 'add to queue';
-  // =================================================================
   const {
     id,
     title,
@@ -101,7 +86,6 @@ export function createMarkupModalWindow(
   } = data;
 
   const modalWindow = document.querySelector('.modal-film-info');
-
   const markup = `<div class="poster-block">
         <img class="poster" src="${noImage(poster_path)}" alt="${title}" />
            <button type="button" data-modal-id=${id}  class="youtube__btn js__youtube__btn">
@@ -140,7 +124,6 @@ export function createMarkupModalWindow(
           <button type="button" class="btn-add js-add-to-queue" data-is-in-queue=${isInQueue}>${buttonQueueText}</button>
         </div>
       </div>`;
-
   modalWindow.innerHTML = markup;
 }
 
@@ -157,7 +140,6 @@ export function createMarkupModalWindowMyLibrary(data, filmGenres) {
   } = data;
 
   const modalWindow = document.querySelector('.modal-film-info');
-
   const markup = `<div class="poster-block">
         <img class="poster" src="${noImage(poster_path)}" alt="${title}" />
            <button type="button" data-modal-id=${id}  class="youtube__btn js__youtube__btn">
@@ -196,6 +178,5 @@ export function createMarkupModalWindowMyLibrary(data, filmGenres) {
           
         </div>
       </div>`;
-
   modalWindow.innerHTML = markup;
 }

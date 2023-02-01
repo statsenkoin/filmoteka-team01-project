@@ -1,18 +1,17 @@
-import { dataGenres } from './test';
-// import { fetchMoivesByGenre } from './api-service';
-// import { markupTrending } from './markups';
+import { genresFilm } from './local-storage';
 
 const dropdown = document.querySelector('.dropdown');
 const items = document.querySelector('.items');
-// const homeGallery = document.querySelector('.home-gallery');
 
-// =====================================
-export { items };
-// =====================================
 dropdown.addEventListener('click', onButtonClick);
+
+btnGenres();
+export { items };
+
 function btnGenres() {
-  dataGenres.genres.unshift({ id: 'all', name: 'ALL' });
-  const liArr = dataGenres.genres
+  const dataGenres = genresFilm.getLocalStorage();
+  dataGenres.unshift({ id: 'all', name: 'ALL' });
+  const liArr = dataGenres
     .map(
       (element, index) =>
         `<a href="#" style="--i:${index + 1}" id="${element.id}">
@@ -20,21 +19,10 @@ function btnGenres() {
          </a>`
     )
     .join('');
-
   items.insertAdjacentHTML('beforeend', liArr);
 }
-
-// items.addEventListener('click', onGanreClick);
-btnGenres();
 
 function onButtonClick(evt) {
   evt.preventDefault();
   dropdown.classList.toggle('active');
 }
-
-// async function onGanreClick(evt) {
-//   evt.preventDefault();
-
-//   const arrMovies = await fetchMoivesByGenre(evt.target.id, 1);
-//   markupTrending(arrMovies.results, homeGallery);
-// }

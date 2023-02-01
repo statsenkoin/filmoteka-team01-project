@@ -99,7 +99,6 @@ async function onCheckBox(event) {
   isGenreChoosen = false;
   isSearchChoosen = false;
   currentPage = 1;
-
   await updateGallery();
 }
 
