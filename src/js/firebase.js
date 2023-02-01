@@ -39,29 +39,24 @@ function loginEmailPassword() {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorMessage);
-      // ..
     });
 }
 
-//
 
 function creatAccount(event) {
   const loginEmail = refs.inputEmail.value.toLowerCase();
   const loginPassword = refs.inputPassword.value;
   createUserWithEmailAndPassword(auth, loginEmail, loginPassword)
     .then(userCredential => {
-      // Signed in
       const user = userCredential.user;
       console.log(user);
-      // showGreetings(user);
-      // ...
-    })
+   })
     .catch(error => {
       showLoginError(error);
 
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
+   
     });
 }
 
