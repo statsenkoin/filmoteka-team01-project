@@ -28,6 +28,14 @@ export default function modalActions() {
     modal.classList.add('active');
     refs.overlay.classList.add('active');
     scrollController.disabledScroll();
+
+    // =====================================================
+    // console.log(
+    //   'event.target :>> ',
+    //   event.target.closest('.movies-images__item')
+    // );
+
+    // =====================================================
     showLoginForm();
   }
 

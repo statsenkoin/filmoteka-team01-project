@@ -16,20 +16,19 @@ import { genresFilm, LocalStorage } from './local-storage';
 import { items } from './genres-btn';
 import modalActions from './modal-servise';
 modalActions();
-export const popularFilms = new LocalStorage('currentFilmsList');
+// export const popularFilms = new LocalStorage('currentFilmsList');
+export const currentFilmsOnPage = new LocalStorage('currentFilmsList');
 const loadSpinner = new LoadSpinner({
   selector: '.loading',
 });
 
-const homeGallery = document.querySelector('.home-gallery');
+export const homeGallery = document.querySelector('.home-gallery');
 const paginationRef = document.querySelector('.pagination');
 const toggle = document.querySelector('#input-toggle');
 const searchForm = document.querySelector('.search-form');
 const errorMessage = document.querySelector('.error-text');
-const weekFalseButton = document.querySelector('#week-btn');
-const todayFalseButton = document.querySelector('#today-btn');
 
-homeGallery.addEventListener('click', onCardClick);
+// homeGallery.addEventListener('click', onCardClick);
 paginationRef.addEventListener('click', onPaginationButtonClick);
 toggle.addEventListener('change', onCheckBox);
 items.addEventListener('click', onGanreClick);
@@ -47,6 +46,11 @@ let isTodayChecked = false;
 let isGenreChoosen = false;
 let isSearchChoosen = false;
 errorMessage.style.opacity = '0';
+
+// // ======================================================
+// const isInWatched = false;
+// const isInQueue = false;
+// //  =======================================================
 
 initGallery();
 window.scrollTo(0, 0);
@@ -67,7 +71,18 @@ async function updateGallery() {
   totalPages = isGenreChoosen ? 300 : receivedFilmList.total_pages;
   // ======================================================
   currentFilmsList = receivedFilmList.results;
-  popularFilms.setLocalStorage(currentFilmsList);
+  // popularFilms.setLocalStorage(currentFilmsList);
+  currentFilmsOnPage.setLocalStorage(currentFilmsList);
+
+  // ======================================================
+
+  // const isInWatched = checkIfInLibrary('watched');
+  // const isInQueue = checkIfInLibrary('queue');
+
+  // markupTrending(currentFilmsList, homeGallery, isInWatched, isInQueue);
+
+  // ======================================================
+
   markupTrending(currentFilmsList, homeGallery);
   updatePagination(currentPage, totalPages, paginationRef);
   loadSpinner.hide();
@@ -93,14 +108,14 @@ async function chooseSearchQuery() {
   }
 }
 
-function onCardClick(event) {
-  const filmBox = event.target.closest('.movies-images__item');
-  if (!filmBox) return;
-  const filmBoxId = Number(filmBox.dataset.id);
-  const data = currentFilmsList.find(film => film.id === filmBoxId);
-  const filmGenres = getGenreByIdList(data.genre_ids);
-  createMarkupModalWindow(data, filmGenres);
-}
+// function onCardClick(event) {
+//   const filmBox = event.target.closest('.movies-images__item');
+//   if (!filmBox) return;
+//   const filmBoxId = Number(filmBox.dataset.id);
+//   const data = currentFilmsList.find(film => film.id === filmBoxId);
+//   const filmGenres = getGenreByIdList(data.genre_ids);
+//   createMarkupModalWindow(data, filmGenres, isInWatched, isInQueue);
+// }
 
 // ===== button genres ===============================
 async function onGanreClick(evt) {
@@ -118,14 +133,6 @@ async function onCheckBox(event) {
   isGenreChoosen = false;
   isSearchChoosen = false;
   currentPage = 1;
-
-  // if (isTodayChecked) {
-  //   todayFalseButton.classList.add('line-after');
-  //   weekFalseButton.classList.remove('line-after');
-  // } else {
-  //   todayFalseButton.classList.remove('line-after');
-  //   weekFalseButton.classList.add('line-after');
-  // }
 
   await updateGallery();
 }

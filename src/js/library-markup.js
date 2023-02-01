@@ -1,7 +1,11 @@
 import { watchedFilms, queueFilms } from './local-storage';
-import { markupTrending, createMarkupModalWindowMyLibrary, getGenreByIdList } from './markups';
+import {
+  markupTrending,
+  createMarkupModalWindowMyLibrary,
+  getGenreByIdList,
+} from './markups';
 import modalActions from './modal-servise';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix';
 
 const options = {
   width: '280px',
@@ -26,7 +30,7 @@ hiddenDefaultPage();
 let movies = watchedFilms.getLocalStorage() || [];
 if (watchedBtn.classList.contains('library_current')) {
   const defaultMarkup = watchedFilms.getLocalStorage();
-  console.log(defaultMarkup);
+  // console.log(defaultMarkup);
   if (!defaultMarkup || !defaultMarkup.length) {
     libraryError();
     showDefaultPage();
@@ -109,7 +113,8 @@ function onQueueBtn() {
   }
 }
 function libraryError() {
-  defaultPage.firstElementChild.textContent = 'There are no movies in your library yet..';
+  defaultPage.firstElementChild.textContent =
+    'There are no movies in your library yet..';
   defaultPage.firstElementChild.style.color = '#ff001b';
   defaultPage.firstElementChild.style.boxShadow = '0px 0px 9px 0px #ff001b';
 }
