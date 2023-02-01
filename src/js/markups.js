@@ -77,7 +77,18 @@ export function getGenreByIdList(genreIds, genreList = dataGenres.genres) {
 
 export const modalWindow = document.querySelector('.modal-film-info');
 
-export function createMarkupModalWindow(data, filmGenres) {
+export function createMarkupModalWindow(
+  data,
+  filmGenres,
+  isInWatched,
+  isInQueue
+) {
+  // =================================================================
+  const buttonWatchedText = isInWatched
+    ? 'remove from watched'
+    : 'add to watched';
+  const buttonQueueText = isInQueue ? 'remove from queue' : 'add to queue';
+  // =================================================================
   const {
     id,
     title,
@@ -125,8 +136,8 @@ export function createMarkupModalWindow(data, filmGenres) {
           ${overview}
         </p>
         <div class="buttons-add">
-          <button type="button" class="btn-add js-add-to-watched">add to Watched</button>
-          <button type="button" class="btn-add js-add-to-queue">add to queue</button>
+          <button type="button" class="btn-add js-add-to-watched" data-is-in-watched=${isInWatched}>${buttonWatchedText}</button>
+          <button type="button" class="btn-add js-add-to-queue" data-is-in-queue=${isInQueue}>${buttonQueueText}</button>
         </div>
       </div>`;
 

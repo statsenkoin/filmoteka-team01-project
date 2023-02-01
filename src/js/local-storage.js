@@ -105,7 +105,9 @@ export function updateLocalStorage(key, film) {
     if (currentFilms.find(item => item.title === film.title)) {
       console.log('I`m delete film from the collection!');
 
-      const indexFilm = currentFilms.findIndex(item => item.title === film.title);
+      const indexFilm = currentFilms.findIndex(
+        item => item.title === film.title
+      );
       currentFilms.splice(indexFilm, 1);
       setLocalStorage(key, response);
     } else {
