@@ -6,18 +6,12 @@ import {
   fetchQuery,
 } from './api-service';
 import { updatePagination, getCurrentPage } from './custom-pagination';
-import {
-  markupTrending,
-  getGenreByIdList,
-  createMarkupModalWindow,
-} from './markups';
+import { markupTrending } from './markups';
 import modalActions from './modal-servise';
 import LoadSpinner from './spinner';
 import { genresFilm, LocalStorage } from './local-storage';
 import { items } from './genres-btn';
 import modalActions from './modal-servise';
-modalActions();
-// export const popularFilms = new LocalStorage('currentFilmsList');
 export const currentFilmsOnPage = new LocalStorage('currentFilmsList');
 const loadSpinner = new LoadSpinner({
   selector: '.loading',
@@ -29,7 +23,6 @@ const toggle = document.querySelector('#input-toggle');
 const searchForm = document.querySelector('.search-form');
 const errorMessage = document.querySelector('.error-text');
 
-// homeGallery.addEventListener('click', onCardClick);
 paginationRef.addEventListener('click', onPaginationButtonClick);
 toggle.addEventListener('change', onCheckBox);
 items.addEventListener('click', onGanreClick);
@@ -48,13 +41,7 @@ let isGenreChoosen = false;
 let isSearchChoosen = false;
 errorMessage.style.opacity = '0';
 
-// // ======================================================
-// const isInWatched = false;
-// const isInQueue = false;
-// //  =======================================================
-
 initGallery();
-window.scrollTo(0, 0);
 
 async function initGallery() {
   loadSpinner.show();
@@ -62,28 +49,17 @@ async function initGallery() {
   currentGenres = receivedFilmList.genres;
   genresFilm.setLocalStorage(currentGenres);
   await updateGallery();
+  modalActions();
+  window.scrollTo(0, 0);
   loadSpinner.hide();
 }
 
 async function updateGallery() {
   loadSpinner.show();
   await chooseSearchQuery();
-  // ======================================================
   totalPages = isGenreChoosen ? 300 : receivedFilmList.total_pages;
-  // ======================================================
   currentFilmsList = receivedFilmList.results;
-  // popularFilms.setLocalStorage(currentFilmsList);
   currentFilmsOnPage.setLocalStorage(currentFilmsList);
-
-  // ======================================================
-
-  // const isInWatched = checkIfInLibrary('watched');
-  // const isInQueue = checkIfInLibrary('queue');
-
-  // markupTrending(currentFilmsList, homeGallery, isInWatched, isInQueue);
-
-  // ======================================================
-
   markupTrending(currentFilmsList, homeGallery);
   updatePagination(currentPage, totalPages, paginationRef);
   loadSpinner.hide();
@@ -109,16 +85,6 @@ async function chooseSearchQuery() {
   }
 }
 
-// function onCardClick(event) {
-//   const filmBox = event.target.closest('.movies-images__item');
-//   if (!filmBox) return;
-//   const filmBoxId = Number(filmBox.dataset.id);
-//   const data = currentFilmsList.find(film => film.id === filmBoxId);
-//   const filmGenres = getGenreByIdList(data.genre_ids);
-//   createMarkupModalWindow(data, filmGenres, isInWatched, isInQueue);
-// }
-
-// ===== button genres ===============================
 async function onGanreClick(evt) {
   evt.preventDefault();
   isGenreChoosen = true;
@@ -128,7 +94,6 @@ async function onGanreClick(evt) {
   await updateGallery();
 }
 
-// ===== checkBox week/today ========================
 async function onCheckBox(event) {
   isTodayChecked = event.currentTarget.checked;
   isGenreChoosen = false;
@@ -138,7 +103,6 @@ async function onCheckBox(event) {
   await updateGallery();
 }
 
-// ===== search input =================================
 async function onSearchForm(evt) {
   evt.preventDefault();
   searchQuery = evt.target.elements.searchQuery.value.trim();
@@ -163,7 +127,6 @@ function timeoutRemoveErrorMessage() {
   }, 2000);
 }
 
-// ===== pagination =====================================
 async function onPaginationButtonClick(event) {
   if (event.target.nodeName !== 'BUTTON') return;
   loadSpinner.show();
@@ -171,6 +134,5 @@ async function onPaginationButtonClick(event) {
   if (targetPage === currentPage) return;
   currentPage = targetPage;
   await updateGallery();
-  // window.scrollTo(0, 0);
   loadSpinner.hide();
 }
