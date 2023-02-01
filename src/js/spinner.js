@@ -17,10 +17,3 @@ export default class LoadSpinner {
         this.refs.spinner.classList.add('is-hidden');
     }
 }
-
-
-// import LoadSpinner from './spinner';
-// const loadSpinner = new LoadSpinner({selector: '.loading',});
-
-// loadSpinner.show();
-// loadSpinner.hide();
