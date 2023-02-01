@@ -1,6 +1,7 @@
 const studentsRef = document.querySelector('.footer__link');
 const teamsDesk = document.querySelector('.teams_desk');
 const fonTeams = document.querySelector('.fon');
+const modaStudentRef = document.querySelector('.modal_student');
 
 const line1Ref = document.querySelector('.line1');
 const line11Ref = document.querySelector('.line11');
@@ -33,27 +34,28 @@ line2Ref.addEventListener('click', showPerson);
 line21Ref.addEventListener('click', showPerson);
 line3Ref.addEventListener('click', showPerson);
 
-
+modaStudentRef.classList.remove('modal_student');
 
 function slider(e) {
-    e.preventDefault();
-    if (document.defaultView.innerWidth < 768) {
-        line1Ref.classList.add('line_active');
-        line11Ref.classList.add('line_active');
-        line12Ref.classList.add('line_active');
-        line13Ref.classList.add('line_active');
-    }
+  e.preventDefault();
+  modaStudentRef.classList.remove('visually-hidden');
+  if (document.defaultView.innerWidth < 768) {
+    line1Ref.classList.add('line_active');
+    line11Ref.classList.add('line_active');
+    line12Ref.classList.add('line_active');
+    line13Ref.classList.add('line_active');
+  }
 
-    if (document.defaultView.innerWidth < 1280) {
-        line2Ref.classList.add('line_active');
-        line21Ref.classList.add('line_active');
-    }
+  if (document.defaultView.innerWidth < 1280) {
+    line2Ref.classList.add('line_active');
+    line21Ref.classList.add('line_active');
+  }
 
-    if (document.defaultView.innerWidth > 1280) {
-        line3Ref.classList.add('line_active')
-    }
+  if (document.defaultView.innerWidth > 1280) {
+    line3Ref.classList.add('line_active');
+  }
 
-    fonTeams.classList.add('fon_active');
+  fonTeams.classList.add('fon_active');
 }
 
 function showPerson(e) {
