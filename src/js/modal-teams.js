@@ -7,6 +7,7 @@ const line1Ref = document.querySelector('.line1');
 const line11Ref = document.querySelector('.line11');
 const line12Ref = document.querySelector('.line12');
 const line13Ref = document.querySelector('.line13');
+const line14Ref = document.querySelector('.line14');
 const line2Ref = document.querySelector('.line2');
 const line21Ref = document.querySelector('.line21');
 const line3Ref = document.querySelector('.line3');
@@ -22,6 +23,8 @@ const p8Ref = document.querySelector('#p8');
 const p9Ref = document.querySelector('#p9');
 const p10Ref = document.querySelector('#p10');
 const p11Ref = document.querySelector('#p11');
+const p12Ref = document.querySelector('#p12');
+const p13Ref = document.querySelector('#p13');
 
 fonTeams.addEventListener('click', close);
 studentsRef.addEventListener('click', slider);
@@ -30,6 +33,7 @@ line1Ref.addEventListener('click', showPerson)
 line11Ref.addEventListener('click', showPerson);
 line12Ref.addEventListener('click', showPerson);
 line13Ref.addEventListener('click', showPerson);
+line14Ref.addEventListener('click', showPerson);
 line2Ref.addEventListener('click', showPerson);
 line21Ref.addEventListener('click', showPerson);
 line3Ref.addEventListener('click', showPerson);
@@ -44,6 +48,7 @@ function slider(e) {
     line11Ref.classList.add('line_active');
     line12Ref.classList.add('line_active');
     line13Ref.classList.add('line_active');
+    line14Ref.classList.add('line_active');
   }
 
   if (document.defaultView.innerWidth < 1280) {
@@ -94,6 +99,10 @@ function addPerson(e) {
     p10Ref.classList.add('teams_desk_active');
   if (e.target.getAttribute('id') === 't11')
     p11Ref.classList.add('teams_desk_active');
+  if (e.target.getAttribute('id') === 't12')
+    p12Ref.classList.add('teams_desk_active');
+  if (e.target.getAttribute('id') === 't13')
+    p13Ref.classList.add('teams_desk_active');
 }
 
 function removePerson() {
@@ -108,6 +117,8 @@ function removePerson() {
   p9Ref.classList.remove('teams_desk_active');
   p10Ref.classList.remove('teams_desk_active');
   p11Ref.classList.remove('teams_desk_active');
+  p12Ref.classList.remove('teams_desk_active');
+  p13Ref.classList.remove('teams_desk_active');
 }
 
 function removeLine(){
@@ -115,6 +126,7 @@ function removeLine(){
     line11Ref.classList.remove('line_active');
     line12Ref.classList.remove('line_active');
     line13Ref.classList.remove('line_active');
+    line14Ref.classList.remove('line_active');
     line2Ref.classList.remove('line_active');
     line21Ref.classList.remove('line_active');
     line3Ref.classList.remove('line_active');
