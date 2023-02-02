@@ -2,7 +2,7 @@
 # Filmoteka – graduation project of the JavaScript course 
 ##### (GoIT FSON64 group 01)
 
-### [Filmoteka](https://statsenkoin.github.io/filmoteka-team01-project) - web page to find and save in storage your favourite films. Adaptive design covers three screen types with the following breakpoints: mobile - 320px, tablet - 768px, desktop - 1280px.
+### [Filmoteka](https://statsenkoin.github.io/filmoteka-team01-project)- web page to find and save in storage your favourite films. Adaptive design covers three screen types with the following breakpoints: mobile - 320px, tablet - 768px, desktop - 1280px.
 
 ## Features
 - show popular films on the main page;
@@ -23,7 +23,8 @@
 - Trello/Scrum methodology
 
 ## How to ran project locally
-This project was created with Parcel. For familiarization and setting additional features refer to the documentation.
+This project was created with Parcel. For familiarization and setting additional features refer to the documentation. LTS version of Node.js is required. [Download and install](https://nodejs.org/en/) if needed.
+
 - clone this repository or create a new repository using this one as a template;
 - in the project directory, open console (bash is highly recommended) and run: `npm install`;
 - `npm start` runs the app in development mode;
