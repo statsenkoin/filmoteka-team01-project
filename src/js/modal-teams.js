@@ -26,10 +26,7 @@ const p11Ref = document.querySelector('#p11');
 const p12Ref = document.querySelector('#p12');
 const p13Ref = document.querySelector('#p13');
 
-fonTeams.addEventListener('click', close);
-studentsRef.addEventListener('click', slider);
-
-line1Ref.addEventListener('click', showPerson)
+line1Ref.addEventListener('click', showPerson);
 line11Ref.addEventListener('click', showPerson);
 line12Ref.addEventListener('click', showPerson);
 line13Ref.addEventListener('click', showPerson);
@@ -38,6 +35,8 @@ line2Ref.addEventListener('click', showPerson);
 line21Ref.addEventListener('click', showPerson);
 line3Ref.addEventListener('click', showPerson);
 
+fonTeams.addEventListener('click', close);
+studentsRef.addEventListener('click', slider);
 modaStudentRef.classList.remove('modal_student');
 
 function slider(e) {
@@ -77,32 +76,49 @@ function close(e) {
 }
 
 function addPerson(e) {
-  if (e.target.getAttribute('id') === 't1')
-    p1Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't2')
-    p2Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't3')
-    p3Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't4')
-    p4Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't5')
-    p5Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't6')
-    p6Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't7')
-    p7Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't8')
-    p8Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't9')
-    p9Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't10')
-    p10Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't11')
-    p11Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't12')
-    p12Ref.classList.add('teams_desk_active');
-  if (e.target.getAttribute('id') === 't13')
-    p13Ref.classList.add('teams_desk_active');
+  switch (e.target.getAttribute('id')) {
+    case 't1':
+      p1Ref.classList.add('teams_desk_active');
+      break;
+    case 't2':
+      p2Ref.classList.add('teams_desk_active');
+      break;
+    case 't3':
+      p3Ref.classList.add('teams_desk_active');
+      break;
+    case 't4':
+      p4Ref.classList.add('teams_desk_active');
+      break;
+    case 't5':
+      p5Ref.classList.add('teams_desk_active');
+      break;
+    case 't6':
+      p6Ref.classList.add('teams_desk_active');
+      break;
+    case 't7':
+      p7Ref.classList.add('teams_desk_active');
+      break;
+    case 't8':
+      p8Ref.classList.add('teams_desk_active');
+      break;
+    case 't9':
+      p9Ref.classList.add('teams_desk_active');
+      break;
+    case 't10':
+      p10Ref.classList.add('teams_desk_active');
+      break;
+    case 't11':
+      p11Ref.classList.add('teams_desk_active');
+      break;
+    case 't12':
+      p12Ref.classList.add('teams_desk_active');
+      break;
+    case 't13':
+      p13Ref.classList.add('teams_desk_active');
+      break;
+  }
+  
+  
 }
 
 function removePerson() {
@@ -121,7 +137,7 @@ function removePerson() {
   p13Ref.classList.remove('teams_desk_active');
 }
 
-function removeLine(){
+function removeLine() {
     line1Ref.classList.remove('line_active');
     line11Ref.classList.remove('line_active');
     line12Ref.classList.remove('line_active');
