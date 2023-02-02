@@ -30,7 +30,7 @@ function loginEmailPassword() {
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
     .then(userCredential => {
       const user = userCredential.user;
-      console.log(user);
+
       showGreetings(user);
     })
     .catch(error => {
