@@ -7,7 +7,6 @@ function loginNotification() {
   let ALERT_AMOUNT = 0;
   const NOTIFICATIONS_AMOUNT = 10000;
   intervalId = setInterval(() => {
-    // console.log(isLogedIn);
     if (ALERT_AMOUNT === 3) {
       clearInterval(intervalId);
     }
