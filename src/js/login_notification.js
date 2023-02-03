@@ -5,10 +5,10 @@ export let intervalId = null;
 document.addEventListener('DOMContentLoaded', loginNotification);
 function loginNotification() {
   let ALERT_AMOUNT = 0;
-
+  const NOTIFICATIONS_AMOUNT = 10000;
   intervalId = setInterval(() => {
     // console.log(isLogedIn);
-    if (ALERT_AMOUNT === 5) {
+    if (ALERT_AMOUNT === 3) {
       clearInterval(intervalId);
     }
     ALERT_AMOUNT += 1;
@@ -32,7 +32,7 @@ function loginNotification() {
       });
       refs.overlay.classList.remove('active');
     });
-  }, 10000);
+  }, NOTIFICATIONS_AMOUNT);
 
   if (ALERT_AMOUNT === 3 || isLogedIn === true) {
     clearInterval(intervalId);
