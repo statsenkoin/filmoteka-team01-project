@@ -19,7 +19,6 @@ export default function modalActions() {
     document.addEventListener('keydown', closeModalOnEscapePress);
     refs.overlay.addEventListener('click', closeModalOnOverlayClick);
     event.preventDefault();
-    // if (!event.target.closest('.movies-images__item')) return;
     if (event.target.classList.contains('home-gallery')) return;
 
     const modalName = event.currentTarget.dataset.modal;
@@ -29,13 +28,6 @@ export default function modalActions() {
     refs.overlay.classList.add('active');
     scrollController.disabledScroll();
 
-    // =====================================================
-    // console.log(
-    //   'event.target :>> ',
-    //   event.target.closest('.movies-images__item')
-    // );
-
-    // =====================================================
     showLoginForm();
   }
 

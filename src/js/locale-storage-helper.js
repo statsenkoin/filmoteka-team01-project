@@ -1,11 +1,9 @@
-// currentFilmsOnPage = class LocalStorage instance key currentFilmsList
 import { currentFilmsOnPage } from './filmoteka';
 import { watchedFilms, queueFilms } from './local-storage';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { homeGallery } from './filmoteka';
 import { getGenreByIdList, createMarkupModalWindow } from './markups';
 
-//options for notiflix
 const options = {
   width: '280px',
   borderRadius: '30px',
@@ -14,13 +12,10 @@ const options = {
   fontSize: '18px',
   timeout: 2000,
 };
-//  =======================================================
 
 homeGallery.addEventListener('click', onCardClick);
 const filmModalRef = document.querySelector('.js-filmInfoModal');
 filmModalRef.addEventListener('click', updateDataBase);
-
-// ====================================================
 
 let isInWatched = false;
 let isInQueue = false;
@@ -42,7 +37,6 @@ function initLocaleStorage() {
   }
 }
 
-// ======================================================
 export function updateDataBase(event) {
   const element = event.target;
   currentFilm = filmCollection.filter(film => film.id == idFilm);

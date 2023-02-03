@@ -2,7 +2,7 @@ import { watchedFilms, queueFilms } from './local-storage';
 import { popularFilms } from './filmoteka';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-//options for notiflix
+
 const options = {
   width: '280px',
   borderRadius: '30px',

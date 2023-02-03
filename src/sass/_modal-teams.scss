@@ -6,17 +6,26 @@ ul {
 .line11,
 .line12,
 .line13,
+.line14
 .line2,
 .line21,
 .line3 {
   position: fixed;
   opacity: 0;
+    display: flex;
+  position: fixed;
+  bottom: 67;
+  right: 0;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  transform: translate(100%, 0px);
 }
 
 .line1,
 .line11,
 .line12,
-.line13 {
+.line13,
+.line14 {
   display: flex;
   position: fixed;
   bottom: 67;
@@ -36,11 +45,17 @@ ul {
   bottom: 287;
 }
 
+.line14 {
+  bottom: 507;
+}
+
 .line13 {
   bottom: 397;
   left: -40;
   transform: translate(-100%, 0px);
 }
+
+
 
 .line_img {
   height: 100px;

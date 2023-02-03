@@ -1,24 +1,18 @@
-//keys for LocalStorage
 export const KEYS = {
   watched: 'watched',
   queue: 'queue',
   genres: 'genres',
 };
-
-//LocalStorage is implemented here through the class
-
 export class LocalStorage {
   constructor(key, value = []) {
     this.key = key;
     this.value = value;
   }
-  //This function save data in LocalStorage
   setLocalStorage(dataFilms = []) {
     this.value = dataFilms;
     localStorage.setItem(this.key, JSON.stringify(this.value));
   }
 
-  //This function return data from LocalStorage
   getLocalStorage() {
     try {
       const responseLocalStorage = localStorage.getItem(this.key);
@@ -31,7 +25,6 @@ export class LocalStorage {
     }
   }
 
-  //This function add new film(object) to LocalStorage.
   addFilmtoStorage(film) {
     const response = this.getLocalStorage(this.key);
 
@@ -39,7 +32,6 @@ export class LocalStorage {
     this.value = response;
     this.setLocalStorage(this.value);
   }
-  ////This function delete film(object) from LocalStorage.
   deleteFilmFromStorage(film) {
     const response = this.getLocalStorage(this.key);
     if (!response.length) {
@@ -47,7 +39,6 @@ export class LocalStorage {
     }
 
     if (response.find(item => item.id === film.id)) {
-      // console.log('I`m delete film from the collection!');
       const indexFilm = response.findIndex(item => item.id === film.id);
       response.splice(indexFilm, 1);
 
@@ -68,7 +59,6 @@ export const genresFilm = new LocalStorage(KEYS.genres);
  */
 export function setLocalStorage(key, item) {
   localStorage.setItem(key, JSON.stringify(item));
-  // console.log('OK!!!');
 }
 /**
  * This function return data from LocalStorage
@@ -118,30 +108,3 @@ export function updateLocalStorage(key, film) {
     }
   }
 }
-
-//Method Update from Class
-// updateLocalStorage(film) {
-//     const response = this.getLocalStorage(this.key);
-
-//     if (!response.length) {
-//       this.value.push(film);
-//       this.setLocalStorage(this.value);
-//     } else {
-//       const currentFilms = response;
-//       // console.log('Current', currentFilms);
-//       if (currentFilms.find(item => item.id === film.id)) {
-//         console.log('I`m delete film from the collection!');
-//         const indexFilm = currentFilms.findIndex(item => item.id === film.id);
-
-//         currentFilms.splice(indexFilm, 1);
-
-//         this.value = currentFilms;
-//         this.setLocalStorage(this.value);
-//       } else {
-//         console.log('I`m add film to the collection!');
-//         currentFilms.push(film);
-//         this.value = currentFilms;
-//         this.setLocalStorage(this.value);
-//       }
-//     }
-//   }
